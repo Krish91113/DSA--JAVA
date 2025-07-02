@@ -191,27 +191,52 @@
 // }
 
 // Max subaray
+// public class leetcodeq {
+//     public static int maxSubArray(int nums[],int target){
+//         int currSum = 0;
+//         int maxSubseq = 0;
+//         for(int i=0;i<nums.length;i++){
+//             int start=i;
+//             for(int j=i;j<nums.length;j++){
+//                 int end = j;
+//                for(int k= start;k<=end;k++){
+//                 currSum = currSum + nums[k];
+//                 if(currSum < target){
+//                     maxSubseq++;
+//                }
+//              }   
+//             }
+//         }
+//         return maxSubseq;
+//     }
+//     public static void main(String[] args) {
+//         int nums [] ={3,5,6,7};
+//         int target = 9;
+//         System.out.println(maxSubArray(nums,target));
+//     }
+// }
 public class leetcodeq {
-    public static int maxSubArray(int nums[],int target){
-        int currSum = 0;
-        int maxSubseq = 0;
-        for(int i=0;i<nums.length;i++){
-            int start=i;
-            for(int j=i;j<nums.length;j++){
-                int end = j;
-               for(int k= start;k<=end;k++){
-                currSum = currSum + nums[k];
-                if(currSum < target){
-                    maxSubseq++;
-               }
-             }   
+    public static int searchInsert(int nums[], int target) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
             }
         }
-        return maxSubseq;
+
+        return start; // This is the correct insertion position
     }
-    public static void main(String[] args) {
-        int nums [] ={3,5,6,7};
-        int target = 9;
-        System.out.println(maxSubArray(nums,target));
+
+    public static void main(String args[]) {
+        int nums[] = {1, 3, 5, 6};
+        int target = 7;
+        System.out.println(searchInsert(nums, target)); // Output: 2
     }
 }
