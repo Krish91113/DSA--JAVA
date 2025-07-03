@@ -215,28 +215,70 @@
 //         System.out.println(maxSubArray(nums,target));
 //     }
 // }
+// public class leetcodeq {
+//     public static int searchInsert(int nums[], int target) {
+//         int start = 0;
+//         int end = nums.length - 1;
+
+//         while (start <= end) {
+//             int mid = (start + end) / 2;
+//             if (nums[mid] == target) {
+//                 return mid;
+//             } else if (nums[mid] < target) {
+//                 start = mid + 1;
+//             } else {
+//                 end = mid - 1;
+//             }
+//         }
+
+//         return start; // This is the correct insertion position
+//     }
+
+//     public static void main(String args[]) {
+//         int nums[] = {1, 3, 5, 6};
+//         int target = 7;
+//         System.out.println(searchInsert(nums, target)); // Output: 2
+//     }
+// }
+// leetcode 238
+
+// import java.util.Arrays;
+
+// public class leetcodeq {
+//     public static int [] productExceptSelf(int nums[]){
+//         int n=nums.length;
+//         int ans [] = new int[n];
+//         int prodL = 1;
+//         int prodR = 1;
+//         for(int i=n-1;i>=0;i--){
+//             ans[i] = prodR;
+//             prodR = prodR * nums[i];
+//         }
+//         for(int i=0;i<n;i++){
+//             ans[i] = ans[i] * prodL;
+//             prodL = prodL * nums[i];
+//         }
+//         return ans;
+//     }
+    
+//     public static void main(String[] args) {
+//         int nums[] = {1,2,3,4};
+//         System.out.println(Arrays.toString(productExceptSelf(nums)));
+//     }
+// }
+import java.util.*;
 public class leetcodeq {
-    public static int searchInsert(int nums[], int target) {
-        int start = 0;
-        int end = nums.length - 1;
-
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
+    public static boolean isPerfectSquare(int nums,int n){
+        int sqr = n * n;
+        if(sqr == nums){
+            return true;
+        }else{
+            return false;
         }
-
-        return start; // This is the correct insertion position
     }
-
-    public static void main(String args[]) {
-        int nums[] = {1, 3, 5, 6};
-        int target = 7;
-        System.out.println(searchInsert(nums, target)); // Output: 2
+    public static void main(String[] args) {
+        int nums = 12;
+        int n = 3;
+        System.out.println(isPerfectSquare(nums, n));
     }
 }
