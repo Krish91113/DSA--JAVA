@@ -266,19 +266,37 @@
 //         System.out.println(Arrays.toString(productExceptSelf(nums)));
 //     }
 // }
-import java.util.*;
+// import java.util.*;
+// public class leetcodeq {
+//     public static boolean isPerfectSquare(int nums,int n){
+//         int sqr = n * n;
+//         if(sqr == nums){
+//             return true;
+//         }else{
+//             return false;
+//         }
+//     }
+//     public static void main(String[] args) {
+//         int nums = 12;
+//         int n = 3;
+//         System.out.println(isPerfectSquare(nums, n));
+//     }
+// }
+
+// 7 Reverse an integer
 public class leetcodeq {
-    public static boolean isPerfectSquare(int nums,int n){
-        int sqr = n * n;
-        if(sqr == nums){
-            return true;
-        }else{
-            return false;
+        public static int reverse(int x){
+            int rev = 0;r̥
+            while(x>0 || x<0){
+                int lastDigit = x % 10;
+                rev = (rev * 10 ) + lastDigit ;
+                 x = x /10; 
+            }
+            return rev;
         }
-    }
+
     public static void main(String[] args) {
-        int nums = 12;
-        int n = 3;
-        System.out.println(isPerfectSquare(nums, n));
+        int x = 534236469;   
+        System.out.println(reverse(x));
     }
 }
