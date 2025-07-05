@@ -283,20 +283,41 @@
 //     }
 // }
 
-// 7 Reverse an integer
-public class leetcodeq {
-        public static int reverse(int x){
-            int rev = 0;r̥
-            while(x>0 || x<0){
-                int lastDigit = x % 10;
-                rev = (rev * 10 ) + lastDigit ;
-                 x = x /10; 
-            }
-            return rev;
-        }
+// // 7 Reverse an integer
+// public class leetcodeq {
+//         public static int reverse(int x){
+//             int rev = 0;r̥
+//             while(x>0 || x<0){
+//                 int lastDigit = x % 10;
+//                 rev = (rev * 10 ) + lastDigit ;
+//                  x = x /10; 
+//             }
+//             return rev;
+//         }
 
-    public static void main(String[] args) {
-        int x = 534236469;   
-        System.out.println(reverse(x));
+//     public static void main(String[] args) {
+//         int x = 534236469;   
+//         System.out.println(reverse(x));
+//     }
+// }
+
+public class leetcodeq {
+    public static int findMaxConsecutiveOnes(int[] nums) {
+        int count = 0;
+        int max = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==1){
+                count ++;
+                max = Math.max(count,max);
+            }else{
+                count = 0;
+            }
+        }
+        return max;
+        
+    }
+    public static void main (String agrs[]){
+        int nums [] = {1,1,0,1,1,1};
+        System.out.println(findMaxConsecutiveOnes(nums));
     }
 }
