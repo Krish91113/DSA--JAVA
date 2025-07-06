@@ -300,24 +300,45 @@
 //         System.out.println(reverse(x));
 //     }
 // }
-
+// MAx Consecutiv ones
+// public class leetcodeq {
+//     public static int findMaxConsecutiveOnes(int[] nums) {
+//         int count = 0;
+//         int max = 0;
+//         for(int i=0;i<nums.length;i++){
+//             if(nums[i]==1){
+//                 count ++;
+//                 max = Math.max(count,max);
+//             }else{
+//                 count = 0;
+//             }
+//         }
+//         return max;
+        
+//     }
+//     public static void main (String agrs[]){
+//         int nums [] = {1,1,0,1,1,1};
+//         System.out.println(findMaxConsecutiveOnes(nums));
+//     }
+// }
+// Valid Paranthesis
 public class leetcodeq {
-    public static int findMaxConsecutiveOnes(int[] nums) {
-        int count = 0;
-        int max = 0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==1){
-                count ++;
-                max = Math.max(count,max);
+    public static boolean validParanthesis(String s){
+        while(true){
+            if(s.contains("{}")){
+                s = s.replace("{}", "");
+            }else if(s.contains("[]")){
+                s = s.replace("[]", "");
+            }else if(s.contains("()")){
+                s = s.replace("()", "");
             }else{
-                count = 0;
+                return s.isEmpty();
             }
         }
-        return max;
-        
     }
-    public static void main (String agrs[]){
-        int nums [] = {1,1,0,1,1,1};
-        System.out.println(findMaxConsecutiveOnes(nums));
+
+    public static void main(String[] args) {
+        String s = "([)";
+        System.out.println(validParanthesis(s));
     }
 }
