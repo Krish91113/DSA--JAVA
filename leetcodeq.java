@@ -322,23 +322,68 @@
 //     }
 // }
 // Valid Paranthesis
+// public class leetcodeq {
+//     public static boolean validParanthesis(String s){
+//         while(true){
+//             if(s.contains("{}")){
+//                 s = s.replace("{}", "");
+//             }else if(s.contains("[]")){
+//                 s = s.replace("[]", "");
+//             }else if(s.contains("()")){
+//                 s = s.replace("()", "");
+//             }else{
+//                 return s.isEmpty();
+//             }
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "([)";
+//         System.out.println(validParanthesis(s));
+//     }
+// }
+
+// Solved no that appear twice other than one
+// public class leetcodeq {
+//     public static int getSingleElement(int nums[]){
+//         int xor = 0;
+//         for(int i= 0; i<nums.length;i++){
+//             xor = xor ^ nums[i];
+//         }
+//         return xor;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {1,1,2,3,3,4,4};
+//         System.out.println(getSingleElement(nums));
+//     }
+// }
+
+import java.util.Arrays;
+
 public class leetcodeq {
-    public static boolean validParanthesis(String s){
-        while(true){
-            if(s.contains("{}")){
-                s = s.replace("{}", "");
-            }else if(s.contains("[]")){
-                s = s.replace("[]", "");
-            }else if(s.contains("()")){
-                s = s.replace("()", "");
-            }else{
-                return s.isEmpty();
+    public static int [] moveZeroes(int nums[]){
+        int j = -1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                j=i;
+                break;
             }
         }
+        if(j==-1) return nums;
+        for(int i=j+1;i<nums.length;i++){
+            if(nums[i]!=0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
+            }
+        }
+        return nums;
     }
 
     public static void main(String[] args) {
-        String s = "([)";
-        System.out.println(validParanthesis(s));
+        int nums[] = {1,0,2,3,2,0,0,4,5,1};
+        int []result =moveZeroes(nums);
+        System.out.println(Arrays.toString(result));
     }
 }
