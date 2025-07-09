@@ -283,17 +283,43 @@
 //     }
 // }
 
-// Find the numbers that appear once other twice
-public class array {
-    public static int getSingleElement(int nums[]){
-        int xor = 0;
-        for(int i= 0; i<nums.length;i++){
-            xor = xor ^ nums[i];
+// // Find the numbers that appear once other twice
+// public class array {
+//     public static int getSingleElement(int nums[]){
+//         int xor = 0;
+//         for(int i= 0; i<nums.length;i++){
+//             xor = xor ^ nums[i];
+//         }
+//         return xor;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {1,1,2,3,3,4,4};
+//         System.out.println(getSingleElement(nums));
+//     }
+// }
+
+// Missing numbers
+public class array{
+    public static void missingNumber(int [] nums){
+        Arras.sort(nums);
+        int n = nums.length;
+        for(int i=1;i<=n;i++){
+            int flag = 0;
+            for(int j=0;j<n;j++){
+                if(nums[j] == i){
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag==0){
+               System.out.println(i);
+            }
         }
-        return xor;
+        
     }
+
     public static void main(String[] args) {
-        int nums[] = {1,1,2,3,3,4,4};
-        System.out.println(getSingleElement(nums));
+        int nums[] ={9,6,4,2,3,5,7,0,1};
+        missingNumber(nums);
     }
 }

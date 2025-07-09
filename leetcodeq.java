@@ -358,32 +358,91 @@
 //     }
 // }
 
+
+
+// public class leetcodeq {
+//     public static int [] moveZeroes(int nums[]){
+//         int j = -1;
+//         for(int i=0;i<nums.length;i++){
+//             if(nums[i]==0){
+//                 j=i;
+//                 break;
+//             }
+//         }
+//         if(j==-1) return nums;
+//         for(int i=j+1;i<nums.length;i++){
+//             if(nums[i]!=0){
+//                 int temp = nums[i];
+//                 nums[i] = nums[j];
+//                 nums[j] = temp;
+//                 j++;
+//             }
+//         }
+//         return nums;
+//     }
+
+//     public static void main(String[] args) {
+//         int nums[] = {1,0,2,3,2,0,0,4,5,1};
+//         int []result =moveZeroes(nums);
+//         System.out.println(Arrays.toString(result));
+//     }
+// }
+
+//1089: Duplicates at zero
+
+// public class leetcodeq {
+//     public static void duplicateZeros(int[] arr) {
+//         int n = arr.length;
+//         int possibleDups = 0;
+
+//         for (int i = 0; i < n - possibleDups; i++) {
+//             if (arr[i] == 0) {
+//                 if (i == n - possibleDups - 1) {
+//                     arr[n - 1] = 0;
+//                     n = n - 1;
+//                     break;
+//                 }
+//                 possibleDups++;
+//             }
+//         }
+//         int last = n - possibleDups - 1;
+
+//         for (int i = last; i >= 0; i--) {
+//             if (arr[i] == 0) {
+//                 arr[i + possibleDups] = 0;
+//                 possibleDups--;
+//                 arr[i + possibleDups] = 0;
+//             } else {
+//                 arr[i + possibleDups] = arr[i];
+//             }
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         int[] arr = {1,0,2,3,0,4,5,0};
+//         duplicateZeros(arr);
+//         System.out.println(Arrays.toString(arr));
+//     }
+// }
+
+// Missing Number
+
 import java.util.Arrays;
 
-public class leetcodeq {
-    public static int [] moveZeroes(int nums[]){
-        int j = -1;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==0){
-                j=i;
-                break;
-            }
+public class leetcodeq{
+    public static int missingNumber(int [] nums){
+        Arrays.sort(nums);
+        int n = nums.length;
+        int sumofLe = (n*(n+1))/2;
+        int sumofnums = 0;
+        for(int i=0;i<n;i++){
+            sumofnums = sumofnums + nums[i];
         }
-        if(j==-1) return nums;
-        for(int i=j+1;i<nums.length;i++){
-            if(nums[i]!=0){
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-                j++;
-            }
-        }
-        return nums;
+        return sumofLe - sumofnums;
     }
 
     public static void main(String[] args) {
-        int nums[] = {1,0,2,3,2,0,0,4,5,1};
-        int []result =moveZeroes(nums);
-        System.out.println(Arrays.toString(result));
+        int nums[] ={9,6,4,2,3,5,7,0,1};
+        System.out.println(missingNumber(nums));
     }
 }
