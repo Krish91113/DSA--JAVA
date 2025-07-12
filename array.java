@@ -299,27 +299,52 @@
 // }
 
 // Missing numbers
-public class array{
-    public static void missingNumber(int [] nums){
-        Arras.sort(nums);
-        int n = nums.length;
-        for(int i=1;i<=n;i++){
-            int flag = 0;
-            for(int j=0;j<n;j++){
-                if(nums[j] == i){
-                    flag = 1;
-                    break;
-                }
-            }
-            if(flag==0){
-               System.out.println(i);
+// public class array{
+//     public static void missingNumber(int [] nums){
+//         Arras.sort(nums);
+//         int n = nums.length;
+//         for(int i=1;i<=n;i++){
+//             int flag = 0;
+//             for(int j=0;j<n;j++){
+//                 if(nums[j] == i){
+//                     flag = 1;
+//                     break;
+//                 }
+//             }
+//             if(flag==0){
+//                System.out.println(i);
+//             }
+//         }
+        
+//     }
+
+//     public static void main(String[] args) {
+//         int nums[] ={9,6,4,2,3,5,7,0,1};
+//         missingNumber(nums);
+//     }
+// }
+
+// Find kth root
+public class array {
+    public static int kthroot(int n,int k){
+        int start = 1;
+        int end = n;
+        int ans = 0;
+        while(start<=end){
+            int mid = (start + end )/2;
+            if(Math.pow(mid, k)<=n){
+                ans = mid;
+                start = mid + 1;
+            }else{
+                end = mid - 1;
             }
         }
-        
+        return ans;
     }
 
     public static void main(String[] args) {
-        int nums[] ={9,6,4,2,3,5,7,0,1};
-        missingNumber(nums);
+        int n = 87;
+        int k = 3;
+        System.out.println(kthroot(n, k));
     }
 }
