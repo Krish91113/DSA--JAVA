@@ -325,26 +325,66 @@
 // }
 
 // Find kth root
+// public class array {
+//     public static int kthroot(int n,int k){
+//         int start = 1;
+//         int end = n;
+//         int ans = 0;
+//         while(start<=end){
+//             int mid = (start + end )/2;
+//             if(Math.pow(mid, k)<=n){
+//                 ans = mid;
+//                 start = mid + 1;
+//             }else{
+//                 end = mid - 1;
+//             }
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int n = 87;
+//         int k = 3;
+//         System.out.println(kthroot(n, k));
+//     }
+// }
+
+// Max subbarray
+//Brute solution
+// public class array {
+//     public static int maxSubArray(int nums[]){
+//         int ans = Integer.MIN_VALUE;
+//         for(int i=0;i<nums.length;i++){
+//             int sum = 0;
+//             for(int j=i;j<nums.length;j++){
+//                 sum+=nums[j];
+//                 ans = Math.max(ans, sum);
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {2,3,-7,11,-1,3};
+//         System.out.println(maxSubArray(nums));
+//     }
+// }
+
+// Optimal Kadanes algorithm
 public class array {
-    public static int kthroot(int n,int k){
-        int start = 1;
-        int end = n;
-        int ans = 0;
-        while(start<=end){
-            int mid = (start + end )/2;
-            if(Math.pow(mid, k)<=n){
-                ans = mid;
-                start = mid + 1;
-            }else{
-                end = mid - 1;
+    public static int maxSubArray(int nums[]){
+        int ans = Integer.MIN_VALUE;
+        int sum = 0;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            ans = Math.max(ans, sum);
+            if(sum<0){
+                sum = 0;
             }
         }
         return ans;
     }
-
     public static void main(String[] args) {
-        int n = 87;
-        int k = 3;
-        System.out.println(kthroot(n, k));
+        int nums[] = {2,3,-7,11,-1,3};
+        System.out.println(maxSubArray(nums));
     }
 }
