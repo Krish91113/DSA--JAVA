@@ -517,21 +517,47 @@
 // }
 
 // Max Product array
-public class leetcodeq {
-    public static int maxProductSubarray(int nums[]){
-        int product = 1;
-        int answer = Integer.MIN_VALUE;
+// public class leetcodeq{
+//     public static int maxProduct(int numbers[]) {
+//         int prefix = 1;
+//         int suffix = 1;
+//         int ans = Integer.MIN_VALUE;
+//         int n = numbers.length;
+//         for(int i=0;i<n;i++){
+//             if(prefix==0) prefix =1;
+//             if(suffix ==0) suffix=1;
+
+//             prefix = prefix * numbers[i];
+//             suffix = suffix * numbers[n-i-1];
+//             ans = Math.max(ans,Math.max(prefix,suffix));
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int numbers[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+//         maxProduct(numbers);
+//     }
+// }
+
+// Subarray sum equal K
+public class leetcodeq{
+    public static int subaraySum(int nums[] , int k){
+        int count = 0;
         for(int i=0;i<nums.length;i++){
-            product = product * nums[i];
-            answer = Math.max(answer, product);
-            if(product < 0){
-                product = 1;
+            int sum = 0;
+            for(int j=i;j<nums.length;j++){
+                sum = sum + nums[j];
+                if(sum == k){
+                    count ++;
+                }
             }
         }
-        return answer;
+        return count;
     }
     public static void main(String[] args) {
-        int nums[] ={-2,0,-1};
-        System.out.println(maxProductSubarray(nums));
+        int nums[] = {1,2,3};
+        int k = 3;
+        System.out.println(subaraySum(nums, k));
     }
 }

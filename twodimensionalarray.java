@@ -129,16 +129,26 @@
 // }
 
 // Transpose of a matrix
-public class twodimensionalarray{
-    public static int [][] transpose(int matrix[][]){
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int [][] result = new int [m][n];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                result[j][i] = matrix[i][j];
-            }
-        }
-        return result;
+// public class twodimensionalarray{
+//     public static int [][] transpose(int matrix[][]){
+//         int n = matrix.length;
+//         int m = matrix[0].length;
+//         int [][] result = new int [m][n];
+//         for(int i=0;i<n;i++){
+//             for(int j=0;j<m;j++){
+//                 result[j][i] = matrix[i][j];
+//             }
+//         }
+//         return result;
+//     }
+// }
+
+public class twodimensionalarray {
+
+    public static void main(String[] args) {
+        int [][] arr = new int [3][4];
+        System.out.println(arr);
+        System.out.println(arr[1]);
+        System.out.println(arr[1][2]);
     }
 }
