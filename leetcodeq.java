@@ -541,23 +541,42 @@
 // }
 
 // Subarray sum equal K
-public class leetcodeq{
-    public static int subaraySum(int nums[] , int k){
-        int count = 0;
-        for(int i=0;i<nums.length;i++){
-            int sum = 0;
-            for(int j=i;j<nums.length;j++){
-                sum = sum + nums[j];
-                if(sum == k){
-                    count ++;
-                }
-            }
-        }
-        return count;
-    }
-    public static void main(String[] args) {
-        int nums[] = {1,2,3};
-        int k = 3;
-        System.out.println(subaraySum(nums, k));
-    }
-}
+// public class leetcodeq{
+//     public static int subaraySum(int nums[] , int k){
+//         int count = 0;
+//         for(int i=0;i<nums.length;i++){
+//             int sum = 0;
+//             for(int j=i;j<nums.length;j++){
+//                 sum = sum + nums[j];
+//                 if(sum == k){
+//                     count ++;
+//                 }
+//             }
+//         }
+//         return count;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {1,2,3};
+//         int k = 3;
+//         System.out.println(subaraySum(nums, k));
+//     }
+// }
+
+// Transpose 
+// public class leetcode{
+//     public static int[][] transpose(int[][] matrix) {
+//         int row = matrix.length;
+//         int col = matrix[0].length;
+//         int[][] result = new int[col][row]; 
+//         for (int i = 0; i < row; i++) {
+//             for (int j = 0; j < col; j++) {
+//                 result[j][i] = matrix[i][j];
+//             }
+//         }
+//         return result;
+//     }
+//     public static void main(String[] args) {
+//         int[][] nums = {{2, 4, -1}, {-10, 5, 11}, {18, -7, 6}};
+//         System.out.println(transpose(nums));
+//     }
+// }    

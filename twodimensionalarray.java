@@ -173,7 +173,7 @@
 //         for(int col=0;col<arr[0].length;col++){
 //             if(col%2==0){
 //                 for(int row=0;row<arr.length;row++){
-//                     System.out.print(arr[row][col]+" ");
+//                     System.out.print(arr[row][col]+" ");git 
 //                 }
 //             }
 //             else{
@@ -190,24 +190,66 @@
 // }
 
 // Transpose of matrix
+// public class twodimensionalarray {
+//     public static void transpose(int arr[][]){
+//         for(int i=0;i<arr.length;i++){
+//             for(int j=i+1;j<arr[0].length;j++){
+//                 int temp = arr[i][j];
+//                 arr[i][j] = arr[j][i];
+//                 arr[j][i] = temp;
+//             }
+//         }
+//     }
+//     public static void main(String[] args) {
+//         int arr[][] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+//         transpose(arr);
+//         for(int i=0;i<arr.length;i++){
+//             for(int j=0;j<arr[0].length;j++){
+//                 System.out.print(arr[i][j] + " ");
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Spiral Matrix
 public class twodimensionalarray {
-    public static void transpose(int arr[][]){
-        for(int i=0;i<arr.length;i++){
-            for(int j=i+1;j<arr[0].length;j++){
-                int temp = arr[i][j];
-                arr[i][j] = arr[j][i];
-                arr[j][i] = temp;
-            }
+    public static void printSpiral(int matrix[][]){
+        int minr = 0;
+        int maxr = matrix.length - 1;
+        int minc = 0;
+        int maxc = matrix[0].length -1;
+        int total_element = matrix.length * matrix[0].length;
+        int count = 0;
+        while(count<total_element){
+        for(int i=minc ; i<=maxc && count<total_element ; i++){
+            System.out.print(matrix[minr][i] + " ");
+            count++;
         }
+        minr++;
+        for(int i=minr;i<=maxr && count<total_element;i++){
+            System.out.print(matrix[i][maxc] + " ");
+            count++;
+        }
+        maxc--;
+        for(int i=maxc;i>=minc && count<total_element;i--){
+            System.out.print(matrix[maxr][i] + " ");
+            count++;
+        }
+        maxr--;
+        for(int i=maxr ;i>=minr && count<total_element;i--){
+            System.out.print(matrix[i][minc] + " ");
+            count++;
+        }
+        minc++;
     }
+}
+
     public static void main(String[] args) {
-        int arr[][] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
-        transpose(arr);
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[0].length;j++){
-                System.out.print(arr[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
+        int matrix[][] = {{1, 2, 3, 4},
+                          {5, 6, 7, 8},
+                          {9, 10, 11, 12},
+                          {13, 14, 15, 16}};
+        printSpiral(matrix);
+    }    
 }
