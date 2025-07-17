@@ -580,3 +580,68 @@
 //         System.out.println(transpose(nums));
 //     }
 // }    
+
+//59 Spiral matrix
+// public class leetcodeq {
+//     public static void printSpiral(int matrix[][]){
+//         int minr = 0;
+//         int maxr = matrix.length - 1;
+//         int minc = 0;
+//         int maxc = matrix[0].length -1;
+//         int total_element = matrix.length * matrix[0].length;
+//         int count = 0;
+//         while(count<total_element){
+//         for(int i=minc ; i<=maxc && count<total_element ; i++){
+//             System.out.print(matrix[minr][i] + " ");
+//             count++;
+//         }
+//         minr++;
+//         for(int i=minr;i<=maxr && count<total_element;i++){
+//             System.out.print(matrix[i][maxc] + " ");
+//             count++;
+//         }
+//         maxc--;
+//         for(int i=maxc;i>=minc && count<total_element;i--){
+//             System.out.print(matrix[maxr][i] + " ");
+//             count++;
+//         }
+//         maxr--;
+//         for(int i=maxr ;i>=minr && count<total_element;i--){
+//             System.out.print(matrix[i][minc] + " ");
+//             count++;
+//         }
+//         minc++;
+//     }
+// }
+
+//     public static void main(String[] args) {
+//         int matrix[][] = {{1, 2, 3, 4},
+//                           {5, 6, 7, 8},
+//                           {9, 10, 11, 12},
+//                           {13, 14, 15, 16}};
+//         printSpiral(matrix);
+//     }    
+// }
+
+// contains duplicate
+public class leetcodeq{
+    public static boolean containsDuplicate(int []nums){
+        boolean ans = false;
+        int i = 0;
+        for(int j=i+1;j<nums.length;j++){
+            if(nums[i]==nums[j]){
+                ans = true;
+                break;
+            }
+            else if(j==nums.length-1){
+                i++;
+                j=i;
+            }
+        }
+        return ans;
+    }
+    public static void main(String[] args) {
+        int [] nums = {1,3,4,4};
+        System.out.println(containsDuplicate(nums));
+    }
+}
