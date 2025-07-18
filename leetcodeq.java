@@ -624,24 +624,47 @@
 // }
 
 // contains duplicate
-public class leetcodeq{
-    public static boolean containsDuplicate(int []nums){
-        boolean ans = false;
-        int i = 0;
-        for(int j=i+1;j<nums.length;j++){
-            if(nums[i]==nums[j]){
-                ans = true;
-                break;
+// public class leetcodeq{
+//     public static boolean containsDuplicate(int []nums){
+//         boolean ans = false;
+//         int i = 0;
+//         for(int j=i+1;j<nums.length;j++){
+//             if(nums[i]==nums[j]){
+//                 ans = true;
+//                 break;
+//             }
+//             else if(j==nums.length-1){
+//                 i++;
+//                 j=i;
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int [] nums = {1,3,4,4};
+//         System.out.println(containsDuplicate(nums));
+//     }
+// }
+
+// Plus one 
+
+import java.util.Arrays;
+
+public class leetcodeq {
+    public static int [] plusOne(int[] digits){
+        for(int i=digits.length-1;i>=0;i--){
+            if(digits[i] < 9){
+                digits[i]++;
+                return digits;
             }
-            else if(j==nums.length-1){
-                i++;
-                j=i;
-            }
+                digits[i] = 0;
         }
-        return ans;
+        int result [] = new int[digits.length + 1];
+        result[0] = 1;
+        return result;
     }
     public static void main(String[] args) {
-        int [] nums = {1,3,4,4};
-        System.out.println(containsDuplicate(nums));
+        int digits[] = {9, 9, 9, 9};
+        System.out.println(Arrays.toString(plusOne(digits)));
     }
 }
