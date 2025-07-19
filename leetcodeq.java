@@ -648,23 +648,28 @@
 
 // Plus one 
 
-import java.util.Arrays;
 
 public class leetcodeq {
-    public static int [] plusOne(int[] digits){
-        for(int i=digits.length-1;i>=0;i--){
-            if(digits[i] < 9){
-                digits[i]++;
-                return digits;
+    public static int checkPerfectSquare(int N) {
+        long start = 1;
+        long end = N;
+        int ans = 0;
+        while(start<=end){
+            long mid = (start + end)/2;
+            long sqr = (mid * mid);
+            if(sqr == N){
+                ans = 1;
+                return ans;
+            }else if(sqr>N){
+                end = mid -1;
+            }else{
+                start = mid + 1;
             }
-                digits[i] = 0;
         }
-        int result [] = new int[digits.length + 1];
-        result[0] = 1;
-        return result;
+        return ans;
     }
     public static void main(String[] args) {
-        int digits[] = {9, 9, 9, 9};
-        System.out.println(Arrays.toString(plusOne(digits)));
+        int N = 16;
+        System.out.println(checkPerfectSquare(N));
     }
 }

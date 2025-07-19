@@ -370,21 +370,67 @@
 // }
 
 // Optimal Kadanes algorithm
-public class array {
-    public static int maxSubArray(int nums[]){
-        int ans = Integer.MIN_VALUE;
-        int sum = 0;
-        for(int i=0;i<nums.length;i++){
-            sum+=nums[i];
-            ans = Math.max(ans, sum);
-            if(sum<0){
-                sum = 0;
+// public class array {
+//     public static int maxSubArray(int nums[]){
+//         int ans = Integer.MIN_VALUE;
+//         int sum = 0;
+//         for(int i=0;i<nums.length;i++){
+//             sum+=nums[i];
+//             ans = Math.max(ans, sum);
+//             if(sum<0){
+//                 sum = 0;
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {2,3,-7,11,-1,3};
+//         System.out.println(maxSubArray(nums));
+//     }
+// }
+
+// Agressive Cow Problem
+import java.util.*;
+public class array{
+    public static int MinDistance(int []stalls ,int noc){
+        int lo = stalls[0];
+        int hi = stalls[stalls.length-1];
+        int ans  = 0;
+        while(lo<=hi){
+            int mid = (lo + hi)/2;
+            if(isitPossible(stalls,noc,mid) == true){
+                ans = mid; 
+                lo = mid + 1;
+            }else{
+                hi = mid - 1;
             }
+
         }
         return ans;
     }
+    public static boolean isitPossible(int []stalls , int noc , int mid){
+        int position = stalls[0];
+        int cowscount = 1;
+        for(int i=1;i<stalls.length;i++){
+            if(stalls[i] - position >=mid){
+                cowscount++;
+                position = stalls[i];
+            }
+            if(cowscount == noc){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
-        int nums[] = {2,3,-7,11,-1,3};
-        System.out.println(maxSubArray(nums));
+        Scanner sc = new Scanner(System.in);
+        int nos = sc.nextInt();//number of stalls
+        int noc = sc.nextInt(); //number of cows
+        int stalls[] = new int[nos];
+        for(int i= 0;i<stalls.length;i++){
+            stalls[i] = sc.nextInt();
+        }
+        Arrays.sort(stalls);
+        System.out.println(MinDistance(stalls, noc));1 
     }
 }
