@@ -649,27 +649,60 @@
 // Plus one 
 
 
+// public class leetcodeq {
+//     public static int checkPerfectSquare(int N) {
+//         long start = 1;
+//         long end = N;
+//         int ans = 0;
+//         while(start<=end){
+//             long mid = (start + end)/2;
+//             long sqr = (mid * mid);
+//             if(sqr == N){
+//                 ans = 1;
+//                 return ans;
+//             }else if(sqr>N){
+//                 end = mid -1;
+//             }else{
+//                 start = mid + 1;
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int N = 16;
+//         System.out.println(checkPerfectSquare(N));
+//     }
+// }
+
+// sqrt(X)
+
 public class leetcodeq {
-    public static int checkPerfectSquare(int N) {
-        long start = 1;
-        long end = N;
+    public int mySqrt(int x) {
+       
+        if (x == 0) return 0;
+
+        int left = 1, right = x;
         int ans = 0;
-        while(start<=end){
-            long mid = (start + end)/2;
-            long sqr = (mid * mid);
-            if(sqr == N){
-                ans = 1;
-                return ans;
-            }else if(sqr>N){
-                end = mid -1;
-            }else{
-                start = mid + 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            long square = (long) mid * mid;
+
+            if (square == x) {
+                return mid; 
+            } else if (square < x) {
+                ans = mid; 
+                left = mid + 1; 
+            } else {
+                right = mid - 1; 
             }
         }
-        return ans;
+
+        return ans; 
     }
     public static void main(String[] args) {
-        int N = 16;
-        System.out.println(checkPerfectSquare(N));
+        int x = 8;
+        leetcodeq solution = new leetcodeq();
+        System.out.println(solution.mySqrt(x));
     }
 }
