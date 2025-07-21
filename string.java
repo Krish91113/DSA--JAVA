@@ -177,21 +177,80 @@
 //     }
 // }
 
+// public class string {
+//     public static int lengthOfLastWord(String s) {
+//         int ans = 0;
+//         int i = s.length() - 1;
+//         while(i>=0 && s.charAt(i) == ' ') {
+//             i--;
+//         }
+//         while(i>=0 && s.charAt(i) != ' ') {
+//             ans++;
+//             i--;
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         String s = "Hello World";
+//         System.out.println(lengthOfLastWord(s));
+//     }
+// }
+//Palindorme
+// import java.util.*;
+// public class string {
+
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         String str = sc.nextLine();
+//         System.out.println(str);
+//         System.out.println(isPalindrome(str));
+//     }
+//     public static boolean isPalindrome(String str){
+//         int i = 0;
+//         int j = str.length()-1;
+//         while(i<j){
+//             if(str.charAt(i) != str.charAt(j)){
+//                 return false; 
+//             }
+//             i++;
+//             j--;
+//         }
+//         return true;
+//     }
+// }
+
+// public class string {
+//     public static void main(String[] args) {
+//         String str = "hello";
+//         System.out.println(10 + str  + 20 + 30);
+//     }
+// }
+//Print all palindromic substrings
+
 public class string {
-    public static int lengthOfLastWord(String s) {
-        int ans = 0;
-        int i = s.length() - 1;
-        while(i>=0 && s.charAt(i) == ' ') {
-            i--;
+    public static void printPalindromeSubstrings(String s) {
+        for(int i=0;i<s.length();i++){
+            for(int j=i+1;j<=s.length();j++){
+                if(isPalindrome(s.substring(i,j))){
+                    System.out.println(s.substring(i,j));
+                }
+            }
         }
-        while(i>=0 && s.charAt(i) != ' ') {
-            ans++;
-            i--;
+    }
+     public static boolean isPalindrome(String str){
+        int i = 0;
+        int j = str.length() - 1;
+        while(i < j) {
+            if(str.charAt(i) != str.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
         }
-        return ans;
+        return true;
     }
     public static void main(String[] args) {
-        String s = "Hello World";
-        System.out.println(lengthOfLastWord(s));
+        String s = "nitin";
+        printPalindromeSubstrings(s);
     }
 }

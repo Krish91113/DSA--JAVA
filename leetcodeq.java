@@ -709,7 +709,7 @@
 //     }
 // }
 
-// 
+// count string after spaced
 public class leetcodeq {
     public static int lengthOfLastWord(String s) {
         int ans = 0;
