@@ -429,6 +429,8 @@
 
 // import java.util.Arrays;
 
+// import java.util.Arrays;
+
 // public class leetcodeq{
 //     public static int missingNumber(int [] nums){
 //         Arrays.sort(nums);
@@ -442,7 +444,7 @@
 //     }
 
 //     public static void main(String[] args) {
-//         int nums[] ={9,6,4,2,3,5,7,0,1};
+//         int nums[] ={1};
 //         System.out.println(missingNumber(nums));
 //     }
 // }
@@ -676,33 +678,53 @@
 
 // sqrt(X)
 
-public class leetcodeq {
-    public int mySqrt(int x) {
+// public class leetcodeq {
+//     public int mySqrt(int x) {
        
-        if (x == 0) return 0;
+//         if (x == 0) return 0;
 
-        int left = 1, right = x;
+//         int left = 1, right = x;
+//         int ans = 0;
+
+//         while (left <= right) {
+//             int mid = left + (right - left) / 2;
+//             long square = (long) mid * mid;
+
+//             if (square == x) {
+//                 return mid; 
+//             } else if (square < x) {
+//                 ans = mid; 
+//                 left = mid + 1; 
+//             } else {
+//                 right = mid - 1; 
+//             }
+//         }
+
+//         return ans; 
+//     }
+//     public static void main(String[] args) {
+//         int x = 8;
+//         leetcodeq solution = new leetcodeq();
+//         System.out.println(solution.mySqrt(x));
+//     }
+// }
+
+// 
+public class leetcodeq {
+    public static int lengthOfLastWord(String s) {
         int ans = 0;
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            long square = (long) mid * mid;
-
-            if (square == x) {
-                return mid; 
-            } else if (square < x) {
-                ans = mid; 
-                left = mid + 1; 
-            } else {
-                right = mid - 1; 
-            }
+        int i = s.length() - 1;
+        while(i>=0 && s.charAt(i) == ' ') {
+            i--;
         }
-
-        return ans; 
+        while(i>=0 && s.charAt(i) != ' ') {
+            ans++;
+            i--;
+        }
+        return ans;
     }
     public static void main(String[] args) {
-        int x = 8;
-        leetcodeq solution = new leetcodeq();
-        System.out.println(solution.mySqrt(x));
+        String s = "Hello World";
+        System.out.println(lengthOfLastWord(s));
     }
 }

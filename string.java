@@ -143,13 +143,55 @@
 //                 System.out.println(toLowerCase(str));
 //         }
 // }
+// public class string {
+//     public static String toLowerCase(String s) {
+//         String str = s.toLowerCase();
+//         return str;
+//     }
+//     public static void main(String[] args) {
+//         String str = "KRISH";
+//         System.out.println(toLowerCase(str));
+//     }
+// // }
+
+// public class string{
+//     public static void main(String[] args) {
+//         String str = "hello";
+//         String str2 = "hello"; 
+//         System.out.println(isEqual(str, str2));
+//         System.out.println(s.charAt(0));
+//     }
+//     public static boolean isEqual(String str, String str2) {
+//         if(str.length() != str2.length()){
+//             return false;
+//         }
+//         if(str == str2){
+//             return true;
+//         }
+//         for(int i=9;i<str.length();i++){
+//             if(str.charAt(i) != str2.charAt(i)){
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+// }
+
 public class string {
-    public static String toLowerCase(String s) {
-        String str = s.toLowerCase();
-        return str;
+    public static int lengthOfLastWord(String s) {
+        int ans = 0;
+        int i = s.length() - 1;
+        while(i>=0 && s.charAt(i) == ' ') {
+            i--;
+        }
+        while(i>=0 && s.charAt(i) != ' ') {
+            ans++;
+            i--;
+        }
+        return ans;
     }
     public static void main(String[] args) {
-        String str = "KRISH";
-        System.out.println(toLowerCase(str));
+        String s = "Hello World";
+        System.out.println(lengthOfLastWord(s));
     }
 }
