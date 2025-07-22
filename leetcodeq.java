@@ -710,21 +710,42 @@
 // }
 
 // count string after spaced
+// public class leetcodeq {
+//     public static int lengthOfLastWord(String s) {
+//         int ans = 0;
+//         int i = s.length() - 1;
+//         while(i>=0 && s.charAt(i) == ' ') {
+//             i--;
+//         }
+//         while(i>=0 && s.charAt(i) != ' ') {
+//             ans++;
+//             i--;
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         String s = "Hello World";
+//         System.out.println(lengthOfLastWord(s));
+//     }
+// }
+
 public class leetcodeq {
-    public static int lengthOfLastWord(String s) {
-        int ans = 0;
-        int i = s.length() - 1;
-        while(i>=0 && s.charAt(i) == ' ') {
-            i--;
+    public static int strStr(String haystack, String needle) {
+        for(int i=0;i<haystack.length();i++){
+            for(int j=0;j<needle.length();j++){
+                if(i+j >= haystack.length() || haystack.charAt(i+j) != needle.charAt(j)){
+                    break;
+                }
+                if(j == needle.length()-1){
+                    return i;
+                }
+            }
         }
-        while(i>=0 && s.charAt(i) != ' ') {
-            ans++;
-            i--;
-        }
-        return ans;
+        return -1;
     }
     public static void main(String[] args) {
-        String s = "Hello World";
-        System.out.println(lengthOfLastWord(s));
+        String haystack = "sadbutsad";
+        String needle = "sad";
+        System.out.println(strStr(haystack, needle));
     }
 }
