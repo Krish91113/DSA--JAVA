@@ -729,23 +729,57 @@
 //     }
 // }
 
+// public class leetcodeq {
+//     public static int strStr(String haystack, String needle) {
+//         for(int i=0;i<haystack.length();i++){
+//             for(int j=0;j<needle.length();j++){
+//                 if(i+j >= haystack.length() || haystack.charAt(i+j) != needle.charAt(j)){
+//                     break;
+//                 }
+//                 if(j == needle.length()-1){
+//                     return i;
+//                 }
+//             }
+//         }
+//         return -1;
+//     }
+//     public static void main(String[] args) {
+//         String haystack = "sadbutsad";
+//         String needle = "sad";
+//         System.out.println(strStr(haystack, needle));
+//     }
+// }
+
+// Search in a rotated sorted array
 public class leetcodeq {
-    public static int strStr(String haystack, String needle) {
-        for(int i=0;i<haystack.length();i++){
-            for(int j=0;j<needle.length();j++){
-                if(i+j >= haystack.length() || haystack.charAt(i+j) != needle.charAt(j)){
-                    break;
+    public static int search(int[] nums, int target) {
+        int low=0;
+        int high = nums.length - 1;
+        while(low<=high){
+            int mid = (low + high)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[low]<=nums[mid]){
+                if(nums[low]<=target && target<=nums[mid]){
+                    high = mid - 1;
+                }else{
+                    low = mid + 1;
                 }
-                if(j == needle.length()-1){
-                    return i;
+            }
+            else{
+                if(nums[mid]<=target && target<=nums[high]){
+                    low = mid + 1;
+                }else{
+                    high = mid - 1;
                 }
             }
         }
         return -1;
     }
     public static void main(String[] args) {
-        String haystack = "sadbutsad";
-        String needle = "sad";
-        System.out.println(strStr(haystack, needle));
+        int nums[] = {4,5,6,7,0,1,2};
+        int target = 0;
+        System.out.println(search(nums, target));
     }
 }
