@@ -225,48 +225,53 @@
 //         System.out.println(10 + str  + 20 + 30);
 //     }
 // }
-//Print all palindromic substrings
+// Print all palindromic substrings
 
-// public class string {
-//     public static void printPalindromeSubstrings(String s) {
-//         for(int i=0;i<s.length();i++){
-//             for(int j=i+1;j<=s.length();j++){
-//                 if(isPalindrome(s.substring(i,j))){
-//                     System.out.println(s.substring(i,j));
-//                 }
-//             }
-//         }
-//     }
-//      public static boolean isPalindrome(String str){
-//         int i = 0;
-//         int j = str.length() - 1;
-//         while(i < j) {
-//             if(str.charAt(i) != str.charAt(j)) {
-//                 return false;
-//             }
-//             i++;
-//             j--;
-//         }
-//         return true;
-//     }
-//     public static void main(String[] args) {
-//         String s = "nitin";
-//         printPalindromeSubstrings(s);
-//     }
-// }
-
-public class string{
-    public static void subString(String s){
-        for(int length = 1; length<=s.length();length++){
-            for(int j=length ; j<=s.length();j++){
-                int i = j - length ;
-                System.out.print(s.substring(i,j)+" ");
+public class string {
+    public static String printPalindromeSubstrings(String s) {
+        int max=0,start=0,end=0;
+        
+        for(int i=0;i<s.length();i++){
+            for(int j=i;j<s.length();j++){
+                if(isPalindrome(s.substring(i,j))==true){
+                   max= j-i+1;
+                   start=i;
+                   end=j;
+                }
             }
-            System.out.println( );
         }
+        return s.substring(start,end+1);
+    }
+     public static boolean isPalindrome(String str){
+        int i = 0;
+        int j = str.length() - 1;
+        while(i < j) {
+            if(str.charAt(i) != str.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
     }
     public static void main(String[] args) {
-        String s = "83415";
-        subString(s);
+        String s = "nitin";
+        System.out.println(printPalindromeSubstrings(s));
     }
 }
+
+// public class string{
+//     public static void subString(String s){
+//         for(int length = 1; length<=s.length();length++){
+//             for(int j=length ; j<=s.length();j++){
+//                 int i = j - length ;
+//                 System.out.print(s.substring(i,j)+" ");
+//             }
+//             System.out.println( );
+//         }
+//     }
+//     public static void main(String[] args) {
+//         String s = "83415";
+//         subString(s);
+//     }
+// }
