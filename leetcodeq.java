@@ -751,35 +751,68 @@
 // }
 
 // Search in a rotated sorted array
+// public class leetcodeq {
+//     public static int search(int[] nums, int target) {
+//         int low=0;
+//         int high = nums.length - 1;
+//         while(low<=high){
+//             int mid = (low + high)/2;
+//             if(nums[mid] == target){
+//                 return mid;
+//             }
+//             if(nums[low]<=nums[mid]){
+//                 if(nums[low]<=target && target<=nums[mid]){
+//                     high = mid - 1;
+//                 }else{
+//                     low = mid + 1;
+//                 }
+//             }
+//             else{
+//                 if(nums[mid]<=target && target<=nums[high]){
+//                     low = mid + 1;
+//                 }else{
+//                     high = mid - 1;
+//                 }
+//             }
+//         }
+//         return -1;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {4,5,6,7,0,1,2};
+//         int target = 0;
+//         System.out.println(search(nums, target));
+//     }
+// }
+
+// Longest palindromic string 
 public class leetcodeq {
-    public static int search(int[] nums, int target) {
-        int low=0;
-        int high = nums.length - 1;
-        while(low<=high){
-            int mid = (low + high)/2;
-            if(nums[mid] == target){
-                return mid;
-            }
-            if(nums[low]<=nums[mid]){
-                if(nums[low]<=target && target<=nums[mid]){
-                    high = mid - 1;
-                }else{
-                    low = mid + 1;
-                }
-            }
-            else{
-                if(nums[mid]<=target && target<=nums[high]){
-                    low = mid + 1;
-                }else{
-                    high = mid - 1;
+    public static String longestPalindrome(String s) {
+        int max = 0, start = 0, end = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                String sub = s.substring(i, j + 1);
+                if (isPalindrome(sub) && sub.length() > max) {
+                    max = sub.length();
+                    start = i;
+                    end = j;
                 }
             }
         }
-        return -1;
+        return s.substring(start, end + 1);
+    }
+
+    private static boolean isPalindrome(String str) {
+        int i = 0, j = str.length() - 1;
+        while (i < j) {
+            if (str.charAt(i) != str.charAt(j)) return false;
+            i++;
+            j--;
+        }
+        return true;
     }
     public static void main(String[] args) {
-        int nums[] = {4,5,6,7,0,1,2};
-        int target = 0;
-        System.out.println(search(nums, target));
+        String s = "nitin";
+        System.out.println(longestPalindrome(s));
     }
 }

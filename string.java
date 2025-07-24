@@ -234,7 +234,7 @@ public class string {
         for(int i=0;i<s.length();i++){
             for(int j=i;j<s.length();j++){
                 if(isPalindrome(s.substring(i,j))==true){
-                   max= j-i+1;
+                   max = j-i+1;
                    start=i;
                    end=j;
                 }
