@@ -8,12 +8,8 @@ public class arraylist {
         aa.add(20);
         aa.add(40);
         aa.add(50);
-        aa.add(2,11);
-        System.out.println(aa);
-        // Collections.sort(aa);
-        // System.out.println(aa);
-        System.out.println(aa.size());
-        // range - 0 to size()-1
-        System.out.println(aa.get(3));
+        for(int i=0;i<aa.size();i++){
+            System.out.print(aa.get(i) + " ");
+        }
     }
 }

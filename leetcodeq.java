@@ -819,25 +819,80 @@
 
 // Peak index in a mountain array
 
+// import java.util.Arrays;
+
+// public class leetcodeq{
+//     public static int peakIndexInMountainArray(int[] arr) {
+//          Arrays.sort(arr);
+//         int left = 0;
+//         int right = arr.length - 1;
+       
+//         while(left < right){
+//             int mid = (left + right) / 2;
+//             if(arr[mid] < arr[right]){
+//                 left = mid + 1;
+                
+//             }
+//         }
+//         return left;
+//     }
+//     public static void main(String[] args) {
+//         int arr[] = {0,10,5,2};
+//         System.out.println(peakIndexInMountainArray(arr));
+//     }
+// }
+
+// Find first and last occurrence of a target value in a sorted array
+
 import java.util.Arrays;
 
 public class leetcodeq{
-    public static int peakIndexInMountainArray(int[] arr) {
-         Arrays.sort(arr);
-        int left = 0;
-        int right = arr.length - 1;
-       
-        while(left < right){
-            int mid = (left + right) / 2;
-            if(arr[mid] < arr[right]){
-                left = mid + 1;
-                
+    public int[] searchRange(int[] nums, int target) {
+        int left = findLeft(nums, target);
+        int right = findRight(nums, target);
+        return new int[]{left, right};
+    }
+
+    public int findLeft(int[] nums, int target) {
+        int index = -1;
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                index = mid;
+                high = mid - 1;
+            } else if(nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
-        return left;
+        return index;
     }
-    public static void main(String[] args) {
-        int arr[] = {0,10,5,2};
-        System.out.println(peakIndexInMountainArray(arr));
+
+    public int findRight(int[] nums, int target) {
+        int index = -1;
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target) {
+                index = mid;
+                low = mid + 1;  
+            } else if(nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return index;
+    }
+
+
+    public void main(String[] args) {
+        int nums[] = {5,7,7,8,8,10};
+        int target = 8;
+        System.out.println(Arrays.toString(searchRange(nums, target)));
     }
 }
