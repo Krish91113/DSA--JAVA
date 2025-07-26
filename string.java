@@ -227,38 +227,38 @@
 // }
 // Print all palindromic substrings
 
-public class string {
-    public static String printPalindromeSubstrings(String s) {
-        int max=0,start=0,end=0;
+// public class string {
+//     public static String printPalindromeSubstrings(String s) {
+//         int max=0,start=0,end=0;
         
-        for(int i=0;i<s.length();i++){
-            for(int j=i;j<s.length();j++){
-                if(isPalindrome(s.substring(i,j))==true){
-                   max = j-i+1;
-                   start=i;
-                   end=j;
-                }
-            }
-        }
-        return s.substring(start,end+1);
-    }
-     public static boolean isPalindrome(String str){
-        int i = 0;
-        int j = str.length() - 1;
-        while(i < j) {
-            if(str.charAt(i) != str.charAt(j)) {
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
-    public static void main(String[] args) {
-        String s = "nitin";
-        System.out.println(printPalindromeSubstrings(s));
-    }
-}
+//         for(int i=0;i<s.length();i++){
+//             for(int j=i;j<s.length();j++){
+//                 if(isPalindrome(s.substring(i,j))==true){
+//                    max = j-i+1;
+//                    start=i;
+//                    end=j;
+//                 }
+//             }
+//         }
+//         return s.substring(start,end+1);
+//     }
+//      public static boolean isPalindrome(String str){
+//         int i = 0;
+//         int j = str.length() - 1;
+//         while(i < j) {
+//             if(str.charAt(i) != str.charAt(j)) {
+//                 return false;
+//             }
+//             i++;
+//             j--;
+//         }
+//         return true;
+//     }
+//     public static void main(String[] args) {
+//         String s = "nitin";
+//         System.out.println(printPalindromeSubstrings(s));
+//     }
+// }
 
 // public class string{
 //     public static void subString(String s){
@@ -275,3 +275,28 @@ public class string {
 //         subString(s);
 //     }
 // }
+
+public class string {
+    public static boolean validPalindrome(String s){
+        boolean ans = true;
+        int i= 0;
+        int j = s.length() - 1;
+        while(i<j){
+            if(s.charAt(i) != s.charAt(j)){
+                if(s.charAt(i) == s.charAt(j-1)){
+                    return ans;
+                }
+                ans = false;
+                return ans;
+            }
+            i++;
+            j--;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        String s = "abc";
+        System.out.println(validPalindrome(s));
+    }
+}
