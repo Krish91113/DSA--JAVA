@@ -844,55 +844,107 @@
 
 // Find first and last occurrence of a target value in a sorted array
 
-import java.util.Arrays;
+// import java.util.Arrays;
 
+// public class leetcodeq{
+//     public int[] searchRange(int[] nums, int target) {
+//         int left = findLeft(nums, target);
+//         int right = findRight(nums, target);
+//         return new int[]{left, right};
+//     }
+
+//     public int findLeft(int[] nums, int target) {
+//         int index = -1;
+//         int low = 0;
+//         int high = nums.length - 1;
+//         while(low <= high) {
+//             int mid = low + (high - low) / 2;
+//             if(nums[mid] == target) {
+//                 index = mid;
+//                 high = mid - 1;
+//             } else if(nums[mid] < target) {
+//                 low = mid + 1;
+//             } else {
+//                 high = mid - 1;
+//             }
+//         }
+//         return index;
+//     }
+
+//     public int findRight(int[] nums, int target) {
+//         int index = -1;
+//         int low = 0;
+//         int high = nums.length - 1;
+//         while(low <= high) {
+//             int mid = low + (high - low) / 2;
+//             if(nums[mid] == target) {
+//                 index = mid;
+//                 low = mid + 1;  
+//             } else if(nums[mid] < target) {
+//                 low = mid + 1;
+//             } else {
+//                 high = mid - 1;
+//             }
+//         }
+//         return index;
+//     }
+
+
+//     public void main(String[] args) {
+//         int nums[] = {5,7,7,8,8,10};
+//         int target = 8;
+//         System.out.println(Arrays.toString(searchRange(nums, target)));
+//     }
+// }
+
+// // product subarray less than k
+// public class leetcodeq{
+//     public static int numSubarrayProductLessThanK(int nums[], int k) {
+//         int si = 0;
+//         int ei = 0;
+//         int ans = 0;
+//         int p = 1;
+//         while(ei < nums.length){
+//             p = p * nums[ei];
+            
+//             while(p>=k && si <= ei){
+//                 p = p / nums[si];
+//                 si++;
+//             }
+//             ans += (ei - si + 1);
+//             ei++;
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {10,9,10,4,3,8,3,3,6,2,10,10,9,3};
+//         int k = 19;
+//         System.out.println(numSubarrayProductLessThanK(nums, k));
+//     }
+// }
+
+// Maximum average subarray 1
 public class leetcodeq{
-    public int[] searchRange(int[] nums, int target) {
-        int left = findLeft(nums, target);
-        int right = findRight(nums, target);
-        return new int[]{left, right};
-    }
-
-    public int findLeft(int[] nums, int target) {
-        int index = -1;
-        int low = 0;
-        int high = nums.length - 1;
-        while(low <= high) {
-            int mid = low + (high - low) / 2;
-            if(nums[mid] == target) {
-                index = mid;
-                high = mid - 1;
-            } else if(nums[mid] < target) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
+    public static double findMaxAverage(int[] nums, int k) {
+        double sum = 0;
+        double ans = 0;
+        double avg = 0;
+        for(int i=0;i<k;i++){
+            sum = sum + nums[i];
         }
-        return index;
-    }
-
-    public int findRight(int[] nums, int target) {
-        int index = -1;
-        int low = 0;
-        int high = nums.length - 1;
-        while(low <= high) {
-            int mid = low + (high - low) / 2;
-            if(nums[mid] == target) {
-                index = mid;
-                low = mid + 1;  
-            } else if(nums[mid] < target) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
+        avg = sum / k;
+        ans = avg;
+        for(int i=k;i<nums.length;i++){
+            sum = sum + nums[i] ;
+            sum = sum - nums[i-k];
+            avg = sum / k;
+            ans = Math.max(ans, avg);
         }
-        return index;
+        return ans;
     }
-
-
-    public void main(String[] args) {
-        int nums[] = {5,7,7,8,8,10};
-        int target = 8;
-        System.out.println(Arrays.toString(searchRange(nums, target)));
+    public static void main(String[] args) {
+        int [] nums = {5};
+        int k = 1;
+        System.out.println(findMaxAverage(nums, k));
     }
 }
