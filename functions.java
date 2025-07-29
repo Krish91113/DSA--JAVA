@@ -1,5 +1,5 @@
-import java.util.*;
-public class functions {
+// import java.util.*;
+// public class functions {
    /*  public static void sumofnumber(int a,int b){
         int sum = a + b;
         System.out.println("sum is " + sum);
@@ -90,20 +90,23 @@ public class functions {
         // }
 
         // Decimal to binary
-        public static void decTobin(int n){
-            int bin=0;
-            int pow =0;
-            int rem = 0;
-            while(n>0){
-                rem = n % 2;
-                bin= bin +( rem * (int) Math.pow(10, pow));
-                pow++;
-                n = n/2;
-            }
-            System.out.println("Binary no is:" +bin);
-        }
-        public static void main(String[] args) {
-            decTobin(12);
-        }
-    }
+    //     public static void decTobin(int n){
+    //         int bin=0;
+    //         int pow =0;
+    //         int rem = 0;
+    //         while(n>0){
+    //             rem = n % 2;
+    //             bin= bin +( rem * (int) Math.pow(10, pow));
+    //             pow++;
+    //             n = n/2;
+    //         }
+    //         System.out.println("Binary no is:" +bin);
+    //     }
+    //     public static void main(String[] args) {
+    //         decTobin(12);
+    //     }
+    // }
+
+    // COunt prime numbers
+public
 

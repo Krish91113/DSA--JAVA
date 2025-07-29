@@ -924,27 +924,75 @@
 // }
 
 // Maximum average subarray 1
+// public class leetcodeq{
+//     public static double findMaxAverage(int[] nums, int k) {
+//         double sum = 0;
+//         double ans = 0;
+//         double avg = 0;
+//         for(int i=0;i<k;i++){
+//             sum = sum + nums[i];
+//         }
+//         avg = sum / k;
+//         ans = avg;
+//         for(int i=k;i<nums.length;i++){
+//             sum = sum + nums[i] ;
+//             sum = sum - nums[i-k];
+//             avg = sum / k;
+//             ans = Math.max(ans, avg);
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int [] nums = {5};
+//         int k = 1;
+//         System.out.println(findMaxAverage(nums, k));
+//     }
+// }
+
+// Sliding window maximum
+
+// public class leetcodeq{
+//     public static int[] maxSlidingWindow(int[] nums, int k) {
+//         int [] result = new int [nums.length - k + 1];
+//         int number = 0;
+//         int ans = Integer.MIN_VALUE;
+//         int maxans = 0;
+//         for(int i= 0; i<k ; i++){
+//             number = nums[i];
+//             maxans = Math.max(ans, number);
+//         }
+//         result[0] = maxans;
+//         for(int i=k ;i < nums.length ; i++){
+//             ans = 0;
+//             maxans = 0;
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         int nums [] = {1,3,-1,-3,5,3,6,7};
+//         int k = 3;
+//     }
+// }
+
 public class leetcodeq{
-    public static double findMaxAverage(int[] nums, int k) {
-        double sum = 0;
-        double ans = 0;
-        double avg = 0;
-        for(int i=0;i<k;i++){
-            sum = sum + nums[i];
+    public static int countPrimes(int n) {
+        int count = 0;
+        for(int i =2;i<=n;i++){
+            boolean isPrime = true;
+            for(int j=2;j*j<=i;j++){
+                if(i%j == 0){
+                    isPrime = false;
+                    break;
+                }
+            }
+            if(isPrime){
+                count++;
+            }
         }
-        avg = sum / k;
-        ans = avg;
-        for(int i=k;i<nums.length;i++){
-            sum = sum + nums[i] ;
-            sum = sum - nums[i-k];
-            avg = sum / k;
-            ans = Math.max(ans, avg);
-        }
-        return ans;
+        return count;   
     }
     public static void main(String[] args) {
-        int [] nums = {5};
-        int k = 1;
-        System.out.println(findMaxAverage(nums, k));
+        int n = 2;
+        System.out.println(countPrimes(n));
     }
 }
