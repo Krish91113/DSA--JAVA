@@ -974,25 +974,47 @@
 //     }
 // }
 
-public class leetcodeq{
-    public static int countPrimes(int n) {
+// public class leetcodeq{
+//     public static int countPrimes(int n) {
+//         int count = 0;
+//         for(int i =2;i<=n;i++){
+//             boolean isPrime = true;
+//             for(int j=2;j*j<=i;j++){
+//                 if(i%j == 0){
+//                     isPrime = false;
+//                     break;
+//                 }
+//             }
+//             if(isPrime){
+//                 count++;
+//             }
+//         }
+//         return count;   
+//     }
+//     public static void main(String[] args) {
+//         int n = 2;
+//         System.out.println(countPrimes(n));
+//     }
+// }
+
+public class leetcodeq {
+    public static int cntSubarray(int arr[] ,int k){
         int count = 0;
-        for(int i =2;i<=n;i++){
-            boolean isPrime = true;
-            for(int j=2;j*j<=i;j++){
-                if(i%j == 0){
-                    isPrime = false;
-                    break;
+        for(int i =0 ;i < arr.length ; i++){
+            int sum = 0;
+            for(int j=i ; j<arr.length ; j++){
+                sum+= arr[j];
+                if(sum == k){
+                    count ++;
                 }
             }
-            if(isPrime){
-                count++;
-            }
         }
-        return count;   
+        return count;
     }
+
     public static void main(String[] args) {
-        int n = 2;
-        System.out.println(countPrimes(n));
+        int arr [] = {9, 4, 20, 3, 10, 5};
+        int k = 33;
+        System.out.println(cntSubarray(arr, k));
     }
 }
