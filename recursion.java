@@ -49,21 +49,37 @@
 //         System.out.println(guessNumber(n));
 //     }
 
-public class recursion{
-    public static int findFirstOccurence(int arr[] ,int i, int item ){
-        if(i >= arr.length){
-            return -1;
-        }
-        if(arr[i] == item){
-            return i;
-        }
+// public class recursion{
+//     public static int findFirstOccurence(int arr[] ,int i, int item ){
+//         if(i < 0){
+//             return -1;
+//         }
+//         if(arr[i] == item){
+//             return i;
+//         }
         
-        return findFirstOccurence(arr, i+1, item);
+//         return findFirstOccurence(arr, i-1, item);
+//     }
+//     public static void main(String[] args) {
+//         int arr [] ={2,3,5,3,7,11,3,11,8};
+//         int item = 9;
+//         int i = arr.length - 1;
+//         System.out.println(findFirstOccurence(arr, i, item));
+//     }
+// }
+
+public class recursion {
+    public static int fibonacii(int n){
+        if(n==0  || n==1){
+            return n;
+        }
+        int f1 = fibonacii(n - 1);
+        int f2 = fibonacii(n-2);
+        return f1 + f2;
     }
     public static void main(String[] args) {
-        int arr [] ={3,2,5,7,5,6,3,15};
-        int item = 1;
-        int i = 0;
-        System.out.println(findFirstOccurence(arr, i, item));
+        int n = 5;
+        System.out.println(fibonacii(n));
+
     }
 }

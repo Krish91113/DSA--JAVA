@@ -1020,16 +1020,37 @@
 // }
 
 
-import java.util.*;
-class Solution {
-    public int[] sortedSquares(int[] nums) {
-        int n [] = new int [nums.length ];
-        int square = 0;
-        for(int i = 0;i < nums.length;i++){
-            n[i] = nums[i] * nums[i];
+// import java.util.*;
+// class Solution {
+//     public int[] sortedSquares(int[] nums) {
+//         int n [] = new int [nums.length ];
+//         int square = 0;
+//         for(int i = 0;i < nums.length;i++){
+//             n[i] = nums[i] * nums[i];
             
+//         }
+//         Arrays.sort(n);
+//         return n;
+//     }
+// }
+
+public class leetcodeq {
+    public static int maxProduct(int [] nums){
+        int product = 1;
+        int ans = Integer.MIN_VALUE;
+        for(int i =0 ; i<nums.length ;i++){
+
+            for(int j=i+1 ; j<nums.length ;j++){
+                product = 1;
+                product = product * ((nums[i] -1) * (nums[j] -  1));
+                ans = Math.max(ans, product);
+            }
         }
-        Arrays.sort(n);
-        return n;
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int nums [] = {1,5,4,5};
+        System.out.println(maxProduct(nums));
     }
 }
