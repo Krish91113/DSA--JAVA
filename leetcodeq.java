@@ -1034,23 +1034,25 @@
 //     }
 // }
 
-public class leetcodeq {
-    public static int maxProduct(int [] nums){
-        int product = 1;
-        int ans = Integer.MIN_VALUE;
-        for(int i =0 ; i<nums.length ;i++){
+// Maximum Product of Two Elements in an Array
+// public class leetcodeq {
+//     public static int maxProduct(int [] nums){
+//         int product = 1;
+//         int ans = Integer.MIN_VALUE;
+//         for(int i =0 ; i<nums.length ;i++){
 
-            for(int j=i+1 ; j<nums.length ;j++){
-                product = 1;
-                product = product * ((nums[i] -1) * (nums[j] -  1));
-                ans = Math.max(ans, product);
-            }
-        }
-        return ans;
-    }
+//             for(int j=i+1 ; j<nums.length ;j++){
+//                 product = 1;
+//                 product = product * ((nums[i] -1) * (nums[j] -  1));
+//                 ans = Math.max(ans, product);
+//             }
+//         }
+//         return ans;
+//     }
 
-    public static void main(String[] args) {
-        int nums [] = {1,5,4,5};
-        System.out.println(maxProduct(nums));
-    }
-}
+//     public static void main(String[] args) {
+//         int nums [] = {1,5,4,5};
+//         System.out.println(maxProduct(nums));
+//     }
+// }
+

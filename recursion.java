@@ -68,18 +68,38 @@
 //     }
 // }
 
+// public class recursion {
+//     public static int fibonacii(int n){
+//         if(n==0  || n==1){
+//             return n;
+//         }
+//         int f1 = fibonacii(n - 1);
+//         int f2 = fibonacii(n-2);
+//         return f1 + f2;
+//     }
+//     public static void main(String[] args) {
+//         int n = 5;
+//         System.out.println(fibonacii(n));
+
+//     }
+// }
+
 public class recursion {
-    public static int fibonacii(int n){
-        if(n==0  || n==1){
-            return n;
+    static int count = 0;
+    public static int PrintSubsequence(String ques, String ans){
+        if(ques.length() == 0){
+            System.out.print(ans + " ");
+            return 1;
         }
-        int f1 = fibonacii(n - 1);
-        int f2 = fibonacii(n-2);
-        return f1 + f2;
+        char ch = ques.charAt(0);
+        int a1= PrintSubsequence(ques.substring(1), ans);
+        int b1 = PrintSubsequence(ques.substring(1), ans + ch);
+        return a1+b1;
     }
     public static void main(String[] args) {
-        int n = 5;
-        System.out.println(fibonacii(n));
-
+        String ques= "abc";
+        String ans = "";
+        System.out.println("\n" +PrintSubsequence(ques, ans));
+        
     }
 }
