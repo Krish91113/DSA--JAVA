@@ -84,22 +84,66 @@
 //     }
 // }
 
-public class recursion {
-    static int count = 0;
-    public static int PrintSubsequence(String ques, String ans){
-        if(ques.length() == 0){
-            System.out.print(ans + " ");
-            return 1;
-        }
-        char ch = ques.charAt(0);
-        int a1= PrintSubsequence(ques.substring(1), ans);
-        int b1 = PrintSubsequence(ques.substring(1), ans + ch);
-        return a1+b1;
-    }
-    public static void main(String[] args) {
-        String ques= "abc";
-        String ans = "";
-        System.out.println("\n" +PrintSubsequence(ques, ans));
+// public class recursion {
+//     static int count = 0;
+//     public static int PrintSubsequence(String ques, String ans){
+//         if(ques.length() == 0){
+//             System.out.print(ans + " ");
+//             return 1;
+//         }
+//         char ch = ques.charAt(0);
+//         int a1= PrintSubsequence(ques.substring(1), ans);
+//         int b1 = PrintSubsequence(ques.substring(1), ans + ch);
+//         return a1+b1;
+//     }
+//     public static void main(String[] args) {
+//         String ques= "abc";
+//         String ans = "";
+//         System.out.println("\n" +PrintSubsequence(ques, ans));
         
+//     }
+// }
+
+// public class recursion {
+//     public static void Printanswer(int n, String ans){
+//         if(n==0){
+//             System.out.print(ans + " ");
+//             return;
+//         }
+//         if(ans.length() ==0 || ans.charAt(ans.length()-1 )!= 'H'){
+//             Printanswer(n-1, ans+ "H");
+//         }
+        
+//         Printanswer(n-1, ans+"T");
+//     }
+
+//     public static void main(String[] args) {
+//         int n = 3;
+//         Printanswer(n, "");
+        
+//     }
+// }
+
+public class recursion {
+    public static int longsetSubarray(int arr[], int k){
+        int maxlength = Integer.MAX_VALUE;
+        int index =-1;
+        for(int i=0; i<arr.length;i++){
+            int sum = 0;
+            for(int j=i;j<arr.length;j++){
+                sum+= arr[j];
+                if(sum == k){
+                    index = Math.min(maxlength, j-i+1);
+                    maxlength = index;
+                }
+            }
+        }
+        return index;
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {48,99,37,4,-31};
+        int k = 140;
+        System.out.println(longsetSubarray(arr, k));
     }
 }
