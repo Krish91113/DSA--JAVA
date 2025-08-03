@@ -1079,18 +1079,40 @@
 // }
 
 // reverse a word in a string
-public class leetcodeq {
-    public static String reverseWord(String s){
-        String word [] = s.trim().split(" +");
-        StringBuilder res = new StringBuilder();
-        for(int i=word.length-1;i>=0;i--){
-            res.append(word[i]);
-            if(i!=0) res.append("");
+// public class leetcodeq {
+//     public static String reverseWord(String s){
+//         String word [] = s.trim(".").split(" +");
+//         StringBuilder res = new StringBuilder();
+//         for(int i=word.length-1;i>=0;i--){
+//             res.append(word[i]);
+//             if(i!=0) res.append("");
+//         }
+//         return res.toString();
+//     }
+//     public static void main(String[] args) {
+//         String s = "..geeks..for.geeks.";
+//         System.out.println(reverseWord(s));
+//     }
+// }
+
+// Valid Paranthesis
+
+public class leetcodeq{
+    public static void Paranthesis(int n, int open, int close , String ans){
+        if(open ==n && close ==n){
+            System.out.print(ans + " ");
+            return;
         }
-        return res.toString();
+        if(open < n){
+            Paranthesis(n, open+1, close, ans + "(");
+        }
+        if(close < open){
+            Paranthesis(n, open, close + 1, ans + ")");
+        }
     }
     public static void main(String[] args) {
-        String s = "..geeks..for.geeks.";
-        System.out.println(reverseWord(s));
+        int n =3;
+        Paranthesis(n, 0, 0, "");
     }
 }
+
