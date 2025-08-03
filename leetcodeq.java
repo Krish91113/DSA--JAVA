@@ -1085,12 +1085,12 @@ public class leetcodeq {
         StringBuilder res = new StringBuilder();
         for(int i=word.length-1;i>=0;i--){
             res.append(word[i]);
-            if(i!=0) res.append(" ");
+            if(i!=0) res.append("");
         }
         return res.toString();
     }
     public static void main(String[] args) {
-        String s = " the sky is blue ";
+        String s = "..geeks..for.geeks.";
         System.out.println(reverseWord(s));
     }
 }
