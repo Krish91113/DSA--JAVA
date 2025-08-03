@@ -1056,24 +1056,41 @@
 //     }
 // }
 
-public class leetcodeq  {
-    public static int findNumbers(int[] nums) {
-        int count =0;
-        for(int i=0 ;i<nums.length; i++){
-            int digits = 0;
-            int temp = nums[i];
-            while(temp > 0){
-                temp = temp/10;
-                digits++;
-            }
-            if(digits % 2 ==0){
-                count ++;
-            }
+// public class leetcodeq  {
+//     public static int findNumbers(int[] nums) {
+//         int count =0;
+//         for(int i=0 ;i<nums.length; i++){
+//             int digits = 0;
+//             int temp = nums[i];
+//             while(temp > 0){
+//                 temp = temp/10;
+//                 digits++;
+//             }
+//             if(digits % 2 ==0){
+//                 count ++;
+//             }
+//         }
+//         return count;
+//     }
+//     public static void main(String[] args) {
+//       int [] nums = {555,901,482,1771};
+//       System.out.println(findNumbers(nums));
+//     }
+// }
+
+// reverse a word in a string
+public class leetcodeq {
+    public static String reverseWord(String s){
+        String word [] = s.trim().split(" +");
+        StringBuilder res = new StringBuilder();
+        for(int i=word.length-1;i>=0;i--){
+            res.append(word[i]);
+            if(i!=0) res.append(" ");
         }
-        return count;
+        return res.toString();
     }
     public static void main(String[] args) {
-      int [] nums = {555,901,482,1771};
-      System.out.println(findNumbers(nums));
+        String s = " the sky is blue ";
+        System.out.println(reverseWord(s));
     }
 }
