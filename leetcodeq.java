@@ -1097,22 +1097,27 @@
 
 // Valid Paranthesis
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class leetcodeq{
-    public static void Paranthesis(int n, int open, int close , String ans){
+    public static void Paranthesis(int n, int open, int close , String ans, List <String> ll){
         if(open ==n && close ==n){
             System.out.print(ans + " ");
             return;
         }
         if(open < n){
-            Paranthesis(n, open+1, close, ans + "(");
+            Paranthesis(n, open+1, close, ans + "(", ll);
         }
         if(close < open){
-            Paranthesis(n, open, close + 1, ans + ")");
+            Paranthesis(n, open, close + 1, ans + ")", ll);
         }
     }
     public static void main(String[] args) {
+        List<String> ll = new ArrayList<>();
         int n =3;
-        Paranthesis(n, 0, 0, "");
+        Paranthesis(n, 0, 0, "", ll);
+        System.out.println(ll);
     }
 }
 
