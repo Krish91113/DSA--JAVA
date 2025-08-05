@@ -44,3 +44,12 @@
 //         System.out.println(numSubarrayProductLessThanK(nums, k));
 //     }
 // }
+
+public class slidingwindow {
+
+    public static void main(String[] args) {
+        int n = 0;
+        int ans = (int) Math.pow(2, n);
+        System.out.println(ans);
+    }
+}

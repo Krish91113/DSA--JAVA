@@ -1097,27 +1097,70 @@
 
 // Valid Paranthesis
 
-import java.util.ArrayList;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.List;
 
-public class leetcodeq{
-    public static void Paranthesis(int n, int open, int close , String ans, List <String> ll){
-        if(open ==n && close ==n){
-            System.out.print(ans + " ");
-            return;
+// public class leetcodeq{
+//     public static void Paranthesis(int n, int open, int close , String ans, List <String> ll){
+//         if(open ==n && close ==n){
+//             System.out.print(ans + " ");
+//             return;
+//         }
+//         if(open < n){
+//             Paranthesis(n, open+1, close, ans + "(", ll);
+//         }
+//         if(close < open){
+//             Paranthesis(n, open, close + 1, ans + ")", ll);
+//         }
+//     }
+//     public static void main(String[] args) {
+//         List<String> ll = new ArrayList<>();
+//         int n =3;
+//         Paranthesis(n, 0, 0, "", ll);
+//         System.out.println(ll);
+//     }
+// }
+
+// import java.util.Arrays;
+
+// public class leetcodeq {
+//     public static int findDuplicate(int arr[]){
+//         Arrays.sort(arr);
+//         int i= 0;
+//             for(int j=i+1;j<arr.length;j++){
+//                 if(arr[i] == arr[j]){
+//                     return arr[j];
+//                 }
+//                 i++;
+//             }
+        
+//         return -1;
+//     }
+//     public static void main(String[] args) {
+//         int arr[] = {1,3,4,2,2};
+//         System.out.println(findDuplicate(arr));
+//     }
+// }
+
+// Happy number 
+
+public class leetcodeq {
+    public static boolean isHappy(int n){
+        boolean ans = false;
+        int number = 0;
+        int previous = 0;
+        while(n>=0){
+            previous = number;
+            number = n / 10;
+            if(((number * number) + (previous*previous)) == 1){
+                ans = true;
+                n = (number * number) + (previous*previous);
+            }
         }
-        if(open < n){
-            Paranthesis(n, open+1, close, ans + "(", ll);
-        }
-        if(close < open){
-            Paranthesis(n, open, close + 1, ans + ")", ll);
-        }
+        return ans;
     }
     public static void main(String[] args) {
-        List<String> ll = new ArrayList<>();
-        int n =3;
-        Paranthesis(n, 0, 0, "", ll);
-        System.out.println(ll);
+        int n = 19;
+        System.out.println(isHappy(n));
     }
 }
-

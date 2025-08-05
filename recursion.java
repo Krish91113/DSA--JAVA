@@ -12,20 +12,20 @@
 //     }
 // }
 
-// public class recursion{
-//     public static int pow(int x , int n){
-//         if(n == 0){
-//             return 1;
-//         }
-//         int ans = pow(x, n-1);
-//         return ans * x;
-//     }
-//     public static void main(String[] args) {
-//         int x = 3;
-//         int n = 5;
-//         System.out.println(pow(x, n));
-//     }
-// }
+public class recursion{
+    public static int pow(int x , int n){
+        if(n == 0){
+            return 1;
+        }
+        int ans = pow(x, n-1);
+        return ans * x;
+    }
+    public static void main(String[] args) {
+        int x = 2;
+        int n = 4;
+        System.out.println(pow(x, n));
+    }
+}
 
 // public class recursion{
 //     public static int guessNumber(int n) {
@@ -69,19 +69,19 @@
 // }
 
 // public class recursion {
-//     public static int fibonacii(int n){
-//         if(n==0  || n==1){
-//             return n;
-//         }
-//         int f1 = fibonacii(n - 1);
-//         int f2 = fibonacii(n-2);
-//         return f1 + f2;
-//     }
-//     public static void main(String[] args) {
-//         int n = 5;
-//         System.out.println(fibonacii(n));
+    public static int fibonacii(int n){
+        if(n==0  || n==1){
+            return n;
+        }
+        int f1 = fibonacii(n - 1);
+        int f2 = fibonacii(n-2);
+        return f1 + f2;
+    }
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println(fibonacii(n));
 
-//     }
+    }
 // }
 
 // public class recursion {
@@ -149,3 +149,32 @@
 //     }
 // }
 
+public class recursion {
+    public static void PrintString(String ques, String ans , String a2){
+        String a3 = "";
+        if(ques.length() == 0){
+            a3 = ans;
+            System.out.print(a3 + " ");
+            return;
+        }
+        for(int i=0;i<ques.length();i++){
+            char ch = ques.charAt(i);
+            String s1 = ques.substring(0, i);
+            String s2 = ques.substring(i+1);
+            PrintString(s1+s2, ans+ch , "");
+        }
+        checkInculsion(ques, a3, a2);
+    }
+    public static boolean checkInculsion(String ques , String a3, String a2){
+       if(a3.equals(a2)){
+        return true;
+       }
+       return false;
+    }
+    public static void main(String[] args) {
+        String ques = "eidbaooo";
+        String a2 = "ab";
+        // PrintString(ques, "" , a2);
+        checkInculsion(ques, a2, "");
+    }
+}

@@ -41,25 +41,29 @@ public class loops {
                 lastdigit = n % 10;
                 System.out.print(lastdigit + " ");
                 n = n/10;
-            }
-            System.out.println();*/
-           /*int n = 10899;
-            int rev = 0;
-            while(n>0){
-                int lastDigit = n % 10;
-                rev = (rev * 10) + lastDigit;
-                n = n / 10;
-            }
-            System.out.println(rev); */ 
-            do{
-                int n = sc.nextInt();
-                if(n % 10 == 0){
-                    continue;
-                }
-                System.out.println(n);
-            }while(true); 
+    //         }
+    //         System.out.println();*/
+    //        /*int n = 10899;
+    //         int rev = 0;
+    //         while(n>0){
+    //             int lastDigit = n % 10;
+    //             rev = (rev * 10) + lastDigit;
+    //             n = n / 10;
+    //         }
+    //         System.out.println(rev); */ 
+    //         do{
+    //             int n = sc.nextInt();
+    //             if(n % 10 == 0){
+    //                 continue;
+    //             }
+    //             System.out.println(n);
+    //         }while(true); 
             
             
-        }
-    }
+    //     }
+    // }
 
+public class loops {
+
+    
+}
