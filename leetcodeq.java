@@ -1144,23 +1144,43 @@
 
 // Happy number 
 
+// public class leetcodeq {
+//     public static boolean isHappy(int n){
+//         boolean ans = false;
+//         int number = 0;
+//         int previous = 0;
+//         while(n>=0){
+//             previous = number;
+//             number = n / 10;
+//             if(((number * number) + (previous*previous)) == 1){
+//                 ans = true;
+//                 n = (number * number) + (previous*previous);
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int n = 19;
+//         System.out.println(isHappy(n));
+//     }
+// }
+
+// Longest common prefix
 public class leetcodeq {
-    public static boolean isHappy(int n){
-        boolean ans = false;
-        int number = 0;
-        int previous = 0;
-        while(n>=0){
-            previous = number;
-            number = n / 10;
-            if(((number * number) + (previous*previous)) == 1){
-                ans = true;
-                n = (number * number) + (previous*previous);
+    public static String longestCommonPrefix(String[] strs) {
+        if(strs == null || strs.length == 0) return "";
+        String prefix = strs[0];
+        for(int i= 1 ;i<strs.length;i++){
+            while(strs[i].indexOf(prefix)!=0){
+                prefix = prefix.substring(0, prefix.length() -1);
+                if(prefix.isEmpty()) return "";
             }
         }
-        return ans;
+        return prefix;
     }
     public static void main(String[] args) {
-        int n = 19;
-        System.out.println(isHappy(n));
+        String [] strs = {"flower","flow","flight"};
+        System.out.println(longestCommonPrefix(strs));
     }
 }
+ 
