@@ -205,7 +205,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class recursion {
-    static String [] code = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    
     public static void Printanswer(String ques, String ans, List<String> ll){
 
         if(ques.length() == 0){

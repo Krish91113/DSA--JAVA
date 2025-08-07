@@ -1166,21 +1166,44 @@
 // }
 
 // Longest common prefix
+// public class leetcodeq {
+//     public static String longestCommonPrefix(String[] strs) {
+//         if(strs == null || strs.length == 0) return "";
+//         String prefix = strs[0];
+//         for(int i= 1 ;i<strs.length;i++){
+//             while(strs[i].indexOf(prefix)!=0){
+//                 prefix = prefix.substring(0, prefix.length() -1);
+//                 if(prefix.isEmpty()) return "";
+//             }
+//         }
+//         return prefix;
+//     }
+//     public static void main(String[] args) {
+//         String [] strs = {"flower","flow","flight"};
+//         System.out.println(longestCommonPrefix(strs));
+//     }
+// }
+
+//Power of two , three , four
 public class leetcodeq {
-    public static String longestCommonPrefix(String[] strs) {
-        if(strs == null || strs.length == 0) return "";
-        String prefix = strs[0];
-        for(int i= 1 ;i<strs.length;i++){
-            while(strs[i].indexOf(prefix)!=0){
-                prefix = prefix.substring(0, prefix.length() -1);
-                if(prefix.isEmpty()) return "";
+    public static boolean isPowerof(int n){
+        
+        if(n == 0){
+            return false;
+        }
+        while(n!=1){
+            if(n%2!=0){
+                return false;
+            }else{
+                n = n/2;
             }
         }
-        return prefix;
+        return true;
     }
+    
     public static void main(String[] args) {
-        String [] strs = {"flower","flow","flight"};
-        System.out.println(longestCommonPrefix(strs));
+        int n =16;
+        System.out.println(isPowerof(n));
     }
 }
  
