@@ -63,7 +63,3 @@ public class loops {
     //     }
     // }
 
-public class loops {
-
-    
-}
