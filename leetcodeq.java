@@ -1210,42 +1210,74 @@
 
 /// Median of two sorted array
 
+// public class leetcodeq {
+//       public static double findMedianSortedArrays(int nums1[] , int nums2[] ){
+//             int m = nums1.length;
+//             int n = nums2.length;
+//             int temp [] = new int[m+n];
+//             int i = 0; // nums 1
+//             int j = 0; // nums2
+//             int k = 0; // temp
+//             while(i < m && j < n ){
+//                   if(nums1[i] < nums2[j]){
+//                         temp[k++] = nums1[i++];
+                        
+//                   }else{
+//                         temp[k++] = nums2[j++];
+                        
+//                   }
+//             }
+//             while(i < m){
+//                   temp[k++] = nums1[i++];
+                        
+//             }
+//             while(j < n){
+//                   temp[k++] = nums2[j++];
+                       
+//             }
+//             int size = m + n;
+//             if(size % 2 == 1){
+//                   return temp[size/2];
+//             }else{
+//                   return ((temp[size/2])+ (temp[(size/2) - 1]))/2.0;
+//             }
+//       }
+
+//       public static void main(String[] args) {
+//             int nums1 [] = {1,2};
+//             int nums2 [] = {3,4};
+//             System.out.println(findMedianSortedArrays(nums1, nums2));
+//       }
+// }
+
 public class leetcodeq {
-      public static double findMedianSortedArrays(int nums1[] , int nums2[] ){
-            int m = nums1.length;
-            int n = nums2.length;
-            int temp [] = new int[m+n];
-            int i = 0; // nums 1
-            int j = 0; // nums2
-            int k = 0; // temp
-            while(i < m && j < n ){
+      public static void merge(int nums1[] ,int nums2[] , int m , int n){
+            int temp[] = new int[m+n];
+            int i = 0;
+            int j = 0;
+            int k = 0;
+            while(i < m && j < n){
                   if(nums1[i] < nums2[j]){
                         temp[k++] = nums1[i++];
-                        
                   }else{
                         temp[k++] = nums2[j++];
-                        
                   }
             }
             while(i < m){
                   temp[k++] = nums1[i++];
-                        
             }
             while(j < n){
                   temp[k++] = nums2[j++];
-                       
             }
-            int size = m + n;
-            if(size % 2 == 1){
-                  return temp[size/2];
-            }else{
-                  return ((temp[size/2])+ (temp[(size/2) - 1]))/ 2.0;
-            }
+
+           
       }
 
+      
       public static void main(String[] args) {
-            int nums1 [] = {1,2};
-            int nums2 [] = {3,4};
-            System.out.println(findMedianSortedArrays(nums1, nums2));
+            int nums1 [] = {1,2,3,0,0,0};
+            int nums2 [] = {2,5,6};
+            int m = 3;
+            int n =3;
       }
 }
