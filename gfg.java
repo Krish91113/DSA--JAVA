@@ -1,48 +1,71 @@
-// public class gfg {
+// // public class gfg {
     
-//    public static int floorSqrt(int n) {
-//         int i = 1;
-//         int j = n;
-//         int ans = 0;
+// //    public static int floorSqrt(int n) {
+// //         int i = 1;
+// //         int j = n;
+// //         int ans = 0;
         
-//         while(i <= j){
-//             int mid = (i + j) / 2;
-//             long square = (long)mid * mid;  
+// //         while(i <= j){
+// //             int mid = (i + j) / 2;
+// //             long square = (long)mid * mid;  
 
-//             if(square == n){
-//                 return mid;
-//             } else if(square < n){
-//                 ans = mid;      
-//                 i = mid + 1;
-//             } else {
-//                 j = mid - 1;
+// //             if(square == n){
+// //                 return mid;
+// //             } else if(square < n){
+// //                 ans = mid;      
+// //                 i = mid + 1;
+// //             } else {
+// //                 j = mid - 1;
+// //             }
+// //         }
+// //         return ans;
+// //     }
+// //     public static void main(String[] args) {
+// //         int n = 15;
+// //         System.out.println(floorSqrt(n));
+// //     }
+
+// // }
+
+// public class gfg {
+//     public static int firstRepeated(int arr[]){
+//         int ans = Integer.MAX_VALUE;
+//         for(int i=0;i<arr.length;i++){
+//             for(int j=i+1;j<arr.length;j++){
+//                 if(arr[i] == arr[j]){
+//                     ans = Math.min(ans, i+1);
+//                     return ans;
+//                 }
 //             }
 //         }
-//         return ans;
-//     }
-//     public static void main(String[] args) {
-//         int n = 15;
-//         System.out.println(floorSqrt(n));
+//         return -1;
 //     }
 
+//     public static void main(String[] args) {
+//         int arr [] = {1, 2, 3, 4};
+//         System.out.println(firstRepeated(arr));
+//     }
 // }
 
 public class gfg {
-    public static int firstRepeated(int arr[]){
-        int ans = Integer.MAX_VALUE;
-        for(int i=0;i<arr.length;i++){
-            for(int j=i+1;j<arr.length;j++){
-                if(arr[i] == arr[j]){
-                    ans = Math.min(ans, i+1);
-                    return ans;
-                }
+    public static double posAverag(int arr[]){
+       
+    
+        int sum = 0;
+        double avg = 0;
+        int no  = 0;
+        for(int i = 0;i<arr.length;i++){
+            if(arr[i]>0){
+                sum+=arr[i];
+                no++;
+                avg = sum/no;
             }
         }
-        return -1;
+        return avg;
     }
 
     public static void main(String[] args) {
-        int arr [] = {1, 2, 3, 4};
-        System.out.println(firstRepeated(arr));
+        int arr [] ={-12,8,-7,6,12,-9,14};
+        System.out.println(posAverag(arr));
     }
 }
