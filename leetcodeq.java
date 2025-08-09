@@ -1206,7 +1206,8 @@
 //         System.out.println(isPowerof(n));
 //     }
 // }
- 
+
+import java.util.Arrays;
 
 /// Median of two sorted array
 
@@ -1250,34 +1251,61 @@
 //       }
 // }
 
-public class leetcodeq {
-      public static void merge(int nums1[] ,int nums2[] , int m , int n){
-            int temp[] = new int[m+n];
-            int i = 0;
-            int j = 0;
-            int k = 0;
-            while(i < m && j < n){
-                  if(nums1[i] < nums2[j]){
-                        temp[k++] = nums1[i++];
-                  }else{
-                        temp[k++] = nums2[j++];
-                  }
-            }
-            while(i < m){
-                  temp[k++] = nums1[i++];
-            }
-            while(j < n){
-                  temp[k++] = nums2[j++];
-            }
+// public class leetcodeq {
+//       public static void merge(int nums1[] ,int nums2[] , int m , int n){
+//             int temp[] = new int[m+n];
+//             int i = 0;
+//             int j = 0;
+//             int k = 0;
+//             while(i < m && j < n){
+//                   if(nums1[i] < nums2[j]){
+//                         temp[k++] = nums1[i++];
+//                   }else{
+//                         temp[k++] = nums2[j++];
+//                   }
+//             }
+//             while(i < m){
+//                   temp[k++] = nums1[i++];
+//             }
+//             while(j < n){
+//                   temp[k++] = nums2[j++];
+//             }
 
            
-      }
+//       }
 
       
+//       public static void main(String[] args) {
+//             int nums1 [] = {1,2,3,0,0,0};
+//             int nums2 [] = {2,5,6};
+//             int m = 3;
+//             int n =3;
+//       }
+// }
+
+public class leetcodeq {
+      
+    public static int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int m = g.length;
+        int n = s.length;
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        while(i<m && j<n){
+            if(g[i] <= s[j]){
+                count++;
+                i++;
+            }
+            j++;
+            
+        }
+        return count;
+    }
       public static void main(String[] args) {
-            int nums1 [] = {1,2,3,0,0,0};
-            int nums2 [] = {2,5,6};
-            int m = 3;
-            int n =3;
+            int g [] = {10,9,8,7};
+            int s [] = {5,6,7,8};
+            System.out.println(findContentChildren(g, s));
       }
 }

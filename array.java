@@ -431,6 +431,6 @@ public class array{
             stalls[i] = sc.nextInt();
         }
         Arrays.sort(stalls);
-        System.out.println(MinDistance(stalls, noc));1 
+        System.out.println(MinDistance(stalls, noc));
     }
 }
