@@ -1283,29 +1283,50 @@ import java.util.Arrays;
 //       }
 // }
 
-public class leetcodeq {
+// public class leetcodeq {
       
-    public static int findContentChildren(int[] g, int[] s) {
-        Arrays.sort(g);
-        Arrays.sort(s);
-        int m = g.length;
-        int n = s.length;
-        int i = 0;
-        int j = 0;
-        int count = 0;
-        while(i<m && j<n){
-            if(g[i] <= s[j]){
-                count++;
-                i++;
+//     public static int findContentChildren(int[] g, int[] s) {
+//         Arrays.sort(g);
+//         Arrays.sort(s);
+//         int m = g.length;
+//         int n = s.length;
+//         int i = 0;
+//         int j = 0;
+//         int count = 0;
+//         while(i<m && j<n){
+//             if(g[i] <= s[j]){
+//                 count++;
+//                 i++;
+//             }
+//             j++;   
+//         }
+//         return count;
+//     }
+//       public static void main(String[] args) {
+//             int g [] = {10,9,8,7};
+//             int s [] = {5,6,7,8};
+//             System.out.println(findContentChildren(g, s));
+//       }
+// }
+
+// Perfect number
+public class leetcodeq {
+    public static boolean checkPerfectNumber(int num) {
+        if(num <= 1) return false;
+        int sum = 1;
+        for(int i=2;i*i<=num;i++){
+            if(num % i == 0){
+                sum+=i;
+                if(i!=num/i){
+                    sum+=num/i;
+                }
             }
-            j++;
-            
         }
-        return count;
+        return sum==num;
     }
-      public static void main(String[] args) {
-            int g [] = {10,9,8,7};
-            int s [] = {5,6,7,8};
-            System.out.println(findContentChildren(g, s));
-      }
+    public static void main(String[] args) {
+      int num = 92;
+      System.out.println(checkPerfectNumber(num));
+    }
 }
+ 
