@@ -1362,23 +1362,46 @@
 // }
 
 // kth smallest element in sorted matrix
+// public class leetcodeq {
+//     public static void kthSmallest(int matrix [][], int k){
+//         int count = 0;
+//         int ans = 0;
+//         for(int row=0;row<matrix.length;row++){
+//             for(int col=0;col<matrix[0].length;col++){
+//                 count++;
+//                 if(count == k){
+//                     ans = matrix[row][col];
+//                 }
+//             }
+//             System.out.println(ans);
+//         }
+//     }
+//     public static void main(String[] args) {
+//         int matrix [][] = {{1,5,9},{10,11,13},{12,13,15}};
+//         int k = 8;
+//         kthSmallest(matrix, k);
+//     }
+// }
+
+//minimize subarray sum
+
 public class leetcodeq {
-    public static void kthSmallest(int matrix [][], int k){
-        int count = 0;
-        int ans = 0;
-        for(int row=0;row<matrix.length;row++){
-            for(int col=0;col<matrix[0].length;col++){
-                count++;
-                if(count == k){
-                    ans = matrix[row][col];
+    public static int minSubArrayLen(int nums[],int target){
+        int ans = Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++){
+            int sum = 0;
+            for(int j=i;j<nums.length;j++){
+                sum+=nums[j];
+                if(sum == target){
+                    ans = Math.min(ans, j-i+1);
                 }
             }
-            System.out.println(ans);
         }
+        return ans;
     }
     public static void main(String[] args) {
-        int matrix [][] = {{1,5,9},{10,11,13},{12,13,15}};
-        int k = 8;
-        kthSmallest(matrix, k);
+        int nums[] = {1,4,4};
+        int target = 4;
+        System.out.println(minSubArrayLen(nums, target));
     }
 }
