@@ -1405,3 +1405,68 @@
 //         System.out.println(minSubArrayLen(nums, target));
 //     }
 // }
+
+// Sort an array 912
+// class Solution {
+//     public int[] sortArray(int[] arr) {
+//         return sortArray(arr, 0, arr.length - 1); // calling your recursive function
+//     }
+
+//     public static int[] sortArray(int arr[], int si , int ei) {
+//         if (si == ei) {
+//             int[] bs = new int[1];
+//             bs[0] = arr[ei];
+//             return bs;
+//         }
+//         int mid = (si + ei) / 2;
+//         int[] fs = sortArray(arr, si, mid);
+//         int[] bs = sortArray(arr, mid + 1, ei);
+//         return Merge_Sorted_array(fs, bs);
+//     }
+
+//     public static int[] Merge_Sorted_array(int arr1[], int arr2[]) {
+//         int m = arr1.length;
+//         int n = arr2.length;
+//         int i = 0, j = 0, k = 0;
+//         int ans[] = new int[m + n];
+//         while (i < m && j < n) {
+//             if (arr1[i] < arr2[j]) {
+//                 ans[k++] = arr1[i++];
+//             } else {
+//                 ans[k++] = arr2[j++];
+//             }
+//         }
+//         while (i < m) {
+//             ans[k++] = arr1[i++];
+//         }
+//         while (j < n) {
+//             ans[k++] = arr2[j++];
+//         }
+//         return ans;
+//     }
+// }
+
+// contains duplicate 2
+public class leetcodeq {
+public static boolean containNearByDuplicates(int num[], int k){
+    boolean ans = false;
+    int diff = 0;
+    for(int i=0;i<num.length;i++){
+        for(int j=i+1;j<num.length;j++){
+            if(num[i]==num[j]){
+                diff = Math.abs(i-j);
+                if(diff <= k){
+                    ans = true;
+                    return ans;
+                }
+            }
+        }
+    }
+    return ans;
+}
+    public static void main(String[] args) {
+        int nums [] = {1,2,3,1,2,3};
+        int k = 2;
+        System.out.println(containNearByDuplicates(nums, k));
+    }
+}
