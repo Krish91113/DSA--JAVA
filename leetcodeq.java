@@ -1484,48 +1484,44 @@
 //     }
 // }
 
-// public class leetcodeq {
-
-//     public static boolean judgeSquareSum(int c) {
-//         int i = 0;
-//         int j = c;
-//         int sumofsquare = 1;
-//         boolean ans = false;
-//         while(i<j){
-//             int mid = i + (j - i) / 2;
-//             j = mid;
-//             sumofsquare = (i * i) + (j * j);
-//             if(sumofsquare == c){
-//                 ans = true;
-//                 return ans;
-//             }else if(sumofsquare>c){
-//                 j = mid - 1;
-//             }else{
-//                 i = (i == 0) ? (i=mid+1) : (i=i+1);
-//             }
-//         }
-//         return ans;
-//     }
-//     public static void main(String[] args) {
-//         int c = 5;
-//         System.out.println(judgeSquareSum(c));
-//     }
-// }
-// Add digit
 public class leetcodeq {
-    public static int addDigits(int num) {
-        while (num >= 10) {
-            int sum = 0;
-            while (num > 0) {
-                sum += num % 10;
-                num /= 10;
+
+    public static boolean judgeSquareSum(int c) {
+        long left = 0;
+        long right = (long) Math.sqrt(c);
+        while(left<=right){
+            long square = left * left + right * right;
+            if(square < c){
+                left++;
+            }else if(square>c){
+                right--;
+            }else{
+                return true;
             }
-            num = sum;
         }
-        return num;
+        return false;
     }
+
     public static void main(String[] args) {
-        int num = 38;
-        System.out.println(addDigits(num));
+        int c = 3;
+        System.out.println(judgeSquareSum(c));
     }
 }
+// Add digit
+// public class leetcodeq {
+//     public static int addDigits(int num) {
+//         while (num >= 10) {
+//             int sum = 0;
+//             while (num > 0) {
+//                 sum += num % 10;
+//                 num /= 10;
+//             }
+//             num = sum;
+//         }
+//         return num;
+//     }
+//     public static void main(String[] args) {
+//         int num = 38;
+//         System.out.println(addDigits(num));
+//     }
+// }
