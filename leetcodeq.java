@@ -1484,29 +1484,29 @@
 //     }
 // }
 
-public class leetcodeq {
+// public class leetcodeq {
 
-    public static boolean judgeSquareSum(int c) {
-        long left = 0;
-        long right = (long) Math.sqrt(c);
-        while(left<=right){
-            long square = left * left + right * right;
-            if(square < c){
-                left++;
-            }else if(square>c){
-                right--;
-            }else{
-                return true;
-            }
-        }
-        return false;
-    }
+//     public static boolean judgeSquareSum(int c) {
+//         long left = 0;
+//         long right = (long) Math.sqrt(c);
+//         while(left<=right){
+//             long square = left * left + right * right;
+//             if(square < c){
+//                 left++;
+//             }else if(square>c){
+//                 right--;
+//             }else{
+//                 return true;
+//             }
+//         }
+//         return false;
+//     }
 
-    public static void main(String[] args) {
-        int c = 3;
-        System.out.println(judgeSquareSum(c));
-    }
-}
+//     public static void main(String[] args) {
+//         int c = 3;
+//         System.out.println(judgeSquareSum(c));
+//     }
+// }
 // Add digit
 // public class leetcodeq {
 //     public static int addDigits(int num) {
@@ -1525,3 +1525,25 @@ public class leetcodeq {
 //         System.out.println(addDigits(num));
 //     }
 // }
+
+// Number of zero filled subarrays
+public class leetcodeq {
+    
+    public static long zeroFilledSubarray(int[] nums) {
+        long result = 0;
+        int count = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] == 0){
+                count++;
+            }else{
+                count = 0;
+            }
+            result = result + count;
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        int nums [] = {1,3,0,0,2,0,0,4};
+        System.out.println(zeroFilledSubarray(nums));
+    }
+}
