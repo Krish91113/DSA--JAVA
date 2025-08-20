@@ -1498,52 +1498,79 @@
 //             }else{
 //                 return true;
 //             }
-//         }
-//         return false;
-//     }
+// //         }
+// //         return false;
+// //     }
 
-//     public static void main(String[] args) {
-//         int c = 3;
-//         System.out.println(judgeSquareSum(c));
-//     }
-// }
-// Add digit
+// //     public static void main(String[] args) {
+// //         int c = 3;
+// //         System.out.println(judgeSquareSum(c));
+// //     }
+// // }
+// // Add digit
+// // public class leetcodeq {
+// //     public static int addDigits(int num) {
+// //         while (num >= 10) {
+// //             int sum = 0;
+// //             while (num > 0) {
+// //                 sum += num % 10;
+// //                 num /= 10;
+// //             }
+// //             num = sum;
+// //         }
+// //         return num;
+// //     }
+// //     public static void main(String[] args) {
+// //         int num = 38;
+// //         System.out.println(addDigits(num));
+// //     }
+// // }
+
+// // Number of zero filled subarrays
 // public class leetcodeq {
-//     public static int addDigits(int num) {
-//         while (num >= 10) {
-//             int sum = 0;
-//             while (num > 0) {
-//                 sum += num % 10;
-//                 num /= 10;
+    
+//     public static long zeroFilledSubarray(int[] nums) {
+//         long result = 0;
+//         int count = 0;
+//         for(int i=0;i<nums.length;i++){
+//             if(nums[i] == 0){
+//                 count++;
+//             }else{
+//                 count = 0;
 //             }
-//             num = sum;
+//             result = result + count;
 //         }
-//         return num;
+//         return result;
 //     }
 //     public static void main(String[] args) {
-//         int num = 38;
-//         System.out.println(addDigits(num));
+//         int nums [] = {1,3,0,0,2,0,0,4};
+//         System.out.println(zeroFilledSubarray(nums));
 //     }
 // }
 
-// Number of zero filled subarrays
-public class leetcodeq {
-    
-    public static long zeroFilledSubarray(int[] nums) {
-        long result = 0;
-        int count = 0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i] == 0){
-                count++;
-            }else{
-                count = 0;
-            }
-            result = result + count;
+// Sum of unique element 
+
+import java.util.Arrays;
+
+public class leetcodeq{
+    public static int sumOfUnique(int [] arr){
+        int sum = 0;
+        for(int i=0;i<arr.length;i++){
+            sum+=arr[i];
         }
-        return result;
+        Arrays.sort(arr);
+        int i=0;
+        for(int j=i+1;j<arr.length;j++){
+            if(arr[i] == arr[j]){
+                sum = sum - (arr[i] + arr[j]);
+            }else{
+                i++;
+            }
+        }
+        return sum;
     }
     public static void main(String[] args) {
-        int nums [] = {1,3,0,0,2,0,0,4};
-        System.out.println(zeroFilledSubarray(nums));
+        int arr [] = {1,1,1,1,1};
+        System.out.println(sumOfUnique(arr));
     }
 }
