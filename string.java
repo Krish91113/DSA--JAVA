@@ -300,18 +300,55 @@
 //         System.out.println(validPalindrome(s));
 //     }
 // }
-import java.util.*;
+// import java.util.*;
+// public class string {
+//     public static boolean isPalindrome(String str){
+//         String result = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
+//         int i=0;
+//         int j=result.length()-1;
+//         while(i<j){
+//             if(result.charAt(i) != result.charAt(j)){
+//                 return false;
+//             }
+//             i++;
+//             j--;
+//         }
+//         return true;
+//     }
+//     public static void main(String[] args) {
+//         String s = "a man , a plan , a canal : panama";
+//         System.out.println(isPalindrome(s));
+//     }
+// }
+
+// public class string {
+//     public static int isPatternPresent(String S, String P){
+//         String result = S.replaceAll("[^a-zA-Z0-9]", "");
+//         int i = 0;
+//         int j=0;
+//         int ans = 0;
+//         while(i<result.length() && j<P.length()){
+//             if(result.charAt(i) == P.charAt(j)){
+//                 i++;
+//                 j++;
+//                 ans = 1;
+//             }
+//             j++;
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         String S = "tars$";ppo
+//         String p = "coaltar";
+//         System.out.println(isPatternPresent(S, p));
+//     }
+// }
+
 public class string {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        int count = 0;
-        for(int i=0;i<str.length();i++){
-            if(str.charAt(i) == 'a' || str.charAt(i)== 'e' || str.charAt(i)== 'i' || str.charAt(i)== 'o' || str.charAt(i)== 'u' ) {
-                count ++;
-            }
-        }
-        System.out.println("Number of vowels: " + count);
+        int n = 205450;
+        String s = Integer.toString(n);
+        System.out.println(s.length());
     }
 }
