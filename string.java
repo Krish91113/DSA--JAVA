@@ -276,27 +276,42 @@
 //     }
 // }
 
+// public class string {
+//     public static boolean validPalindrome(String s){
+//         boolean ans = true;
+//         int i= 0;
+//         int j = s.length() - 1;
+//         while(i<j){
+//             if(s.charAt(i) != s.charAt(j)){
+//                 if(s.charAt(i) == s.charAt(j-1)){
+//                     return ans;
+//                 }
+//                 ans = false;
+//                 return ans;
+//             }
+//             i++;
+//             j--;
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "abc";
+//         System.out.println(validPalindrome(s));
+//     }
+// }
+import java.util.*;
 public class string {
-    public static boolean validPalindrome(String s){
-        boolean ans = true;
-        int i= 0;
-        int j = s.length() - 1;
-        while(i<j){
-            if(s.charAt(i) != s.charAt(j)){
-                if(s.charAt(i) == s.charAt(j-1)){
-                    return ans;
-                }
-                ans = false;
-                return ans;
-            }
-            i++;
-            j--;
-        }
-        return ans;
-    }
 
     public static void main(String[] args) {
-        String s = "abc";
-        System.out.println(validPalindrome(s));
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        int count = 0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i) == 'a' || str.charAt(i)== 'e' || str.charAt(i)== 'i' || str.charAt(i)== 'o' || str.charAt(i)== 'u' ) {
+                count ++;
+            }
+        }
+        System.out.println("Number of vowels: " + count);
     }
 }
