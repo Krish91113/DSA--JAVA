@@ -73,21 +73,37 @@
 // Count digits
 // User function Template for Java
 
-public class gfg  {
-   public static int evenlyDivides(int n) {
-        int count = 0;
-        int original = n;
-        while(n>0){
-            int end = n % 10;
-            if(end !=0 && original % end == 0){
-                count++;
+// public class gfg  {
+//    public static int evenlyDivides(int n) {
+//         int count = 0;
+//         int original = n;
+//         while(n>0){
+//             int end = n % 10;
+//             if(end !=0 && original % end == 0){
+//                 count++;
+//             }
+//             n = n / 10;
+//         }
+//         return count;
+//     }
+//     public static void main(String[] args) {
+//         int n= 42;
+//         System.out.println(evenlyDivides(n));
+//     }
+// }
+
+public class gfg {
+    public static int sumSubstrings(String s){
+        int sum = 0;
+        for(int i=0;i<s.length();i++){
+            for(int j=i;j<s.length();j++){
+                sum += Integer.parseInt(s.substring(i, j+1));
             }
-            n = n / 10;
         }
-        return count;
+        return sum;
     }
     public static void main(String[] args) {
-        int n= 42;
-        System.out.println(evenlyDivides(n));
+        String s = "6759";
+        System.out.println(sumSubstrings(s));
     }
 }

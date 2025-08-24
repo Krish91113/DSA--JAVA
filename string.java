@@ -347,8 +347,6 @@
 public class string {
 
     public static void main(String[] args) {
-        int n = 205450;
-        String s = Integer.toString(n);
-        System.out.println(s.length());
+        String 
     }
 }
