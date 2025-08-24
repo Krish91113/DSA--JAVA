@@ -1621,3 +1621,29 @@
 //         System.out.println(minimumArea(grid));
 //     }
 // }
+
+// Longest subarray with all 1s after deleting one elements
+public class leetcodeq {
+    public static int longestSubarray(int[] nums) {
+        int czero = 0;
+        int result = 0;
+        int i=0;
+        for(int j=0;j<nums.length;j++){
+            if(nums[j] == 0){
+                czero++;
+            }
+            while(czero > 1){
+                if(nums[i] == 0){
+                    czero--;
+                }
+                i++;
+            }
+            result = Math.max(result,j-i);
+        }
+        return result;
+    }
+    public static void main(String[] args) {
+        int nums[] = {1,1,0,1,1,1,0,1,1};
+        System.out.println(longestSubarray(nums));
+    }
+}
