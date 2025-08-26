@@ -1647,6 +1647,7 @@
 //         System.out.println(longestSubarray(nums));
 //     }
 // }
+import java.util.*;
 
 public class leetcodeq{
     
@@ -1679,5 +1680,8 @@ public class leetcodeq{
         for (int num : result) {
             System.out.print(num + " ");
         }
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(n);
     }
 }
