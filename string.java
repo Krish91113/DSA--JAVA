@@ -347,6 +347,8 @@
 public class string {
 
     public static void main(String[] args) {
-        String 
+        String s = "divesh";
+        StringBuilder sb = new StringBuilder(s);
+        System.out.println(sb.reverse().toString());
     }
 }

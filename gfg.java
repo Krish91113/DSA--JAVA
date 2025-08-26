@@ -92,18 +92,43 @@
 //     }
 // }
 
+// public class gfg {
+//     public static int sumSubstrings(String s){
+//         int sum = 0;
+//         for(int i=0;i<s.length();i++){
+//             for(int j=i;j<s.length();j++){
+//                 sum += Integer.parseInt(s.substring(i, j+1));
+//             }
+//         }
+//         return sum;
+//     }
+//     public static void main(String[] args) {
+//         String s = "6759";
+//         System.out.println(sumSubstrings(s));
+//     }
+// }
+
+// anagram
+
+import java.util.Arrays;
+
 public class gfg {
-    public static int sumSubstrings(String s){
-        int sum = 0;
-        for(int i=0;i<s.length();i++){
-            for(int j=i;j<s.length();j++){
-                sum += Integer.parseInt(s.substring(i, j+1));
+    public static boolean areAnagrams(String s, String t){
+        if(s.length()!=t.length()) return false;
+        char arr1[] = s.toCharArray();
+        char arr2[] = t.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        for(int i=0;i<arr1.length;i++){
+            if(arr1[i]!=arr2[i]){
+                return false;
             }
         }
-        return sum;
+        return true;
     }
     public static void main(String[] args) {
-        String s = "6759";
-        System.out.println(sumSubstrings(s));
+        String s = "listen";
+        String t = "silent";
+        System.out.println(areAnagrams(s, t));
     }
 }
