@@ -1647,41 +1647,77 @@
 //         System.out.println(longestSubarray(nums));
 //     }
 // }
-import java.util.*;
+// import java.util.*;
+
+// public class leetcodeq{
+    
+//     public static int[] findDiagonalOrder(int[][] matrix) {
+//         if (matrix == null || matrix.length == 0) return new int[0];
+
+//         int m = matrix.length, n = matrix[0].length;
+//         int[] result = new int[m * n];
+//         int row = 0, col = 0;
+
+//         for (int i = 0; i < m * n; i++) {
+//             result[i] = matrix[row][col];
+
+//             if ((row + col) % 2 == 0) {
+//                 if (col == n - 1) row++;
+//                 else if (row == 0) col++;
+//                 else { row--; col++; }
+//             } else {
+//                 if (row == m - 1) col++;
+//                 else if (col == 0) row++;
+//                 else { row++; col--; }
+//             }
+//         }
+
+//         return result;
+//     }
+//     public static void main(String[] args) {
+//         int matrix [][] = {{1,2,3},{4,5,6},{7,8,9}};
+//         int[] result = findDiagonalOrder(matrix);
+//         for (int num : result) {
+//             System.out.print(num + " ");
+//         }
+//         Scanner sc = new Scanner(System.in);
+//         int n = sc.nextInt();
+//         System.out.println(n);
+//     }
+// }
+
+// public class leetcodeq {
+//     public static int areaOfMaxDiagonal(int dimensions [][]){
+//         int maxArea = 0;
+//         double diagonal = 0;
+//         double ans = 0;
+//         for(int i=0;i<dimensions.length;i++){
+//             int length = dimensions[i][0];
+//             int width = dimensions[i][1];
+//             ans = Math.max(ans,diagonal);
+//             diagonal = Math.sqrt(length * length + width * width);
+//             if(diagonal > ans){
+//                 maxArea = length * width;
+//             }
+//         }
+//         return maxArea;
+//     }
+//     public static void main(String[] args) {
+//         int dimensions [][] = {{9,9},{1,8},{10,5},{2,8},{6,3},{7,1}};
+//         System.out.println(areaOfMaxDiagonal(dimensions));
+//     }
+// }
 
 public class leetcodeq{
-    
-    public static int[] findDiagonalOrder(int[][] matrix) {
-        if (matrix == null || matrix.length == 0) return new int[0];
-
-        int m = matrix.length, n = matrix[0].length;
-        int[] result = new int[m * n];
-        int row = 0, col = 0;
-
-        for (int i = 0; i < m * n; i++) {
-            result[i] = matrix[row][col];
-
-            if ((row + col) % 2 == 0) {
-                if (col == n - 1) row++;
-                else if (row == 0) col++;
-                else { row--; col++; }
-            } else {
-                if (row == m - 1) col++;
-                else if (col == 0) row++;
-                else { row++; col--; }
-            }
-        }
-
-        return result;
+    public static String addString(String num1, String num2){
+        int n1 = Integer.parseInt(num1);
+        int n2 = Integer.parseInt(num2);
+        int sum = n1 + n2;
+        return String.valueOf(sum);
     }
     public static void main(String[] args) {
-        int matrix [][] = {{1,2,3},{4,5,6},{7,8,9}};
-        int[] result = findDiagonalOrder(matrix);
-        for (int num : result) {
-            System.out.print(num + " ");
-        }
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        System.out.println(n);
+        String num1 = "123";
+        String num2 = "11";
+        System.out.println(addString(num1, num2));
     }
 }
