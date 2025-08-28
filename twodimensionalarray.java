@@ -254,25 +254,40 @@
 //     }    
 // }
 
+// public class twodimensionalarray {
+//     public static boolean matSearch(int arr[][], int target){
+//         int row = 0;
+//         int col = 2;
+//         while(row<=col && col>=row){
+//             if(arr[row][col] == target){
+//                 return true;
+//             }else if(arr[row][col] < target ){
+//                 row ++;
+//             }else{
+//                 col --;
+//             }
+//         }
+//         return false;
+//     }
+//     public static void main(String[] args) {
+//         int arr[][] = {{18,21,27},
+//                        {38,55,67 } };
+//         int target = 55;
+//         System.out.println(matSearch(arr, target));
+//     }
+// }
+
 public class twodimensionalarray {
-    public static boolean matSearch(int arr[][], int target){
-        int row = 0;
-        int col = 2;
-        while(row<=col && col>=row){
-            if(arr[row][col] == target){
-                return true;
-            }else if(arr[row][col] < target ){
-                row ++;
-            }else{
-                col --;
+    public static void column(int matrix[][]){
+        for(int i=0;i<matrix[0].length;i++){
+            for(int j=0;j<matrix.length;j++){
+                System.out.print(matrix[j][i] + " ");
             }
+            System.out.println();
         }
-        return false;
     }
     public static void main(String[] args) {
-        int arr[][] = {{18,21,27},
-                       {38,55,67 } };
-        int target = 55;
-        System.out.println(matSearch(arr, target));
+        int matrix[][] = {{2,8,3,4,7},{7,2,1,6,3},{5,5,4,1,4},{3,1,8,2,6}};
+        column(matrix);
     }
 }

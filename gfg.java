@@ -133,14 +133,45 @@
 //     }
 // }
 
+// import java.util.Arrays;
+
+// public class gfg {
+
+//     public static void main(String[] args) {
+//         String s = "character";
+//         char arr [] = s.toCharArray();
+//         Arrays.sort(arr);
+//         System.out.println(arr);
+//     }
+// }
+
 import java.util.Arrays;
 
-public class gfg {
+// public class gfg {
+//     public static String removeDups(String s){
+//         char ch [] = s.toCharArray();
+//         Arrays.sort(ch);
+//         String s1 = "";
+//         for(int i=0;i<ch.length;i++){
+//             if(i==0 || ch[i]!=ch[i-1]){
+//                 s1 += ch[i];
+//             }
+//         }
+//         return s1;
+//     }
+//     public static void main(String[] args) {
+//         String s = "zvvo";
+//         System.out.println(removeDups(s));
+//     }
+// }
 
+public class gfg {
+    public static String tolower(String s){
+        String result = s.toLowerCase();
+        return result;
+    }
     public static void main(String[] args) {
-        String s = "character";
-        char arr [] = s.toCharArray();
-        Arrays.sort(arr);
-        System.out.println(arr);
+        String s = "KrIsh";
+        System.out.println(tolower(s));
     }
 }
