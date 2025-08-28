@@ -1708,16 +1708,95 @@
 //     }
 // }
 
-public class leetcodeq{
-    public static String addString(String num1, String num2){
-        int n1 = Integer.parseInt(num1);
-        int n2 = Integer.parseInt(num2);
-        int sum = n1 * n2;
-        return String.valueOf(sum);
+// public class leetcodeq{
+//     public static String addString(String num1, String num2){
+//         int n1 = Integer.parseInt(num1);
+//         int n2 = Integer.parseInt(num2);
+//         int sum = n1 * n2;
+//         return String.valueOf(sum);
+//     }
+//     public static void main(String[] args) {
+//         String num1 = "0023";
+//         String num2 = "2";
+//         System.out.println(addString(num1, num2));
+//     }
+// }
+
+// public class leetcodeq {
+//     public static int[][] generateMatrix(int n){
+//         if(n == 0){
+//             return new int[0][0];
+//         }
+//         int matrix [][] = new int[n][n];
+//         int num = 0;
+//         int minr=0 ,minc=0;
+//         int maxr = n-1;
+//         int maxc = n-1;
+//         while(minr <= maxr && minc <= maxc){
+//             for(int i=minc;i<=maxc;i++){
+//                 matrix[minr][i] = num++;
+//             }
+//             minr++;
+//             for(int i=minr;i<=maxr;i++){
+//             matrix[i][maxc] = num++;
+//         }
+//         maxc--;
+//         for(int i=maxc;i>=minc;i--){
+//             matrix[maxr][i] = num++;
+//         }
+//         maxr--;
+//         for(int i=maxr;i>=minr;i--){
+//             matrix[i][minc] = num++;
+//         }
+        
+//     }
+//     return matrix;
+// }
+//     public static void main(String[] args) {
+//         int n = 3;
+//         int[][] result = generateMatrix(n);
+//         for (int i = 0; i < result.length; i++) {
+//             for (int j = 0; j < result[0].length; j++) {
+//                 System.out.print(result[i][j] + " ");
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+public class leetcodeq {
+    public static void setZeroes(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        boolean[] rows = new boolean[m];
+        boolean[] cols = new boolean[n];
+        
+        // Step 1: mark rows and cols that need to be zeroed
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    rows[i] = true;
+                    cols[j] = true;
+                }
+            }
+        }
+        
+        // Step 2: update the matrix
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (rows[i] || cols[j]) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
     }
+
     public static void main(String[] args) {
-        String num1 = "0023";
-        String num2 = "2";
-        System.out.println(addString(num1, num2));
+        int[][] matrix = {{1,1,1},{1,0,1},{1,1,1}};
+        setZeroes(matrix);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
