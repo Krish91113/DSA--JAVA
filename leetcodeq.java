@@ -1758,45 +1758,61 @@
 //         for (int i = 0; i < result.length; i++) {
 //             for (int j = 0; j < result[0].length; j++) {
 //                 System.out.print(result[i][j] + " ");
+// //             }
+// //             System.out.println();
+// //         }
+// //     }
+// // }
+// public class leetcodeq {
+//     public static void setZeroes(int[][] matrix) {
+//         int m = matrix.length, n = matrix[0].length;
+//         boolean[] rows = new boolean[m];
+//         boolean[] cols = new boolean[n];
+        
+//         // Step 1: mark rows and cols that need to be zeroed
+//         for (int i = 0; i < m; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 if (matrix[i][j] == 0) {
+//                     rows[i] = true;
+//                     cols[j] = true;
+//                 }
+//             }
+//         }
+        
+//         // Step 2: update the matrix
+//         for (int i = 0; i < m; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 if (rows[i] || cols[j]) {
+//                     matrix[i][j] = 0;
+//                 }
+//             }
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         int[][] matrix = {{1,1,1},{1,0,1},{1,1,1}};
+//         setZeroes(matrix);
+//         for (int i = 0; i < matrix.length; i++) {
+//             for (int j = 0; j < matrix[0].length; j++) {
+//                 System.out.print(matrix[i][j] + " ");
 //             }
 //             System.out.println();
 //         }
 //     }
 // }
 public class leetcodeq {
-    public static void setZeroes(int[][] matrix) {
-        int m = matrix.length, n = matrix[0].length;
-        boolean[] rows = new boolean[m];
-        boolean[] cols = new boolean[n];
-        
-        // Step 1: mark rows and cols that need to be zeroed
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == 0) {
-                    rows[i] = true;
-                    cols[j] = true;
-                }
-            }
-        }
-        
-        // Step 2: update the matrix
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (rows[i] || cols[j]) {
-                    matrix[i][j] = 0;
-                }
-            }
-        }
+   
+    public static long flowerGame(int n, int m) {
+        long evenN = n/2;
+        long oddN = (n+1)/2;
+        long evenM = m/2;
+        long oddM = (m+1)/2;
+        return evenN*oddM + oddN*evenM;
     }
 
     public static void main(String[] args) {
-        int[][] matrix = {{1,1,1},{1,0,1},{1,1,1}};
-        setZeroes(matrix);
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
+        int n = 3;
+        int m = 2;
+        System.out.println(flowerGame(n, m));
     }
 }
