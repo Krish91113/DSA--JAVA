@@ -1800,19 +1800,40 @@
 //         }
 //     }
 // }
-public class leetcodeq {
+// public class leetcodeq {
    
-    public static long flowerGame(int n, int m) {
-        long evenN = n/2;
-        long oddN = (n+1)/2;
-        long evenM = m/2;
-        long oddM = (m+1)/2;
-        return evenN*oddM + oddN*evenM;
+//     public static long flowerGame(int n, int m) {
+//         long evenN = n/2;
+//         long oddN = (n+1)/2;
+//         long evenM = m/2;
+//         long oddM = (m+1)/2;
+//         return evenN*oddM + oddN*evenM;
+//     }
+
+//     public static void main(String[] args) {
+//         int n = 3;
+//         int m = 2;
+//         System.out.println(flowerGame(n, m));
+//     }
+// }
+
+public class leetcodeq {
+    public static char findTheDifference(String s, String t) {
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+        for (char c : t.toCharArray()) {
+            if (--count[c - 'a'] < 0) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException("No difference found");
     }
 
     public static void main(String[] args) {
-        int n = 3;
-        int m = 2;
-        System.out.println(flowerGame(n, m));
+        String s = "abcd";
+        String t = "abcde";
+        System.out.println(findTheDifference(s, t));
     }
 }
