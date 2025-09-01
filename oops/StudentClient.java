@@ -9,5 +9,10 @@ public class StudentClient {
         s.name="Ankit";
         s.Intro_yourSelf();
 
+        student s1 = new student();
+        s1.age=22;
+        s1.name="Pilkit";
+        s1.Intro_yourSelf();
+
     }
 }
