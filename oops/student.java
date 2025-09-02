@@ -1,13 +1,19 @@
 package oops;
 
 public class student {
-    String name;
-    int age;
 
-    public void Intro_yourSelf(){
-        System.out.println("My name is " + name + " and I am " + age + " years old.");
-    }    
-    public void SayHey(String name){
-        System.out.println(name + " say hey " + name + "!");
+    String name ;
+    String Gender ;
+    int age;
+    String adress;
+    int roll_no;
+
+    public void student_info(){
+        System.out.println("Student Name: " + name);
+        System.out.println("Gender: " + Gender);
+        System.out.println("Age: " + age);
+        System.out.println("Address: " + adress);
+        System.out.println("Roll No: " + roll_no);
     }
 }
+
