@@ -1,10 +1,13 @@
 package oops;
 
 public class student {
+    String name;
+    int age;
 
-    String name ;
-    int age ;
     public void Intro_yourSelf(){
         System.out.println("My name is " + name + " and I am " + age + " years old.");
     }    
+    public void SayHey(String name){
+        System.out.println(name + " say hey " + name + "!");
+    }
 }
