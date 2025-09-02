@@ -65,27 +65,34 @@
 //     }
 // }
 
-public class leetcodecontest{
-    public static int gcdofOddEvenSums(int n){
-        int sumofOdd = 0;
-        int sumofEven = 0;
-        int count =0;
-        for(int i=1;i<=1000;i++){
-            if(count <= (n+n)){
-                if(i%2==0){
-                    sumofEven += i;
-                }
-                else{
-                    sumofOdd += i;
-                }
-                count++;
+public class leetcodecontest {
+    public static int gcdofOddEvenSums(int n) {
+        int sumOfOdd = 0;
+        int sumOfEven = 0;
+        int oddCount = 0, evenCount = 0;
+        int i = 1;
+
+        while (oddCount < n || evenCount < n) {
+            if (i % 2 == 0 && evenCount < n) {
+                sumOfEven += i;
+                evenCount++;
+            } else if (i % 2 != 0 && oddCount < n) {
+                sumOfOdd += i;
+                oddCount++;
             }
+            i++;
         }
-        return sumofEven-sumofOdd;
+
+        return gcd(sumOfOdd, sumOfEven);
     }
-    
-        public static void main(String[] args) {
-        int n =4;
-        System.out.println(gcdofOddEvenSums(n));
+
+    private static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        int n = 4; // Example
+        System.out.println(gcdofOddEvenSums(n)); 
     }
 }
