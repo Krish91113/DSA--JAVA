@@ -15,5 +15,8 @@ public class student {
         System.out.println("Address: " + adress);
         System.out.println("Roll No: " + roll_no);
     }
+    static {
+        System.out.println("Student class loaded.");
+    }
 }
 
