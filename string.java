@@ -344,11 +344,38 @@
 //     }
 // }
 
-public class string {
+// public class string {
 
+//     public static void main(String[] args) {
+//         String s = "divesh";
+//         StringBuilder sb = new StringBuilder(s);
+//         System.out.println(sb.reverse().toString());
+//     }
+// }
+
+public class string {
+    public static String reverseVowels(String s) {
+        String vowels = "aeiouAEIOU";
+        char arr[] = s.toCharArray();
+        int i = 0;
+        int j = s.length() - 1;
+        while(i<j){
+            while(i<j && vowels.indexOf(arr[i]) == -1){
+                i++;
+            }
+            while(i<j && vowels.indexOf(arr[j]) == -1){
+                j--;
+            }
+            char temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+        return new String(arr);
+    }
     public static void main(String[] args) {
-        String s = "divesh";
-        StringBuilder sb = new StringBuilder(s);
-        System.out.println(sb.reverse().toString());
+        String s = "IceCreAm";
+        System.out.println(reverseVowels(s));
     }
 }
