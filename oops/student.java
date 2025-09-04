@@ -15,8 +15,15 @@ public class student {
         System.out.println("Address: " + adress);
         System.out.println("Roll No: " + roll_no);
     }
-    static {
-        System.out.println("Student class loaded.");
+    public student(){
+
+    }
+    public student(String name, String Gender, int age, String adress, int roll_no) {
+        this.name = name;
+        this.Gender = Gender;
+        this.age = age;
+        this.adress = adress;
+        this.roll_no = roll_no;
     }
 }
 
