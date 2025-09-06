@@ -1817,23 +1817,48 @@
 //     }
 // }
 
-public class leetcodeq {
-    public static char findTheDifference(String s, String t) {
-        int[] count = new int[26];
-        for (char c : s.toCharArray()) {
-            count[c - 'a']++;
+// public class leetcodeq {
+//     public static char findTheDifference(String s, String t) {
+//         int[] count = new int[26];
+//         for (char c : s.toCharArray()) {
+//             count[c - 'a']++;
+//         }
+//         for (char c : t.toCharArray()) {
+//             if (--count[c - 'a'] < 0) {
+//                 return c;
+//             }
+//         }
+//         throw new IllegalArgumentException("No difference found");
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "abcd";
+//         String t = "abcde";
+//         System.out.println(findTheDifference(s, t));
+//     }
+// }
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class leetcodeq{
+    public static List<Integer> findDisappearedNumbers(int[] nums) {
+        boolean[] isAvailable = new boolean[nums.length];
+        for(int i=0;i<nums.length;i++){
+            isAvailable[nums[i]-1] = true;
         }
-        for (char c : t.toCharArray()) {
-            if (--count[c - 'a'] < 0) {
-                return c;
+        List<Integer> ans = new ArrayList<>();
+        for(int i=0;i<isAvailable.length;i++){
+            if(!isAvailable[i]){
+                ans.add(i+1);
             }
         }
-        throw new IllegalArgumentException("No difference found");
+        return ans;
     }
-
     public static void main(String[] args) {
-        String s = "abcd";
-        String t = "abcde";
-        System.out.println(findTheDifference(s, t));
+        int nums[] = {4,3,2,7,8,2,3,1};
+        System.out.println(findDisappearedNumbers(nums));
     }
 }
