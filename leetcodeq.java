@@ -1838,27 +1838,48 @@
 //     }
 // }
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+// import java.lang.reflect.Array;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.List;
 
-public class leetcodeq{
-    public static List<Integer> findDisappearedNumbers(int[] nums) {
-        boolean[] isAvailable = new boolean[nums.length];
-        for(int i=0;i<nums.length;i++){
-            isAvailable[nums[i]-1] = true;
-        }
-        List<Integer> ans = new ArrayList<>();
-        for(int i=0;i<isAvailable.length;i++){
-            if(!isAvailable[i]){
-                ans.add(i+1);
+// public class leetcodeq{
+//     public static List<Integer> findDisappearedNumbers(int[] nums) {
+//         boolean[] isAvailable = new boolean[nums.length];
+//         for(int i=0;i<nums.length;i++){
+//             isAvailable[nums[i]-1] = true;
+//         }
+//         List<Integer> ans = new ArrayList<>();
+//         for(int i=0;i<isAvailable.length;i++){
+//             if(!isAvailable[i]){
+//                 ans.add(i+1);
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = {4,3,2,7,8,2,3,1};
+//         System.out.println(findDisappearedNumbers(nums));
+//     }
+// }
+
+import java.util.Arrays;
+
+public class leetcodeq {
+    public static int findGCD(int [] nums){
+        Arrays.sort(nums);
+        int a = nums[0];
+        int b = nums[nums.length-1];
+        int gcd = 1;
+        for(int i=1;i<=Math.min(a, b);i++){
+            if(a%i==0 && b%i==0){
+                gcd = Math.max(gcd, i);
             }
         }
-        return ans;
+        return gcd;
     }
     public static void main(String[] args) {
-        int nums[] = {4,3,2,7,8,2,3,1};
-        System.out.println(findDisappearedNumbers(nums));
-    }
+        int nums[] ={2,5,6,9,10};
+        System.out.println(findGCD(nums));
+    }   
 }
