@@ -353,29 +353,43 @@
 //     }
 // }
 
+// public class string {
+//     public static String reverseVowels(String s) {
+//         String vowels = "aeiouAEIOU";
+//         char arr[] = s.toCharArray();
+//         int i = 0;
+//         int j = s.length() - 1;
+//         while(i<j){
+//             while(i<j && vowels.indexOf(arr[i]) == -1){
+//                 i++;
+//             }
+//             while(i<j && vowels.indexOf(arr[j]) == -1){
+//                 j--;
+//             }
+//             char temp = arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = temp;
+//             i++;
+//             j--;
+//         }
+//         return new String(arr);
+//     }
+//     public static void main(String[] args) {
+//         String s = "IceCreAm";
+//         System.out.println(reverseVowels(s));
+//     }
+// }
+
+import java.util.Arrays;
+
 public class string {
-    public static String reverseVowels(String s) {
-        String vowels = "aeiouAEIOU";
+    public static void removeDuplicateLetters(String s){
         char arr[] = s.toCharArray();
-        int i = 0;
-        int j = s.length() - 1;
-        while(i<j){
-            while(i<j && vowels.indexOf(arr[i]) == -1){
-                i++;
-            }
-            while(i<j && vowels.indexOf(arr[j]) == -1){
-                j--;
-            }
-            char temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-            i++;
-            j--;
-        }
-        return new String(arr);
+        Arrays.sort(arr);
+        System.out.println(arr);
     }
     public static void main(String[] args) {
-        String s = "IceCreAm";
-        System.out.println(reverseVowels(s));
+        String s = "bcabc";
+        removeDuplicateLetters(s);
     }
 }
