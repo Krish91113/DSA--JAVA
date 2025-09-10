@@ -11,5 +11,9 @@ public class stacks {
         st.push(40);
         st.push(50);
         System.out.println(st.peek());
+        System.out.println((st));
+        System.out.println(st.isEmpty());
+        System.out.println(st.pop());
+        System.out.println(st);
     }
 }
