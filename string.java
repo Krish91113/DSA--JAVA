@@ -6,7 +6,7 @@
 //     //     }
 //     // }
 //     // public static void main(String[] args) {
-        // char arr[] = {"a","b","c"};
+// char arr[] = {"a","b","c"};
 //     //     // String str = ("abc");
 //     //     // String str2 = new String("xyz");
 //     //     // Scanner sc = new Scanner(System.in);
@@ -97,7 +97,7 @@
 //                         sb.append(ch);
 //                 }
 //                 System.out.println(sb);
-                
+
 //         }
 // }
 // Convert letters to uppercase
@@ -230,7 +230,7 @@
 // public class string {
 //     public static String printPalindromeSubstrings(String s) {
 //         int max=0,start=0,end=0;
-        
+
 //         for(int i=0;i<s.length();i++){
 //             for(int j=i;j<s.length();j++){
 //                 if(isPalindrome(s.substring(i,j))==true){
@@ -380,16 +380,28 @@
 //     }
 // }
 
+// import java.util.Arrays;
+
 import java.util.Arrays;
 
 public class string {
-    public static void removeDuplicateLetters(String s){
-        char arr[] = s.toCharArray();
-        Arrays.sort(arr);
-        System.out.println(arr);
+    public static String removeDuplicateLetters(String s) {
+        char[] arr = s.toCharArray();
+        Arrays.sort(arr); // sorts letters
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < arr.length; i++) {
+            // skip duplicates
+            if (i == 0 || arr[i] != arr[i - 1]) {
+                sb.append(arr[i]);
+            }
+        }
+
+        return sb.toString();
     }
+
     public static void main(String[] args) {
         String s = "bcabc";
-        removeDuplicateLetters(s);
+        System.out.println(removeDuplicateLetters(s)); // Output: "abc"
     }
 }
