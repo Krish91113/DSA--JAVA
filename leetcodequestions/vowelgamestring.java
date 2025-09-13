@@ -1,7 +1,7 @@
 package leetcodequestions;
 
 public class vowelgamestring {
-    public static boolean doesAliceWin(String s){
+    public static int doesAliceWin(String s){
         String vowels = "aeiou";
        int count =0;
        for(char c : s.toCharArray()){
@@ -9,7 +9,7 @@ public class vowelgamestring {
             count++;
         }
        }
-       return count>0;
+       return count;
 
     }
     public static void main(String[] args) {
