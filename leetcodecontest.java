@@ -97,26 +97,58 @@
 //     }
 // }
 
-import Stacks.stacks;
+// import Stacks.stacks;
 
-public class leetcodecontest{
+// public class leetcodecontest{
 
-    public static int earliestTime(int[][] tasks) {
-        int ans = Integer.MAX_VALUE;
-        for(int i=0;i<tasks.length;i++){
-            int sum = 0;
-            for(int j=0;j<tasks[0].length;j++){
-                sum=sum + tasks[i][j];
-                if(j == tasks[i].length - 1){
+//     public static int earliestTime(int[][] tasks) {
+//         int ans = Integer.MAX_VALUE;
+//         for(int i=0;i<tasks.length;i++){
+//             int sum = 0;
+//             for(int j=0;j<tasks[0].length;j++){
+//                 sum=sum + tasks[i][j];
+//                 if(j == tasks[i].length - 1){
 
-                    ans = Math.min(sum,ans);
-                }
+//                     ans = Math.min(sum,ans);
+//                 }
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int tasks [][] = {{1,6},{2,3}};
+//         System.out.println(earliestTime(tasks));
+//     }
+// }
+
+import java.util.Arrays;
+
+public class leetcodecontest {
+     public static int[] maxKDistinct(int[] nums, int k) {
+        // Sort in descending order
+        Arrays.sort(nums);
+        int[] result = new int[k];
+        int count = 0;
+        int last = Integer.MIN_VALUE;
+
+        for (int i = nums.length - 1; i >= 0 && count < k; i--) {
+            if (nums[i] != last) {   // ✅ distinct check
+                result[count] = nums[i];
+                last = nums[i];
+                count++;
             }
         }
-        return ans;
+
+        // If there are fewer than k distinct elements
+        if (count < k) {
+            return Arrays.copyOf(result, count);
+        }
+        return result;
     }
     public static void main(String[] args) {
-        int tasks [][] = {{1,6},{2,3}};
-        System.out.println(earliestTime(tasks));
+        int nums[] = {84,93,100,77,90};
+        int k =3;
+        System.out.println(Arrays.toString(maxKDistinct(nums, k)));
+
     }
 }
