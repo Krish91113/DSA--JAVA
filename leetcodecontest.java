@@ -125,21 +125,20 @@ import java.util.Arrays;
 
 public class leetcodecontest {
      public static int[] maxKDistinct(int[] nums, int k) {
-        // Sort in descending order
+    
         Arrays.sort(nums);
         int[] result = new int[k];
         int count = 0;
         int last = Integer.MIN_VALUE;
 
         for (int i = nums.length - 1; i >= 0 && count < k; i--) {
-            if (nums[i] != last) {   // ✅ distinct check
+            if (nums[i] != last) {  
                 result[count] = nums[i];
                 last = nums[i];
                 count++;
             }
         }
 
-        // If there are fewer than k distinct elements
         if (count < k) {
             return Arrays.copyOf(result, count);
         }
