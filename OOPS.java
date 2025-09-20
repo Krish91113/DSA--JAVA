@@ -4,21 +4,27 @@ public class OOPS {
         pen p1 = new pen();
         p1.setColor("blue");
         p1.setTip(5);
-        System.out.println(p1.color);
-        System.out.println(p1.tip);
+        System.out.println(p1.getColor());
+        System.out.println(p1.getTip());
     }
 }
 
 class pen {
-    String color;
-    int tip;
+    private String color;
+    private int tip;
 
+    int getTip(){
+        return this.tip;
+    }
+    String getColor(){
+        return this.color;
+    }
     void setColor(String newColor){
-        color = newColor;
+        this.color = newColor;
     }
 
     void setTip(int newTip){
-        tip = newTip;
+        this.tip = newTip;
     }
 }
 
