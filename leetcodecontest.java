@@ -153,19 +153,40 @@
 // }
 
 // Weekly contest - 468
+// bitwise or of even numbers
+// public class leetcodecontest {
+//     public static int evenNumberBitwiseORs(int[] nums){
+//         int ans = 0;
+//         for(int i=0;i<nums.length;i++){
+//             if(nums[i] % 2 == 0){
+//                 ans = ans | nums[i];
+//             }
+//         }
+//         return ans;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] = { 1,2,3,4,5,6};
+//         System.out.println(evenNumberBitwiseORs(nums));
+//     }
+// }
+
+// Max Total subarray value 1
 
 public class leetcodecontest {
-    public static int evenNumberBitwiseORs(int[] nums){
-        int ans = 0;
+    public static  long maxTotalValue(int[] nums, int k){
+        long ans = 0;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
         for(int i=0;i<nums.length;i++){
-            if(nums[i] % 2 == 0){
-                ans = ans | nums[i];
-            }
+            max = Math.max(max, nums[i]);
+            min = Math.min(min, nums[i]);
+            ans = (max-min) * k;
         }
         return ans;
     }
     public static void main(String[] args) {
-        int nums[] = { 1,2,3,4,5,6};
-        System.out.println(evenNumberBitwiseORs(nums));
+        int nums[] ={4,2,5,1};
+        int k=3;
+        System.out.println(maxTotalValue(nums, k));
     }
 }
