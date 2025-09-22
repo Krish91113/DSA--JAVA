@@ -26,11 +26,26 @@ public class LinkedList {
         // head = newNode
         head = newNode;
     }
+
+    public void addLast(int data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = tail = newNode;
+            return;
+        }
+        tail.next = newNode;
+        tail=newNode;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
         ll.addFirst(2);
         ll.addFirst(3);
-        System.out.println(ll.head.data);
+        ll.addLast(4);
+        Node temp = head;
+        while(temp !=null){
+            System.out.print(temp.data+"->");
+            temp = temp.next;
+        }
     }
 }
