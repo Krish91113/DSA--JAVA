@@ -6,25 +6,24 @@ import java.util.Arrays;
 public class validtriangle {
     public int triangleNumber(int[] nums) {
         Arrays.sort(nums);
-        int count =0;
+        int ans =0;
         int n=nums.length;
         for(int i=n-1;i>=0;i--){
             int left=0,right=i-1;
             while(left < right){
                 if(nums[left]+nums[right] > nums[i]){
-                    count+=right-left;
+                    ans+=right-left;
                     right--;
                 }else{
                     left++;
                 }
             }
         }
-        return count;
+        return ans;
     }
     public static void main(String[] args) {
         int nums[] = {2,2,3,4};
         validtriangle obj = new validtriangle();
         System.out.println(obj.triangleNumber(nums));
     }
-
 }
