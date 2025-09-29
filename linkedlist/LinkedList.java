@@ -69,6 +69,7 @@ public class LinkedList {
         ll.print();
         ll.removeFirst();
         ll.print();
-        
+        ll.addFirst(6);
+        ll.print();
     }
 }
