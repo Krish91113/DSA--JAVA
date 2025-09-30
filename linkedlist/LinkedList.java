@@ -54,7 +54,18 @@ public class LinkedList {
         head = head.next;
         return val;
     }
-
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail=head;
+        Node next;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head= prev;
+    }
     public int itrSearch(int key){
         Node temp = head;
         int i=0;
@@ -74,7 +85,7 @@ public class LinkedList {
         ll.addLast(3);
         ll.addLast(4);
         ll.print();
-        System.out.println(ll.itrSearch(3));
-        System.out.println(ll.itrSearch(10));
+        ll.reverse();
+        ll.print();
     }
 }
