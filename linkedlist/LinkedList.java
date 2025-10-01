@@ -88,15 +88,40 @@ public class LinkedList {
         }
         return slow;
     }
+
+    public boolean checkPalindrome(){
+        if(head==null || head.next==null){
+            return true;
+        }
+        //step1-find mid
+        Node mid = findMid(head);
+        Node curr = mid;
+        Node prev = null;
+        //step2 - reverse 2nd half
+        while(curr!=null){
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        //step3 - check left half and right half
+        curr = head;
+        while(prev!=null){
+            if(curr.data != prev.data){
+                return false;
+            }
+            curr = curr.next;
+            prev = prev.next;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.addFirst(1);
+        ll.addLast(1);
         ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(4);
+        ll.addLast(2);  
+        ll.addLast(1);
         ll.print();
-        ll.reverse();
-        ll.print();
-        System.out.println(ll.findMid(head).data);
+        System.out.println(ll.checkPalindrome());
     }
 }
