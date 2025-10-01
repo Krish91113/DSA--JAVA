@@ -78,6 +78,16 @@ public class LinkedList {
         }
         return -1;  
     }
+    //Slow-Fast approach
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;//+1
+            fast=fast.next.next;//+2
+        }
+        return slow;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -87,5 +97,6 @@ public class LinkedList {
         ll.print();
         ll.reverse();
         ll.print();
+        System.out.println(ll.findMid(head).data);
     }
 }
