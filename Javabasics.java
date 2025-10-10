@@ -84,7 +84,7 @@ public class Javabasics {
         break;
         case '/' : System.out.println(a/b);
         break;
-        default : System.out.println("Wrong operator");
+        default : System.out.println("W");
     }
 }
 }
