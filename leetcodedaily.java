@@ -1,4 +1,4 @@
-// // // // public class leetcodedaily {
+r21// // // // public class leetcodedaily {
 // // // //     public static int findClosest(int x,int y, int z){
 // // // //         int distance1=Math.abs(x-z);
 // // // //         int distance2=Math.abs(y-z);
@@ -149,41 +149,69 @@
 //             int mid = low + (high - low) / 2;
 //             if ((long) potions[mid] * strength >= success) {
 //                 idx = mid;
-//                 high = mid - 1; // find smaller index
-//             } else {
-//                 low = mid + 1;
+// //                 high = mid - 1; // find smaller index
+// //             } else {
+// //                 low = mid + 1;
+// //             }
+// //         }
+// //         return idx;
+// //     }
+// //     public static void main(String[] args) {
+// //         int spells[] ={5,1,3};
+// //         int potions[] ={1,2,3,4,5};
+// //         int success = 7;
+// //         System.out.println(successfulPairs(spells, potions, success));
+// //     }
+// // }
+
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.List;
+
+// public class leetcodedaily {
+//     public static List<String> removeAnagrams(String[] words) {
+//         List<String> ans = new ArrayList<>();
+//         ans.add(words[0]);
+//         for(int i=1;i<words.length;i++){
+//             char [] a = wor1ds[i].toCharArray(),b=ans.get(ans.size()-1).toCharArray();
+//             Arrays.sort(a);
+//             Arrays.sort(b);
+//             if(!Arrays.equals(a,b)){
+//                 ans.add(words[i]);
 //             }
 //         }
-//         return idx;
+//         return ans;
 //     }
 //     public static void main(String[] args) {
-//         int spells[] ={5,1,3};
-//         int potions[] ={1,2,3,4,5};
-//         int success = 7;
-//         System.out.println(successfulPairs(spells, potions, success));
+//         String[] words = {"abba","baba","bbaa","cd","cd"};
+//         System.out.println(removeAnagrams(words));
 //     }
 // }
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class leetcodedaily {
-    public static List<String> removeAnagrams(String[] words) {
-        List<String> ans = new ArrayList<>();
-        ans.add(words[0]);
-        for(int i=1;i<words.length;i++){
-            char [] a = words[i].toCharArray(),b=ans.get(ans.size()-1).toCharArray();
-            Arrays.sort(a);
-            Arrays.sort(b);
-            if(!Arrays.equals(a,b)){
-                ans.add(words[i]);
+public class leetcodedaily{
+    public static int maxIncreasingSubarrays(List<Integer> nums) {
+        int n = nums.size();
+        int prevRun = 0;
+        int curr = 1;
+        int K = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (nums.get(i) > nums.get(i - 1)) {
+                curr++;
+            } else {
+                prevRun = curr;
+                curr = 1;
             }
+            K = Math.max(K, curr / 2);
+            K = Math.max(K, Math.min(curr, prevRun));
         }
-        return ans;
+        return K;
     }
+
     public static void main(String[] args) {
-        String[] words = {"abba","baba","bbaa","cd","cd"};
-        System.out.println(removeAnagrams(words));
+        int nums[] = {2,5,7,8,9,2,3,4,3,1};
+        System.out.println(maxIncreasingSubarrays(nums));
     }
 }
