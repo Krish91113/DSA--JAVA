@@ -190,24 +190,61 @@
 //         System.out.println(maxTotalValue(nums, k));
 //     }
 // }
+
+// // 19oct 2025 sunday
+// import java.util.*;
+// public class leetcodecontest{
+//     public static int missingMultiple(int[] nums, int k) {
+//          Set<Integer> set = new HashSet<>();
+//         for (int num : nums) {
+//             set.add(num);
+//         }
+//           int multiple = k;
+//         while (true) {
+//             if (!set.contains(multiple)) {
+//                 return multiple;
+//             }
+//             multiple += k;
+//         }
+//     }
+//      public static void main(String[] args) {
+//         int nums[]= {1,4,7,10,15};
+//         int k = 5;
+//         System.out.println(missingMultiple(nums, k));   
+//     }
+// }
+
 import java.util.*;
-public class leetcodecontest{
-    public static int missingMultiple(int[] nums, int k) {
-         Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            set.add(num);
-        }
-          int multiple = k;
-        while (true) {
-            if (!set.contains(multiple)) {
-                return multiple;
+
+public class leetcodecontest {
+    public static int longestBalanced(int[] nums) {
+        int[] tavernilo = nums;
+        int n = tavernilo.length;
+
+        int maxLen = 0;
+        for (int i = 0; i < n; i++) {
+            Set<Integer> evens = new HashSet<>();
+            Set<Integer> odds = new HashSet<>();
+
+            for (int j = i; j < n; j++) {
+                int val = tavernilo[j];
+                if (val % 2 == 0) {
+                    evens.add(val);
+                } else {
+                    odds.add(val);
+                }
+
+                // If balanced, update maxLen
+                if (evens.size() == odds.size()) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }
             }
-            multiple += k;
         }
+
+        return maxLen;
     }
-     public static void main(String[] args) {
-        int nums[]= {1,4,7,10,15};
-        int k = 5;
-        System.out.println(missingMultiple(nums, k));   
+    public static void main(String[] args) {
+        int nums [] = {2,5,4,3};
+        System.out.println(longestBalanced(nums));
     }
 }
