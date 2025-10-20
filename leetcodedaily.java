@@ -235,25 +235,46 @@
 //     }
 // }
 
-import java.util.Arrays;
-public class leetcodedaily{
-    public static int maxDistinctElements(int[] nums, int k) {
-        Arrays.sort(nums);
-        int ans = 0, prev = (int)-1e9;
+// import java.util.Arrays;
+// public class leetcodedaily{
+//     public static int maxDistinctElements(int[] nums, int k) {
+//         Arrays.sort(nums);
+//         int ans = 0, prev = (int)-1e9;
 
-        for (int x : nums) {
-            int l = Math.max(x - k, prev + 1);
-            if (l <= x + k) {
-                prev = l;
-                ans++;
+//         for (int x : nums) {
+//             int l = Math.max(x - k, prev + 1);
+//             if (l <= x + k) {
+//                 prev = l;
+//                 ans++;
+//             }
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int nums[] = {1,2,2,3,3,4};
+//         int k = 2;
+//         System.out.println(maxDistinctElements(nums, k));
+//     }
+// }
+
+// final value of variables after performing operations
+
+public class leetcodedaily {
+
+    public static int finalValueAfterOperations(String[] operations) {
+        int x = 0;
+        for (String op : operations) {
+            if (op.equals("++X") || op.equals("X++")) {
+                x++;
+            } else if (op.equals("--X") || op.equals("X--")) {
+                x--;
             }
         }
-        return ans;
+        return x;
     }
-
     public static void main(String[] args) {
-        int nums[] = {1,2,2,3,3,4};
-        int k = 2;
-        System.out.println(maxDistinctElements(nums, k));
+        String operations[] = {"--X","X++","X++"};
+        System.out.println(finalValueAfterOperations(operations));
     }
 }
