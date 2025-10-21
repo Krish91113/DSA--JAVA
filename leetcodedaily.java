@@ -279,6 +279,8 @@
 //     }
 // }
 
+import java.util.*;
+
 public class leetcodedaily{
 
     public static int maxFrequency(int[] nums, int k, int ops) {
