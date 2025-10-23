@@ -279,36 +279,58 @@
 //     }
 // }
 
-import java.util.*;
+// import java.util.*;
+
+// public class leetcodedaily{
+
+//     public static int maxFrequency(int[] nums, int k, int ops) {
+//         int mx = Arrays.stream(nums).max().getAsInt();
+//         int n = mx + k + 2;
+//         int[] f = new int[n];
+//         for (int x : nums) f[x]++;
+
+//         int[] pre = new int[n];
+//         pre[0] = f[0];
+//         for (int i = 1; i < n; i++) pre[i] = pre[i - 1] + f[i];
+
+//         int ans = 0;
+//         for (int t = 0; t < n; t++) {
+//             if (f[t] == 0 && ops == 0) continue;
+//             int l = Math.max(0, t - k), r = Math.min(n - 1, t + k);
+//             int tot = pre[r] - (l > 0 ? pre[l - 1] : 0);
+//             int adj = tot - f[t];
+//             int val = f[t] + Math.min(ops, adj);
+//             ans = Math.max(ans, val);
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int nums[] = {1,2,4};
+//         int k = 5;
+//         int ops = 1;
+//         System.out.println(maxFrequency(nums, k, ops));
+//     }
+// }
+
 
 public class leetcodedaily{
-
-    public static int maxFrequency(int[] nums, int k, int ops) {
-        int mx = Arrays.stream(nums).max().getAsInt();
-        int n = mx + k + 2;
-        int[] f = new int[n];
-        for (int x : nums) f[x]++;
-
-        int[] pre = new int[n];
-        pre[0] = f[0];
-        for (int i = 1; i < n; i++) pre[i] = pre[i - 1] + f[i];
-
-        int ans = 0;
-        for (int t = 0; t < n; t++) {
-            if (f[t] == 0 && ops == 0) continue;
-            int l = Math.max(0, t - k), r = Math.min(n - 1, t + k);
-            int tot = pre[r] - (l > 0 ? pre[l - 1] : 0);
-            int adj = tot - f[t];
-            int val = f[t] + Math.min(ops, adj);
-            ans = Math.max(ans, val);
+    public static boolean hasSameDigits(String s) {
+        int i = 0;
+        String res = "";
+        while (s.length() > 2 && i < s.length() - 1) {
+            res += (char) ((((s.charAt(i) - '0') + (s.charAt(i + 1) - '0')) % 10) + '0');
+            i++;
+            if (i == s.length() - 1) {
+                s = res;
+                i = 0;
+                res = "";
+            }
         }
-        return ans;
+        return s.length() == 2 && s.charAt(0) == s.charAt(1);
     }
-
     public static void main(String[] args) {
-        int nums[] = {1,2,4};
-        int k = 5;
-        int ops = 1;
-        System.out.println(maxFrequency(nums, k, ops));
+        String s = "123123";
+        System.out.println(hasSameDigits(s));
     }
 }
