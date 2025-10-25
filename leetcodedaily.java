@@ -314,23 +314,44 @@
 // }
 
 
+// public class leetcodedaily{
+//     public static boolean hasSameDigits(String s) {
+//         int i = 0;
+//         String res = "";
+//         while (s.length() > 2 && i < s.length() - 1) {
+//             res += (char) ((((s.charAt(i) - '0') + (s.charAt(i + 1) - '0')) % 10) + '0');
+//             i++;
+//             if (i == s.length() - 1) {
+//                 s = res;
+//                 i = 0;
+//                 res = "";
+//             }
+//         }
+//         return s.length() == 2 && s.charAt(0) == s.charAt(1);
+//     }
+//     public static void main(String[] args) {
+//         String s = "123123";
+//         System.out.println(hasSameDigits(s));
+//     }
+// }
+
 public class leetcodedaily{
-    public static boolean hasSameDigits(String s) {
-        int i = 0;
-        String res = "";
-        while (s.length() > 2 && i < s.length() - 1) {
-            res += (char) ((((s.charAt(i) - '0') + (s.charAt(i + 1) - '0')) % 10) + '0');
-            i++;
-            if (i == s.length() - 1) {
-                s = res;
-                i = 0;
-                res = "";
+    public static int totalMoney(int n) {
+        int monday =0,count=0,sum=0;
+        for(int i=0;i<n;i++){
+            if(count == 7){
+                monday=i/7+1;
+                count=0;
+            }else{
+                monday++;
             }
+            sum+=monday;
+            count++;
         }
-        return s.length() == 2 && s.charAt(0) == s.charAt(1);
+        return sum;
     }
     public static void main(String[] args) {
-        String s = "123123";
-        System.out.println(hasSameDigits(s));
+        int n = 20;
+        System.out.println(totalMoney(n));
     }
 }
