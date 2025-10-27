@@ -335,23 +335,49 @@
 //     }
 // }
 
+// public class leetcodedaily{
+//     public static int totalMoney(int n) {
+//         int monday =0,count=0,sum=0;
+//         for(int i=0;i<n;i++){
+//             if(count == 7){
+//                 monday=i/7+1;
+//                 count=0;
+//             }else{
+//                 monday++;
+//             }
+//             sum+=monday;
+//             count++;
+//         }
+//         return sum;
+//     }
+//     public static void main(String[] args) {
+//         int n = 20;
+//         System.out.println(totalMoney(n));
+//     }
+// }
+
 public class leetcodedaily{
-    public static int totalMoney(int n) {
-        int monday =0,count=0,sum=0;
-        for(int i=0;i<n;i++){
-            if(count == 7){
-                monday=i/7+1;
-                count=0;
-            }else{
-                monday++;
+     public static int numberOfBeams(String[] bank) {
+        int prev=0;
+        int result=0;
+
+        for(String s : bank){
+            int current =0;
+            for(char c : s.toCharArray()){
+                if(c == '1'){
+                    current+=1;
+
+                }
             }
-            sum+=monday;
-            count++;
+            if(current > 0){
+                result+=prev*current;
+                prev=current;
+            }
         }
-        return sum;
+        return result;
     }
     public static void main(String[] args) {
-        int n = 20;
-        System.out.println(totalMoney(n));
+        String bank[]={"011001","000000","010100","001000"};
+        System.out.println(numberOfBeams(bank));
     }
 }
