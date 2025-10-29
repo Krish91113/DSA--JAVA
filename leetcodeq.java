@@ -1863,23 +1863,84 @@
 //     }
 // }
 
-import java.util.Arrays;
+// import java.util.Arrays;
 
-public class leetcodeq {
-    public static int findGCD(int [] nums){
-        Arrays.sort(nums);
-        int a = nums[0];
-        int b = nums[nums.length-1];
-        int gcd = 1;
-        for(int i=1;i<=Math.min(a, b);i++){
-            if(a%i==0 && b%i==0){
-                gcd = Math.max(gcd, i);
+// public class leetcodeq {
+//     public static int findGCD(int [] nums){
+//         Arrays.sort(nums);
+//         int a = nums[0];
+//         int b = nums[nums.length-1];
+//         int gcd = 1;
+//         for(int i=1;i<=Math.min(a, b);i++){
+//             if(a%i==0 && b%i==0){
+//                 gcd = Math.max(gcd, i);
+//             }
+//         }
+//         return gcd;
+//     }
+//     public static void main(String[] args) {
+//         int nums[] ={2,5,6,9,10};
+//         System.out.println(findGCD(nums));
+//     }   
+// }
+import java.util.*;
+public class leetcodeq{
+    public static void main (String args[]){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of data bits: ");
+        int m = sc.nextInt();
+        int [] data = new int[m+1];
+        System.out.println("Enter data bits (LSB first): ");
+        for(int i=1;i<=m;i++){
+            data[i]=sc.nextInt();
+        }
+        int r = 0;
+        while (Math.pow(2, r)<(m + r + 1)){
+            r++;           
+        }
+        int [] hamming = new int[m+r+1];
+        int j =0;
+        for(int i=1;i<=m+r;i++){
+            if(isPowerofTwo(i)){
+                hamming[i] = 0;
+            }else{
+                hamming[i] = data[++j];
             }
         }
-        return gcd;
+        for(int i=0;i<r;i++){
+            int parityPos= (int) Math.pow(2,i);
+            int parity = 0;
+            for(int k=parityPos;k<=m+r;k++){
+                if(((k>>i)&1) ==1 ) {
+                    parity ^=hamming[k];
+                }
+                hamming[parityPos]=parity;
+            }
+        }
+        System.out.println("Generated Hamming code: ");
+        for(int i=m+r;i>=1;i--){
+            System.out.print(hamming[i]+" ");
+        }
+        System.out.println();
+
+        System.out.println("Enter position to introduce error :");
+        int errorPos = sc.nextInt();
+        for(int i=0;i<r;i++){
+            int parity = 0;
+            for(int k=1;k<=m+r;k++){
+                if((k>>i)&1) ==1 ) {
+                    parity ^=hamming[k];
+                }
+            }
+            errorPos=parity*Math.pow(2,i);
+        }
+        if(errorPos==0){
+            System.out.println("No error detected in received Hamming code.");
+        }else{
+            System.out.println("Error detected at position: " + errorPos);
+        }
+        private static boolean isPowerOfTwo(int x){
+            return (x & (x -1))==0;
+        }
     }
-    public static void main(String[] args) {
-        int nums[] ={2,5,6,9,10};
-        System.out.println(findGCD(nums));
-    }   
 }
