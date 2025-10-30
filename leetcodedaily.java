@@ -356,28 +356,47 @@
 //     }
 // }
 
+// public class leetcodedaily{
+//      public static int numberOfBeams(String[] bank) {
+//         int prev=0;
+//         int result=0;
+
+//         for(String s : bank){
+//             int current =0;
+//             for(char c : s.toCharArray()){
+//                 if(c == '1'){
+//                     current+=1;
+
+//                 }
+//             }
+//             if(current > 0){
+//                 result+=prev*current;
+//                 prev=current;
+//             }
+//         }
+//         return result;
+//     }
+//     public static void main(String[] args) {
+//         String bank[]={"011001","000000","010100","001000"};
+//         System.out.println(numberOfBeams(bank));
+//     }
+// }
+import java.util.ArrayList;
+import java.util.List;
 public class leetcodedaily{
-     public static int numberOfBeams(String[] bank) {
-        int prev=0;
-        int result=0;
-
-        for(String s : bank){
-            int current =0;
-            for(char c : s.toCharArray()){
-                if(c == '1'){
-                    current+=1;
-
-                }
-            }
-            if(current > 0){
-                result+=prev*current;
-                prev=current;
-            }
-        }
-        return result;
+    
+    public static List<Boolean> prefixesDivBy5(int[] nums) {
+       List<Boolean>list=new ArrayList<>();
+      int num=0;
+      for(int i:nums){
+        num=((num<<1)+i)%5;
+        list.add(num==0);
+      }
+      return list;
     }
     public static void main(String[] args) {
-        String bank[]={"011001","000000","010100","001000"};
-        System.out.println(numberOfBeams(bank));
+        int nums[]={0,1,1,1,1,1};
+        System.out.println(prefixesDivBy5(nums));
     }
+
 }
