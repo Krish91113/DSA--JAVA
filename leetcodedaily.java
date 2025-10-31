@@ -387,10 +387,10 @@ public class leetcodedaily{
     
     public static List<Boolean> prefixesDivBy5(int[] nums) {
        List<Boolean>list=new ArrayList<>();
-      int num=0;
+      int ans=0;
       for(int i:nums){
-        num=((num<<1)+i)%5;
-        list.add(num==0);
+        ans=((ans<<1)+i)%5;
+        list.add(ans==0);
       }
       return list;
     }
