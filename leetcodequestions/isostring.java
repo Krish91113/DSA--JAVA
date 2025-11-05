@@ -1,5 +1,5 @@
-package leetcodequestion;
-
+package leetcodequestions;
+import java.util.HashMap;
 public class isostring{
 
     public boolean isIsomorphic(String s, String t) {
