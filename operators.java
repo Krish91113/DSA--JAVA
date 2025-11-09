@@ -50,43 +50,66 @@
 //     }
 // }
 
+// public class operators{
+
+//     public static int thirdMax(int[] nums) {
+//         long firstmax=Long.MIN_VALUE;   //consider long min
+//         long secmax=Long.MIN_VALUE;
+//         long thirdmax=nums[0];
+//        // if(nums.length==2){return Math.max(nums[0],nums[1]);} //if no thirdmin return max
+//        // if(nums.length==1){return nums[0];} //last wale m handle hogya dono edgecase
+//       for(int i=0;i<nums.length;i++){
+//         if(nums[i]>firstmax){ //if got ele greater than 1rd update sec and third as well 
+//             thirdmax=secmax;
+//             secmax=firstmax;
+//             firstmax=nums[i];
+//         }
+//         else if(nums[i]>secmax &&nums[i]<firstmax){ //if got ele big than sec update third ele
+//             thirdmax=secmax;
+//             secmax=nums[i];
+
+
+//         }
+//         else if(nums[i]>thirdmax && nums[i]<secmax){
+//             thirdmax=nums[i]; //if any new ele smaller than sec but bigger than third update third
+//         }
+
+//       } 
+//       if(thirdmax==Long.MIN_VALUE || secmax==Long.MIN_VALUE){return (int)firstmax;} //edge if no third  return firstmax
+//       return (int)thirdmax;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {3, 2, 1};
+//         System.out.println(thirdMax(nums));  // Output: 1
+
+//         int[] nums2 = {1, 2};
+//         System.out.println(thirdMax(nums2));  // Output: 2
+
+//         int[] nums3 = {2, 2, 3, 1};
+//         System.out.println(thirdMax(nums3));  // Output: 1
+//     }
+// }
+
 public class operators{
 
-    public static int thirdMax(int[] nums) {
-        long firstmax=Long.MIN_VALUE;   //consider long min
-        long secmax=Long.MIN_VALUE;
-        long thirdmax=nums[0];
-       // if(nums.length==2){return Math.max(nums[0],nums[1]);} //if no thirdmin return max
-       // if(nums.length==1){return nums[0];} //last wale m handle hogya dono edgecase
-      for(int i=0;i<nums.length;i++){
-        if(nums[i]>firstmax){ //if got ele greater than 1rd update sec and third as well 
-            thirdmax=secmax;
-            secmax=firstmax;
-            firstmax=nums[i];
+    public static int countOperations(int num1, int num2) 
+    {
+        int res = 0;
+        while (num1 != 0 && num2 != 0) 
+        {
+            res += num1 / num2;
+            num1 %= num2;
+            int temp = num1;
+            num1 = num2;
+            num2 = temp;
         }
-        else if(nums[i]>secmax &&nums[i]<firstmax){ //if got ele big than sec update third ele
-            thirdmax=secmax;
-            secmax=nums[i];
-
-
-        }
-        else if(nums[i]>thirdmax && nums[i]<secmax){
-            thirdmax=nums[i]; //if any new ele smaller than sec but bigger than third update third
-        }
-
-      } 
-      if(thirdmax==Long.MIN_VALUE || secmax==Long.MIN_VALUE){return (int)firstmax;} //edge if no third  return firstmax
-      return (int)thirdmax;
+        return res;
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 2, 1};
-        System.out.println(thirdMax(nums));  // Output: 1
-
-        int[] nums2 = {1, 2};
-        System.out.println(thirdMax(nums2));  // Output: 2
-
-        int[] nums3 = {2, 2, 3, 1};
-        System.out.println(thirdMax(nums3));  // Output: 1
+        int num1=2;
+        int num2=3;
+        System.out.println(countOperations(num1,num2));
     }
 }
