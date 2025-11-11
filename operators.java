@@ -116,23 +116,42 @@
 
 public class operators{
 
-    public static int minOperations(int[] nums) {
-        var stack = new int[nums.length + 1];
-        var top = 0;
-        var ans = 0;
-        for (var i = 0; i < nums.length; i++) {
-            while (stack[top] > nums[i]) {
-                top--;
-                ans++;
-            }
-            if (stack[top] != nums[i])
-                stack[++top] = nums[i];
-        }
-        return ans + top;
-    }
+    // public static int minOperations(int[] nums) {
+    //     var stack = new int[nums.length + 1];
+    //     var top = 0;
+    //     var ans = 0;
+    //     for (var i = 0; i < nums.length; i++) {
+    //         while (stack[top] > nums[i]) {
+    //             top--;
+    //             ans++;
+    //         }
+    //         if (stack[top] != nums[i])
+    //             stack[++top] = nums[i];
+    //     }
+    //     return ans + top;
+    // }
 
+    // public static void main(String[] args) {
+    //     int nums[] = {0,2};
+    //     System.out.println(minOperations(nums));
+    // }
+
+    
+    public static int findMaxForm(String[] S, int M, int N) {
+        int[][] dp = new int[M+1][N+1];
+        for (String str : S) {
+            int zeros = 0, ones = 0;
+            for (char c : str.toCharArray())
+                if (c == '0') zeros++;
+                else ones++;
+            for (int i = M; i >= zeros; i--)
+                for (int j = N; j >= ones; j--)
+                    dp[i][j] = Math.max(dp[i][j], dp[i-zeros][j-ones] + 1);
+        }
+        return dp[M][N];
+    }
     public static void main(String[] args) {
-        int nums[] = {0,2};
-        System.out.println(minOperations(nums));
+       int strs []= {"10","0001","111001","1","0"}, m = 5, n = 3;
+       System.out.println(findMaxForm(strs,m,n));
     }
 }
