@@ -151,7 +151,8 @@ public class operators{
         return dp[M][N];
     }
     public static void main(String[] args) {
-       int strs []= {"10","0001","111001","1","0"}, m = 5, n = 3;
-       System.out.println(findMaxForm(strs,m,n));
+       String strs []= {"10","0001","111001","1","0"};
+       int M = 5, N= 3;
+       System.out.println(findMaxForm(strs,M,N));
     }
 }
