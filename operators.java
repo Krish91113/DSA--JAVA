@@ -203,12 +203,12 @@
 
 public class operators{
     
-    public static int numberOfSubstrings(String s) {
-        int n = s.length();
+    public static int numberOfSubstrings(String p) {
+        int n = p.length();
         int[] pre = new int[n + 1];
         pre[0] = -1;
         for (int i = 0; i < n; i++) {
-            if (i == 0 || (i > 0 && s.charAt(i - 1) == '0')) {
+            if (i == 0 || (i > 0 && p.charAt(i - 1) == '0')) {
                 pre[i + 1] = i;
             } else {
                 pre[i + 1] = pre[i];
@@ -230,7 +230,7 @@ public class operators{
         return res;
     }
     public static void main(String[] args) {
-        String s = "00011";
+        String p = "00011";
         System.out.println(numberOfSubstrings(s));
     }
-}
+} 
