@@ -37,11 +37,11 @@ public class patterns {
             System.out.println();
         }*/
         // HAlf pyramid 
-        char ch = 'A';
+        char c = 'A';
         for(int i=1;i<=n;i++){
             for(int j=1;j<=i;j++){
-                System.out.print(ch);
-                ch++;
+                System.out.print(c);
+                c++;
             }
             System.out.println();
         }
