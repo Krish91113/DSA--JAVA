@@ -279,4 +279,4 @@ public class operators {
         int k = 3;
         System.out.println(minOperations(nums,k));
     }
-}
+}   
