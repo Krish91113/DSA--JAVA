@@ -264,24 +264,19 @@ public class operators{
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
-        if(list1!=null && list2!=null){
-        if(list1.val<list2.val){
-            list1.next=mergeTwoLists(list1.next,list2);
-            return list1;
-            }
-            else{
-                list2.next=mergeTwoLists(list1,list2.next);
-                return list2;
+public class operators {
+    
+    public static int minOperations(int[] nums, int k) {
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
         }
-        }
-        if(list1==null)
-            return list2;
-        return list1;
+        return sum%k;
     }
     public static void main(String[] args) {
-        
+        int nums[] = {2,3,4,5};
+        int k = 3;
+        System.out.println(minOperations(nums,k));
     }
 }
