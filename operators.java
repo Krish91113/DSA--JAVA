@@ -264,11 +264,11 @@ public class operators{
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-
+import java.util.*; 
 public class operators {
     
-    class Solution {
-    public int minSubarray(int[] nums, int p) {
+   
+    public static int minSubarray(int[] nums, int p) {
         long total = 0;
         for (int num : nums) total += num;
 
@@ -294,5 +294,7 @@ public class operators {
 
         return res == nums.length ? -1 : res;
     }
-
+    public static void main(String[] args) {
+        
+    }
 }   
