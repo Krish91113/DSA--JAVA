@@ -253,7 +253,7 @@
 //     }
 // }
 
-public class operators{
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
