@@ -1,7 +1,7 @@
 package leetcodequestions;
 public class sortcolors {
   
-    public st void sortColors(int[] nums) {
+    public static void sortColors(int[] nums) {
         int i=0,
             j=nums.length-1,
             k=0;
