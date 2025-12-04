@@ -111,7 +111,7 @@
 
     public class functions{
        
-    public boolean isLongPressedName(String name, String typed) {
+    public static boolean isLongPressedName(String name, String typed) {
         // Initialize pointers for name (i) and typed (j)
         int i = 0, n = name.length(), m = typed.length();
 
@@ -131,4 +131,8 @@
         return i == n;
     }
      public static void main(String[] args) {
+        String name = "alex";
+        String typed = "aaleex";
+        System.out.println(isLongPressedName(name, typed));
+     }  
 }
