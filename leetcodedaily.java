@@ -479,6 +479,7 @@ public class leetcodedaily{
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        int nums[] = {3,1,2,4,3};
+        System.out.println(countPartitions(nums));
     }
 }
