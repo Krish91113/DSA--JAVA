@@ -460,7 +460,7 @@
 // }
 
 public class leetcodedaily{
-    class Solution {
+    
     public int countPartitions(int[] nums) {
         int totalSum=0;
         for(int i=0;i<nums.length;i++){
@@ -477,7 +477,7 @@ public class leetcodedaily{
         }
         return count;
     }
-}
+
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
