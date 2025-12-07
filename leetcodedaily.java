@@ -459,27 +459,34 @@
 
 // }
 
+// public class leetcodedaily{
+    
+//     public static int countPartitions(int[] nums) {
+//         int totalSum=0;
+//         for(int i=0;i<nums.length;i++){
+//             totalSum+=nums[i];
+//         }
+//         int leftSum=0,
+//             count=0;
+//         for(int i=0;i<nums.length-1;i++){
+//             leftSum+=nums[i];
+//             int rightSum=totalSum - leftSum;
+//             if((leftSum % 2 ) == (rightSum % 2)){
+//                 count++;
+//             }
+//         }
+//         return count;
+//     }
+
+//     public static void main(String[] args) {
+//         int nums[] = {3,1,2,4,3};
+//         System.out.println(countPartitions(nums));
+//     }
+// }
 public class leetcodedaily{
     
-    public static int countPartitions(int[] nums) {
-        int totalSum=0;
-        for(int i=0;i<nums.length;i++){
-            totalSum+=nums[i];
-        }
-        int leftSum=0,
-            count=0;
-        for(int i=0;i<nums.length-1;i++){
-            leftSum+=nums[i];
-            int rightSum=totalSum - leftSum;
-            if((leftSum % 2 ) == (rightSum % 2)){
-                count++;
-            }
-        }
-        return count;
+   public int countOdds(int low, int high) {
+        return (high + 1) / 2 - (low / 2);
     }
-
-    public static void main(String[] args) {
-        int nums[] = {3,1,2,4,3};
-        System.out.println(countPartitions(nums))
-    }
+    
 }
