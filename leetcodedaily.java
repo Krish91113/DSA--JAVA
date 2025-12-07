@@ -483,10 +483,13 @@
 //         System.out.println(countPartitions(nums));
 //     }
 // }
+
+import Stacks.stacks;
+
 public class leetcodedaily{
     
-   public int countOdds(int low, int high) {
+   public static int countOdds(int low, int high) {
         return (high + 1) / 2 - (low / 2);
     }
-    
+
 }
