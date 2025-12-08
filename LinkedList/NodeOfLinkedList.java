@@ -24,8 +24,8 @@ public class NodeOfLinkedList {
         c.next = d;
         d.next = e;
         e.next = null;
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(a.next);
+        System.out.println(d);
+        System.out.println(b.next.next);
+        System.out.println(a.next.next.next);
     }
 }
