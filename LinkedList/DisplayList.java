@@ -12,14 +12,17 @@ public class DisplayList {
 
     public static void getVal(Node head, int index){
         Node temp = head;
-        int count =0;
-        while(temp != null){
-            if(count == index){
-                System.out.println(temp.val);
+        for(int i=0; i<index; i++){
+            if(temp == null){
+                System.out.println("Index out of bounds");
                 return;
             }
-            count++;
             temp = temp.next;
+        }
+        if(temp == null){
+            System.out.println("Index out of bounds");
+        } else {
+            System.out.println(temp.val);
         }
     }
     public static void display(Node head){
@@ -45,6 +48,6 @@ public class DisplayList {
         e.next = null;
 
         // display(a);
-        getVal(a, 6);
+        getVal(a, 3);
     }
 }
