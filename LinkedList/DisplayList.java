@@ -28,6 +28,9 @@ public class DisplayList {
     public static void display(Node head){
         Node temp = head;
         while(temp != null){
+            if(temp.val == temp.next.val){
+                continue;
+            }
             System.out.print(temp.val + " -> ");
             temp = temp.next;
         }
@@ -35,7 +38,7 @@ public class DisplayList {
     }
     public static void main(String[] args) {
         Node a = new Node(10); 
-        Node b = new Node(20); 
+        Node b = new Node(10); 
         Node c = new Node(30); 
         Node d = new Node(40); 
         Node e = new Node(50); 
@@ -47,7 +50,7 @@ public class DisplayList {
         d.next = e;
         e.next = null;
 
-        // display(a);
-        getVal(a, 3);
+        display(a);
+        
     }
 }
