@@ -11,6 +11,33 @@ class Node {
 class Linkedlist{
     Node head;
     Node tail;
+    int size=0;
+    void delete(int idx){
+        Node temp=head;
+        for(int i=1;i<idx;i++){
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        size--;
+    }
+    void insertAtIndex(int idx,int val){
+        if(idx>size || idx<0){
+            System.out.println("Invalid index");
+            return;
+        }
+        else if(idx==0) addAtHead(val);
+        else if(idx==size) addAtTail(val);
+        else{
+            Node temp=head;
+            for(int i=1;i<idx;i++){
+                temp=temp.next;
+            }
+            Node t = new Node(val);
+            t.next=temp.next;
+            temp.next=t;
+            size++;
+        }
+    }
     void addAtTail(int val){
         Node temp = new Node(val);
         if(tail==null) head=tail=temp;
@@ -18,6 +45,7 @@ class Linkedlist{
             tail.next=temp;
             tail=temp;
         }
+        size++;
     }
     void display(){
         if(head==null) return;
@@ -35,6 +63,7 @@ class Linkedlist{
             temp.next=head;
             head=temp;
         }
+        size++;
     }
     void deleteAtHead(){
         if(head==null){
@@ -42,6 +71,21 @@ class Linkedlist{
             return;
         }
         head=head.next;
+        size--;
+    }
+    void deleteAtTail(){
+        Node temp=head;
+        if(tail==null){
+            System.out.println("list is empty");
+            return;
+        }
+        while(temp!=null){
+            if(temp.next == tail){
+                temp.next=null;
+            }
+            temp=temp.next;
+        }
+        size--;
     }
 }
 public class LinkedListDataStructure {
@@ -51,10 +95,11 @@ public class LinkedListDataStructure {
         ll.addAtTail(20);
         ll.addAtTail(30);
         ll.addAtTail(40);
+        System.out.println(ll.size);
         ll.display();
-        ll.addAtHead(50);
+        ll.insertAtIndex(2, 50);
         ll.display();
-        ll.deleteAtHead();
+        ll.delete(3);
         ll.display();
     }   
 }
