@@ -1994,8 +1994,11 @@ public class leetcodeq{
     
     public static int absDifference(int[] nums, int k) {
         Arrays.sort(nums);
-        int i=0;
-        int minSum=nums[i]+nums[i+1];
+        int minSum=0;
+        for(int i=0;i<2;i++){
+
+            minSum=minSum+nums[i];
+        }
         int maxSum=nums[nums.length-1]+nums[nums.length-2];
         return Math.abs(maxSum-minSum);
     }
