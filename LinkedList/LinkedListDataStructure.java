@@ -28,6 +28,21 @@ class Linkedlist{
         }
         System.out.println(" ");
     }
+    void addAtHead(int val){
+        Node temp = new Node(val);
+        if(head==null) tail=head=temp;
+        else {
+            temp.next=head;
+            head=temp;
+        }
+    }
+    void deleteAtHead(){
+        if(head==null){
+            System.out.println("list is empty");
+            return;
+        }
+        head=head.next;
+    }
 }
 public class LinkedListDataStructure {
     public static void main(String[] args) {
@@ -36,6 +51,10 @@ public class LinkedListDataStructure {
         ll.addAtTail(20);
         ll.addAtTail(30);
         ll.addAtTail(40);
+        ll.display();
+        ll.addAtHead(50);
+        ll.display();
+        ll.deleteAtHead();
         ll.display();
     }   
 }
