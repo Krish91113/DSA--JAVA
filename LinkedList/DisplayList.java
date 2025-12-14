@@ -1,13 +1,7 @@
 package LinkedList;
 
 
-class Node {
-    int val;
-    Node next;
-    Node(int val){
-        this.val = val;
-    }
-}
+
 public class DisplayList {
 
     public static void getVal(Node head, int index){
