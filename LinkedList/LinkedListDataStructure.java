@@ -13,12 +13,18 @@ class Linkedlist{
     Node tail;
     int size=0;
     void delete(int idx){
-        Node temp=head;
+        if(idx==size-1) deleteAtTail();
+        else{
+            Node temp=head;
         for(int i=1;i<idx;i++){
             temp=temp.next;
         }
         temp.next=temp.next.next;
+        }
+
         size--;
+    }
+    
     }
     void insertAtIndex(int idx,int val){
         if(idx>size || idx<0){
@@ -100,6 +106,8 @@ public class LinkedListDataStructure {
         ll.insertAtIndex(2, 50);
         ll.display();
         ll.delete(3);
+        ll.display();
+        ll.deleteNode(50);
         ll.display();
     }   
 }
