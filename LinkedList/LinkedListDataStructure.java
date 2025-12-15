@@ -25,7 +25,6 @@ class Linkedlist{
         size--;
     }
     
-    }
     void insertAtIndex(int idx,int val){
         if(idx>size || idx<0){
             System.out.println("Invalid index");
@@ -107,7 +106,7 @@ public class LinkedListDataStructure {
         ll.display();
         ll.delete(3);
         ll.display();
-        ll.deleteNode(50);
+        
         ll.display();
     }   
 }
