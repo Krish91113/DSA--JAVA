@@ -145,7 +145,6 @@ class Solution {
 //partitiion a linked list around a value x such that all nodes less than x come before nodes greater than or equal to x.
 
 
-class Solution {
     public static Node partition(Node head, int x) {
         // Your code here
         Node d1=new Node(-1);
@@ -174,4 +173,3 @@ class Solution {
         
         return d1.next;
     }
-}
