@@ -484,14 +484,38 @@
 //     }
 // }
 
-class Solution {
-    public int mirrorDistance(int n) {
-        int ld=0;
-        while(n>0){
-            ld=((ld * 10) + (n % 10));
-            n/=10;
+// class Solution {
+//     public int mirrorDistance(int n) {
+//         int ld=0;
+//         while(n>0){
+//             ld=((ld * 10) + (n % 10));
+//             n/=10;
+//         }
+//         int ans = Math.abs(ld - n);
+//         return ans;
+//     }
+// }©leetcode
+
+public class leetcodedaily {
+    public static String largestEven(String s) {
+        char[] a = s.toCharArray();
+        long sum = 0; // Using long to handle larger numbers
+        long ans = -1; // Using -1 to indicate no even number found
+        
+        for (int i = 0; i < a.length; i++) {
+            // Convert char digit to actual int and add to sum
+            sum = (sum * 10) + (a[i] - '0');
+            
+            if (sum % 2 == 0) {
+                ans = Math.max(ans, sum);
+            }
         }
-        int ans = Math.abs(ld - n);
-        return ans;
+        
+        return (ans == -1) ? "" : String.valueOf(ans);
     }
-}©leetcode
+
+    public static void main(String[] args) {
+        String s = "11222112212122121122";
+        System.out.println(largestEven(s)); // Output: 1112
+    }
+}
