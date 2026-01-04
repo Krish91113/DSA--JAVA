@@ -496,26 +496,42 @@
 //     }
 // }©leetcode
 
-public class leetcodedaily {
+
+  public class leetcodedaily {
     public static String largestEven(String s) {
-        char[] a = s.toCharArray();
-        long sum = 0; // Using long to handle larger numbers
-        long ans = -1; // Using -1 to indicate no even number found
-        
-        for (int i = 0; i < a.length; i++) {
-            // Convert char digit to actual int and add to sum
-            sum = (sum * 10) + (a[i] - '0');
-            
-            if (sum % 2 == 0) {
-                ans = Math.max(ans, sum);
+        String maxEven = "";
+
+        // i is the starting index of the substring
+        for (int i = 0; i < s.length(); i++) {
+            // j is the ending index of the substring
+            for (int j = i + 1; j <= s.length(); j++) {
+                String current = s.substring(i, j);
+                
+                // 1. Get the last character to check if the number is even
+                char lastChar = current.charAt(current.length() - 1);
+                int lastDigit = lastChar - '0';
+
+                if (lastDigit % 2 == 0) {
+                    // 2. Compare current substring with maxEven found so far
+                    // Rule A: Longer string is always a larger number
+                    if (current.length() > maxEven.length()) {
+                        maxEven = current;
+                    } 
+                    // Rule B: If lengths are equal, compare values lexicographically
+                    else if (current.length() == maxEven.length()) {
+                        if (current.compareTo(maxEven) > 0) {
+                            maxEven = current;
+                        }
+                    }
+                }
             }
         }
-        
-        return (ans == -1) ? "" : String.valueOf(ans);
+        return maxEven;
     }
 
     public static void main(String[] args) {
+        // This long string will now work because we don't use 'long' or 'int' for the sum
         String s = "11222112212122121122";
-        System.out.println(largestEven(s)); // Output: 1112
+        System.out.println("Largest Even Substring: " + largestEven(s));
     }
 }
