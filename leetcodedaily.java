@@ -50,7 +50,7 @@
 // // // // // //     public static int swimInWater(int[][] grid) {
 // // // // // //         int m = grid.length, n = grid[0].length;
 // // // // // //         List<int[]> edges = new ArrayList<>();
-        
+
 // // // // // //         for (int i = 0; i < m; i++) {
 // // // // // //             for (int j = 0; j < n; j++) {
 // // // // // //                 if (i > 0)
@@ -59,11 +59,11 @@
 // // // // // //                     edges.add(new int[]{Math.max(grid[i][j], grid[i][j-1]), i*n+j, i*n+j-1});
 // // // // // //             }
 // // // // // //         }
-        
+
 // // // // // //         Collections.sort(edges, (a, b) -> a[0] - b[0]);
 // // // // // //         int[] parent = new int[m * n];
 // // // // // //         for (int i = 0; i < m * n; i++) parent[i] = i;
-        
+
 // // // // // //         for (int[] edge : edges) {
 // // // // // //             // Error fix: calls to union and find now resolve because they are static
 // // // // // //             union(parent, edge[1], edge[2]);
@@ -72,14 +72,14 @@
 // // // // // //         }
 // // // // // //         return grid[0][0];
 // // // // // //     }
-    
+
 // // // // // //     // ✅ Added 'static' keyword here
 // // // // // //     private static int find(int[] parent, int x) {
 // // // // // //         if (parent[x] != x)
 // // // // // //             parent[x] = find(parent, parent[x]);
 // // // // // //         return parent[x];
 // // // // // //     }
-    
+
 // // // // // //     // ✅ Added 'static' keyword here
 // // // // // //     private static void union(int[] parent, int x, int y) {
 // // // // // //         parent[find(parent, x)] = find(parent, y);
@@ -216,7 +216,6 @@
 // // // //     }
 // // // // }[[[[[=]q]]]]
 
-
 // // // public class leetcodedaily{
 // // //     public static int findSmallestInteger(int[] nums, int value) {
 // // //         int n = nums.length, res = 0;
@@ -313,7 +312,6 @@
 // // //     }
 // // // }
 
-
 // // // public class leetcodedaily{
 // // //     public static boolean hasSameDigits(String s) {
 // // //         int i = 0;
@@ -384,7 +382,7 @@
 // // import java.util.ArrayList;
 // // import java.util.List;
 // // public class leetcodedaily{
-    
+
 // //     public static List<Boolean> prefixesDivBy5(int[] nums) {
 // //        List<Boolean>list=new ArrayList<>();
 // //       int ans=0;
@@ -453,14 +451,14 @@
 //                 freq[bestVal] = 0;
 //             }
 //         }
-        
+
 //         return sum;
 //     }
 
 // }
 
 // public class leetcodedaily{
-    
+
 //     public static int countPartitions(int[] nums) {
 //         int totalSum=0;
 //         for(int i=0;i<nums.length;i++){
@@ -496,42 +494,107 @@
 //     }
 // }©leetcode
 
+// public class leetcodedaily {
+//     public static String largestEven(String s) {
+//         String maxEven = "";
 
-  public class leetcodedaily {
-    public static String largestEven(String s) {
-        String maxEven = "";
+//         for (int i = 0; i < s.length(); i++) {
 
-        // i is the starting index of the substring
-        for (int i = 0; i < s.length(); i++) {
-            // j is the ending index of the substring
-            for (int j = i + 1; j <= s.length(); j++) {
-                String current = s.substring(i, j);
-                
-                // 1. Get the last character to check if the number is even
-                char lastChar = current.charAt(current.length() - 1);
-                int lastDigit = lastChar - '0';
+//             for (int j = i + 1; j <= s.length(); j++) {
+//                 String current = s.substring(i, j);
 
-                if (lastDigit % 2 == 0) {
-                    // 2. Compare current substring with maxEven found so far
-                    // Rule A: Longer string is always a larger number
-                    if (current.length() > maxEven.length()) {
-                        maxEven = current;
-                    } 
-                    // Rule B: If lengths are equal, compare values lexicographically
-                    else if (current.length() == maxEven.length()) {
-                        if (current.compareTo(maxEven) > 0) {
-                            maxEven = current;
-                        }
-                    }
-                }
+//                 char lastChar = current.charAt(current.length() - 1);
+//                 int lastDigit = lastChar - '0';
+
+//                 if (lastDigit % 2 == 0) {
+//                     if (current.length() > maxEven.length()) {
+//                         maxEven = current;
+//                     }
+
+//                     else if (current.length() == maxEven.length()) {
+//                         if (current.compareTo(maxEven) > 0) {
+//                             maxEven = current;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         return maxEven;
+//     }
+
+//     public static void main(String[] args) {
+//         // This long string will now work because we don't use 'long' or 'int' for the
+//         // sum
+//         String s = "11222112212122121122";
+//         System.out.println("Largest Even Substring: " + largestEven(s));
+//     }
+// }
+
+public class addTwoNoLL {
+
+    // Must be static to be used in the static main method
+    public static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) { this.val = val; }
+    }
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode curr = dummy;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry > 0) {
+            int sum = carry;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
             }
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
         }
-        return maxEven;
+        return dummy.next;
+    }
+
+    // Helper: Converts Array -> Linked List
+    public static ListNode createList(int[] nums) {
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+        for (int x : nums) {
+            curr.next = new ListNode(x);
+            curr = curr.next;
+        }
+        return dummy.next;
+    }
+
+    // Helper: Prints Linked List
+    public static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + (head.next != null ? " -> " : ""));
+            head = head.next;
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
-        // This long string will now work because we don't use 'long' or 'int' for the sum
-        String s = "11222112212122121122";
-        System.out.println("Largest Even Substring: " + largestEven(s));
+        // Example: 342 + 465 = 807
+        // In reversed list: [2, 4, 3] + [5, 6, 4] = [7, 0, 8]
+        ListNode l1 = createList(new int[]{2, 4, 3});
+        ListNode l2 = createList(new int[]{5, 6, 4});
+
+        System.out.print("List 1: ");
+        printList(l1);
+        System.out.print("List 2: ");
+        printList(l2);
+
+        // Execute the logic
+        ListNode result = addTwoNumbers(l1, l2);
+
+        System.out.print("Result: ");
+        printList(result);
     }
 }
