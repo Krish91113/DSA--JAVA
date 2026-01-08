@@ -11,27 +11,29 @@ class MyStack {
     int size=0;
     void push(int val){
         Node temp = new Node(val);
-        if(head == null) temp=head=tail;
+        if(head == null) temp=head;
        else{
            temp.next =head;
            head=temp;
        }
        size++;
     }
-    void pop(){
+    int pop(){
         if(head == null) {
             System.out.println("Stack is empty");
-            return;
+            return -1;
         }
+        int x = head.val;
         head=head.next;
         size--;
+        return x;
     }
-    void peek(){
+    int peek(){
         if(head == null) {
             System.out.println("Stack is empty");
-            return;
+            return -1;
         }
-        System.out.println(head.val);
+        return head.val;
     }
     void size(){
         System.out.println(size);
