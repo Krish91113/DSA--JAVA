@@ -11,7 +11,7 @@ class MyStack {
     int size=0;
     void push(int val){
         Node temp = new Node(val);
-        if(head == null) temp=head;
+        if(head == null) head=temp;
        else{
            temp.next =head;
            head=temp;
@@ -55,6 +55,9 @@ public class LLImplementatioOfStack {
         st.push(20);
         st.push(30);
         st.push(40);
+        st.display();
+        st.pop();
+        st.peek();
         st.display();
     }
 }
