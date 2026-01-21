@@ -2,8 +2,8 @@ package Queue;
 import java.util.*;
 public class findWinner {
     public static void main(String[] args) {
-        int n=5;
-        int k=2;
+        int n=9;
+        int k=9;
         System.out.println(findTheWinner(n, k));
     }
     
