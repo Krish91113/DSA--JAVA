@@ -792,3 +792,40 @@
 //         return ans;
 //     }
 // }
+
+class Solution {
+    public int minimumPairRemoval(int[] nums) {
+        int ans = 0;
+        int n = nums.length;
+        // Keep working until the array is sorted
+        while (!isSorted(nums, n)) {
+            ans++;
+            int minSum = Integer.MAX_VALUE;
+            int pos = -1;
+            // Find the leftmost adjacent pair with the minimum sum
+            for (int i = 1; i < n; i++) {
+                int sum = nums[i] + nums[i - 1];
+                if (sum < minSum) {
+                    minSum = sum;
+                    pos = i;
+                }
+            }
+            // Replace the pair with their sum (at the leftmost position)
+            nums[pos - 1] = minSum;
+            // Shift the rest of the array left by one
+            for (int i = pos; i < n - 1; i++) {
+                nums[i] = nums[i + 1];
+            }
+            n--; // Reduce array size
+        }
+        return ans;
+    }
+
+    // Helper: Check if array is sorted (up to length n)
+    private boolean isSorted(int[] nums, int n) {
+        for (int i = 1; i < n; i++) {
+            if (nums[i] < nums[i - 1]) return false;
+        }
+        return true;
+    }
+}
