@@ -829,3 +829,22 @@
 //         return true;
 //     }
 // }
+
+class Solution {
+    public int minPairSum(int[] nums) {
+        Arrays.sort(nums);
+        //[2,3,4,5,6]
+        // i       j
+        //sum=0,max=0
+        int i=0,j=nums.length-1;
+        int sum=0;
+        int max=0;
+        while(i<j){
+            sum=nums[i]+nums[j];
+            max=Math.max(max,sum);
+            i++;
+            j--;
+        }
+        return max;
+    }
+}
