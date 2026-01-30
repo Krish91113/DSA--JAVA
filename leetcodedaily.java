@@ -901,3 +901,39 @@
 // }
 
 // koko eating banana
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        // Lower bound: slowest possible speed
+        int left = 1; 
+        
+        // Upper bound: fastest speed she'd ever need
+        int right = 0;
+        for (int p : piles) {
+            right = Math.max(right, p);
+        }
+        
+        int result = right;
+        
+        while (left <= right) {
+            int k = left + (right - left) / 2; // Prevents potential overflow
+            
+            if (canFinish(piles, h, k)) {
+                result = k;         // This speed works, save it
+                right = k - 1;      // Try to find a slower speed
+            } else {
+                left = k + 1;       // Too slow, must speed up
+            }
+        }
+        
+        return result;
+    }
+    
+    private boolean canFinish(int[] piles, int h, int k) {
+        long totalHours = 0; // Use long to prevent overflow for large inputs
+        for (int p : piles) {
+            // This is equivalent to Math.ceil((double)p / k)
+            totalHours += (p + k - 1) / k;
+        }
+        return totalHours <= h;
+    }
+}
