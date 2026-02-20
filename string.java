@@ -477,3 +477,30 @@
 //         return (x & (x+1))==0;
 //     }
 // }
+import java.util.*;
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int n = arr.length;
+        int left = 0;
+        int right = n - k;
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+
+            // Compare distances
+            if (x - arr[mid] > arr[mid + k] - x) {
+                left = mid + 1;   // move window right
+            } else {
+                right = mid;      // keep window left
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = left; i < left + k; i++) {
+            result.add(arr[i]);
+        }
+
+        return result;
+    }
+}
