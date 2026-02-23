@@ -32,10 +32,21 @@ public class bTreeImplementation {
         display(a);
         System.out.println();
         System.out.println(size(a));
+        System.out.println(sumOfBinaryTree(a));
+        System.out.println(product(a));
     }
     public static int size(Node root){
         if(root == null) return 0;
         return 1 + size(root.left) + size(root.right);
+    }
+
+    public static int sumOfBinaryTree(Node root){
+        if(root ==  null) return 0;
+        return root.val + sumOfBinaryTree(root.left) + sumOfBinaryTree(root.right);
+    }
+    public static int product(Node root){
+        if(root ==  null) return 1;
+        return root.val * product(root.left) * product(root.right);
     }
     public static void display(Node root){
         if(root == null) return;
