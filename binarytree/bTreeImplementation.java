@@ -34,6 +34,7 @@ public class bTreeImplementation {
         System.out.println(size(a));
         System.out.println(sumOfBinaryTree(a));
         System.out.println(product(a));
+        System.out.println(max(a));
     }
     public static int size(Node root){
         if(root == null) return 0;
@@ -47,6 +48,11 @@ public class bTreeImplementation {
     public static int product(Node root){
         if(root ==  null) return 1;
         return root.val * product(root.left) * product(root.right);
+    }
+
+    public static int max(Node root){
+        if(root == null) return Integer.MIN_VALUE;
+        return Math.max(root.val, Math.max(max(root.left), max(root.right)));
     }
     public static void display(Node root){
         if(root == null) return;
