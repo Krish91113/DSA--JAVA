@@ -1014,4 +1014,20 @@
 //         return result;
 //     }
 // }
-
+import java.math.BigInteger;
+class Solution {
+    public int numSteps(String s) {
+        BigInteger decimal = new BigInteger(s,2);
+        int count = 0;
+        while(decimal.compareTo(BigInteger.ONE) > 0){
+            if (!decimal.testBit(0)) { 
+                decimal = decimal.divide(BigInteger.TWO);
+            }
+            else { 
+                decimal = decimal.add(BigInteger.ONE);
+            }
+            count++;
+        }
+        return count;
+    }
+}
