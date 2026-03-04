@@ -7,6 +7,14 @@ class Node{
             this.val = val;
         }
     }
+class Pair{
+    Node node;
+    int level;
+    Pair(Node node, int level){
+        this.node = node;
+        this.level = level;
+    }
+}
  public class bTreeImplementation {
     
      public static void main(String[] args) {
@@ -29,7 +37,8 @@ class Node{
         b.left=d;
         c.left=f;
         c.right=g;
-        levelOrder(a);
+        // levelOrder(a);
+        levelOrderLineWise(a);
         //  display(a);
         //  System.out.println();
         //  System.out.println(size(a));
@@ -38,17 +47,32 @@ class Node{
         //  System.out.println(max(a));
         // System.out.println(findMin(a));
      }
-     public static void levelOrder(Node root){
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
+     public static void levelOrderLineWise(Node root){
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(root, 0));
+        int currLevel = 0;
         while(q.size() > 0){
-            Node curr = q.remove();
-            System.out.print(curr.val + " ");
-            if(curr.left != null) q.add(curr.left);
-            if(curr.right != null) q.add(curr.right);
+            Pair front = q.remove();
+            if(front.level!= currLevel){
+                currLevel++;
+                System.out.println(); // Print a newline when we move to the next level
+            }
+            System.out.print(front.node.val + " ");
+            if(front.node.left != null) q.add(new Pair(front.node.left, front.level + 1));
+            if(front.node.right != null) q.add(new Pair(front.node.right, front.level + 1));
         }
-        System.out.println(); // Print a newline for better formatting
      }
+    //  public static void levelOrder(Node root){
+    //     Queue<Node> q = new LinkedList<>();
+    //     q.add(root);
+    //     while(q.size() > 0){
+    //         Node curr = q.remove();
+    //         System.out.print(curr.val + " ");
+    //         if(curr.left != null) q.add(curr.left);
+    //         if(curr.right != null) q.add(curr.right);
+    //     }
+    //     System.out.println(); // Print a newline for better formatting
+    //  }
     }
     //  public static int size(Node root){
     //      if(root == null) return 0;

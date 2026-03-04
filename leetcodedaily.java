@@ -1058,18 +1058,18 @@ class Solution {
  *     }
  * }
  */
-class Solution {
-    private static void dfs(TreeNode root, ArrayList<Integer> ans){
-        if(root == null ){
-            return ;
-        }
-        ans.add(root.val);
-        dfs(root.left,ans);
-        dfs(root.right,ans);
-    }
-    public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> a = new ArrayList<>();
-        dfs(root,a);
-        return a;
-    }
-}
+// class Solution {
+//     private static void dfs(TreeNode root, ArrayList<Integer> ans){
+//         if(root == null ){
+//             return ;
+//         }
+//         ans.add(root.val);
+//         dfs(root.left,ans);
+//         dfs(root.right,ans);
+//     }
+//     public List<Integer> preorderTraversal(TreeNode root) {
+//         ArrayList<Integer> a = new ArrayList<>();
+//         dfs(root,a);
+//         return a;
+//     }
+// }
