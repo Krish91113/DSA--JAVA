@@ -1073,3 +1073,21 @@ class Solution {
 //         return a;
 //     }
 // }
+
+import java.util.*;
+class Solution {
+    public int minOperations(String s) {
+        int p1 = 0,p2= 0;
+        for(int i=0;i<s.length();i++){
+            char c1 = (i % 2 == 0)? '0' : '1';
+            char c2 = (i % 2 == 0)? '1' : '0';
+            if(s.charAt(i)!=c1){
+                p2++;
+            }
+            if(s.charAt(i)!=c2){
+                p1++;
+            }
+        }
+        return Math.min(p1,p2);
+    }
+}
