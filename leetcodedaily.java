@@ -1102,3 +1102,32 @@
 //         return true;
 //     }
 // // }
+class Solution {
+    public int minFlips(String s) {
+        int n = s.length();
+        s = s + s;
+        int res = Integer.MAX_VALUE;
+        int flip1 = 0, flip2 = 0;
+        int i = 0, j = 0;
+
+        while (j < 2 * n) {
+            char expected1 = (j % 2 == 0) ? '1' : '0';
+            char expected2 = (j % 2 == 0) ? '0' : '1';
+            if (s.charAt(j) != expected1) flip1++;
+            if (s.charAt(j) != expected2) flip2++;
+
+            if (j - i + 1 > n) {
+                char exp1 = (i % 2 == 0) ? '1' : '0';
+                char exp2 = (i % 2 == 0) ? '0' : '1';
+                if (s.charAt(i) != exp1) flip1--;
+                if (s.charAt(i) != exp2) flip2--;
+                i++;
+            }
+            if (j - i + 1 == n) {
+                res = Math.min(res, Math.min(flip1, flip2));
+            }
+            j++;
+        }
+        return res;
+    }
+}
