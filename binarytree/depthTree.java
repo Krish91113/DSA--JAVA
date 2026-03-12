@@ -8,3 +8,11 @@ public class depthTree {
     }
 }
 }
+private static void dfs(TreeNode root, ArrayList<Integer> ans){
+        if(root == null ){
+            return ;
+        }
+        ans.add(root.val);
+        dfs(root.left,ans);
+        dfs(root.right,ans);
+    }
