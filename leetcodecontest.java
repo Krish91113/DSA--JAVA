@@ -248,3 +248,25 @@
 //         System.out.println(longestBalanced(nums));
 //     }
 // }
+class Solution {
+    public int countCommas(int n) {
+        int commas = 0;
+        
+        // Add 1 comma for every number >= 1,000
+        if (n >= 1000) {
+            commas += (n - 999);
+        }
+        
+        // Add a 2nd comma for every number >= 1,000,000
+        if (n >= 1000000) {
+            commas += (n - 999999);
+        }
+        
+        // Add a 3rd comma for every number >= 1,000,000,000
+        if (n >= 1000000000) {
+            commas += (n - 999999999);
+        }
+        
+        return commas;
+    }
+}
