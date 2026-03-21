@@ -1184,3 +1184,15 @@ class Solution {
         return res;
     }
 }
+class Solution {
+    public int[][] reverseSubmatrix(int[][] grid, int x, int y, int k) {
+        for(int i=0;i<k/2;i++){
+            for(int j=0;j<k;j++){
+                int swap = grid[x+i][y+j];
+                grid[x+i][y+j]=grid[x+k-1-i][y+j];
+                grid[x+k-1-i][y+j]= swap;
+            }
+        }
+        return grid;
+    }
+}
