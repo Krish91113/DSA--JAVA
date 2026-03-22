@@ -1,0 +1,25 @@
+import javax.swing.tree.TreeNode;
+
+public class kthSmallestElement {
+    static int ans;
+    static int k2;
+
+    public static void main(String[] args) {
+
+    
+    private static void inorder(TreeNode root){
+        if(root == null) return;
+        inorder(root.left);
+        k2--;
+        if(k2 == 0) ans= root.val;
+        inorder(root.right);
+    }
+    public int kthSmallest(TreeNode root, int k) {
+        k2=k;
+        ans= -1;
+        inorder(root);
+        return ans;
+    }
+
+    }
+}
