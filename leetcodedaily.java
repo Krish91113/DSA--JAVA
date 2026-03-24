@@ -1196,3 +1196,33 @@
 //         return grid;
 //     }
 // }
+class Solution {
+    public int[][] constructProductMatrix(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int[][] res = new int[n][m];
+        long runningProduct = 1;
+        int mod = 12345;
+
+        // Step 1: Forward Pass (Prefix Product)
+        // Calculate the product of all elements appearing BEFORE grid[i][j]
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                res[i][j] = (int) (runningProduct % mod);
+                runningProduct = (runningProduct * (grid[i][j] % mod)) % mod;
+            }
+        }
+
+        // Step 2: Backward Pass (Suffix Product)
+        // Multiply the prefix by the product of all elements appearing AFTER grid[i][j]
+        runningProduct = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                res[i][j] = (int) ((res[i][j] * runningProduct) % mod);
+                runningProduct = (runningProduct * (grid[i][j] % mod)) % mod;
+            }
+        }
+
+        return res;
+    }
+}
