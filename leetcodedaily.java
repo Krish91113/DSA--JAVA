@@ -1226,3 +1226,21 @@
 //         return res;
 //     }
 // }
+class Solution {
+    public boolean judgeCircle(String moves) {
+        int xD=0,yd=0;
+        for(int i=0;i<moves.length();i++){
+            char ch = moves.charAt(i);
+            if(ch == 'U'){
+                yd++;
+            }else if(ch == 'D'){
+                yd--;
+            }else if(ch == 'R'){
+                xD++;
+            }else{
+                xD--;
+            }
+        }
+        return yd == 0 && xD == 0;
+    }
+}
