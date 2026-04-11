@@ -1374,3 +1374,59 @@ class Solution {
         return res == 200 ? -1 : res;
     }
 }
+class Solution {
+    public int minOperations(int[] nums) {
+        if (nums.length == 0) return 0;
+        
+        // Compute cost for two patterns
+        int cost1 = 0; // even indices -> prime, odd -> non-prime
+        int cost2 = 0; // even indices -> non-prime, odd -> prime
+        
+        for (int i = 0; i < nums.length; i++) {
+            boolean isP = isPrime(nums[i]);
+            
+            if (i % 2 == 0) {  // even index
+                cost1 += isP ? 0 : distToPrime(nums[i]);
+                cost2 += isP ? 1 : 0;           // make non-prime
+            } else {           // odd index
+                cost1 += isP ? 1 : 0;           // make non-prime
+                cost2 += isP ? 0 : distToPrime(nums[i]);
+            }
+        }
+        
+        return Math.min(cost1, cost2);
+    }
+    
+    private boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+        for (int i = 3; i * i <= n; i += 2) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+    
+    private int distToPrime(int n) {
+        if (isPrime(n)) return 0;
+        if (n == 1) return 1; // to 2
+        
+        // Check downwards and upwards
+        int down = n - 1;
+        while (down >= 2) {
+            if (isPrime(down)) break;
+            down--;
+        }
+        
+        int up = n + 1;
+        while (true) {  // safe because there is always a prime nearby
+            if (isPrime(up)) break;
+            up++;
+        }
+        
+        int costDown = (down >= 2) ? n - down : Integer.MAX_VALUE;
+        int costUp = up - n;
+        
+        return Math.min(costDown, costUp);
+    }
+}
