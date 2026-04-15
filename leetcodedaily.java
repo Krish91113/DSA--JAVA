@@ -1453,3 +1453,15 @@ class Solution {
         return ans;
     }
 }
+class Solution {
+    public int closestTarget(String[] words, String target, int startIndex) {
+        int n = words.length,ans=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            if(words[i].equals(target)){
+                int dist = Math.min((i-startIndex + n) % n, (startIndex - i + n) % n);
+                ans = Math.min(ans,dist);
+            }
+        }
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+}
