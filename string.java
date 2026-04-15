@@ -504,3 +504,25 @@ class Solution {
         return result;
     }
 }
+//longestsubstring without repeating characters
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length() == 0) return 0;
+        HashSet<Character> set = new HashSet<>();
+        int ans=1;
+        for(int i=0;i<s.length();i++){
+            set.clear();
+            char ch = s.charAt(i);
+            set.add(ch);
+            int c = 1;
+            for(int j=i+1;j<s.length();j++){
+                if(s.charAt(i)!=s.charAt(j) && !set.contains(s.charAt(j))){
+                    set.add(s.charAt(j));
+                    c++;
+                }else if(set.contains(s.charAt(j))) break;
+                ans = Math.max(ans,c);
+            }
+        }
+        return ans;
+    }
+}
