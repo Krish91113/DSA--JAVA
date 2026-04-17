@@ -566,3 +566,28 @@ class Solution {
         return ans;
     }
 }
+class Solution {
+    private static int reverse(int n){
+    int rev = 0;
+    while(n > 0){
+        int rem = n % 10;
+        rev = (rev * 10) + rem;
+        n = n / 10;
+    }
+    return rev;
+}
+    public int minMirrorPairDistance(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int ans =Integer.MAX_VALUE;
+        for(int i=0;i<nums.length;i++){
+            int curr = nums[i];
+            if(map.containsKey(curr)){
+                int prev = map.get(curr);
+                ans= Math.min(ans, i - prev);
+            }
+            int reverse = reverse(curr);
+            map.put(reverse, i);
+        }
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+}
