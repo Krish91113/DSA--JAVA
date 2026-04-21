@@ -665,3 +665,22 @@ class Solution {
         return result;
     }
 }
+public boolean hasTripletSum(int arr[], int target) {
+          Arrays.sort(arr);
+          int n = arr.length;
+          for(int i=0;i<arr.length;i++){
+              int l =i+1;
+              int r =n-1;
+              while(l < r){
+                  int sum = arr[i] + arr[l] + arr[r];
+                  if(sum == target){
+                      return true;
+                  }else if(sum > target){
+                      r--;
+                  }else{
+                      l++;
+                  }
+              }
+          }
+          return false;
+    }
