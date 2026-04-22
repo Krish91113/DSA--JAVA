@@ -684,3 +684,5 @@ public boolean hasTripletSum(int arr[], int target) {
           }
           return false;
     }
+
+    
