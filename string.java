@@ -685,4 +685,60 @@ public boolean hasTripletSum(int arr[], int target) {
           return false;
     }
 
-    
+    public List<String> twoEditWords(String[] queries, String[] dictionary) {
+        int q= queries.length;
+        int d= dictionary.length;
+        int n= queries[0].length();
+        List<String> res = new ArrayList<>();
+        for(int i=0;i<q;i++){
+            for(int j=0;j<d;j++){
+                int unM=0;
+                String query = queries[i];
+                String dist = dictionary[j];
+                for(int k=0;k<n;k++){
+                    if(query.charAt(k) != dist.charAt(k)){
+                        unM++;
+                    }
+                }
+                if(unM < 3){
+                    res.add(query);
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+    class Solution {
+    public long[] distance(int[] nums) {
+        int n = nums.length;
+        long[] ans = new long[n];
+
+        Map<Integer, List<Integer>> mp = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            mp.computeIfAbsent(nums[i], k -> new ArrayList<>()).add(i);
+        }
+
+        for (List<Integer> pos : mp.values()) {
+
+            long sum = 0;
+            for (int x : pos) sum += x;
+
+            long leftSum = 0;
+            int m = pos.size();
+
+            for (int i = 0; i < m; i++) {
+                long rightSum = sum - leftSum - pos.get(i);
+
+                long left  = (long) pos.get(i) * i - leftSum;
+                long right = rightSum - (long) pos.get(i) * (m - i - 1);
+
+                ans[pos.get(i)] = left + right;
+
+                leftSum += pos.get(i);
+            }
+        }
+
+        return ans;
+    }
+}
