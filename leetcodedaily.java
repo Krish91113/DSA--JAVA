@@ -1563,3 +1563,27 @@ class Solution {
         return ans;
     }
 }
+public static int mirrorFrequencyDistance(String s) {
+    int[] freq = new int[128];
+    for (char ch : s.toCharArray()) {
+        freq[ch]++;
+    }
+    
+    int total = 0;
+    boolean[] visited = new boolean[128];
+    
+    for (int i = 0; i < 128; i++) {
+        if (freq[i] == 0 || visited[i]) continue;
+        
+        char c = (char) i;
+        char m = getMirror(c);
+        
+        int diff = Math.abs(freq[c] - freq[m]);
+        total += diff;
+        
+        visited[c] = true;
+        if (c != m) visited[m] = true;
+    }
+    
+    return total;
+}
