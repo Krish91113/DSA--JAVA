@@ -1587,3 +1587,29 @@ public static int mirrorFrequencyDistance(String s) {
     
     return total;
 }
+class Solution {
+    int m,n;
+    Integer dp[][][];
+    public int maxPathScore(int[][] grid, int k) {
+        m = grid.length;
+        n = grid[0].length;
+        dp = new Integer[m][n][k+1];
+        return helper(0,0,grid,k);
+    }
+     int helper(int r,int c,int[][] grid,int k){
+        if(r>=m || c>= n || k<0) return -1;
+        int val = grid[r][c];
+        boolean anyCost = val > 0;
+        if(anyCost && k<= 0) return -1;
+
+        if(r==m-1 && c==n-1) return val;
+        if(dp[r][c][k]!= null) return dp[r][c][k];
+        int nK = k;
+        if(val > 0)
+        nK=k-1;
+        int right = helper(r,c+1,grid,nK);
+        int down = helper(r+1,c , grid, nK);
+        if(right == -1 && down == -1) return dp[r][c][k] = -1;
+        return  dp[r][c][k]= val + Math.max(right, down);
+    }
+}
