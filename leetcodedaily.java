@@ -1613,3 +1613,21 @@ class Solution {
         return  dp[r][c][k]= val + Math.max(right, down);
     }
 }
+class Solution {
+    public int maxRotateFunction(int[] nums) {
+        int n = nums.length;
+        int sum = 0;
+        int fsum= 0;
+        int ans = 0;
+        for(int i= 0;i<n;i++){
+            sum+=nums[i];
+            fsum+= i*nums[i];
+        }
+        ans = fsum;
+        for(int i=1;i<n;i++){
+            fsum= fsum + sum - n*nums[n-i];
+            ans = Math.max(fsum,ans);
+        }
+        return ans;
+    }
+}
