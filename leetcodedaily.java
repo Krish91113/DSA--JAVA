@@ -1631,3 +1631,27 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public int rotatedDigits(int n) {
+        int c =0;
+        for(int i=2;i<=n;i++){
+            if(isGood(i)) c++;
+        }
+        return c;
+    }
+    public static boolean isGood(int num){
+        boolean isValid = false;
+        while(num>0){
+            int rem = num % 10;
+            if(rem == 3 || rem == 4 || rem == 7 ){
+                isValid = false;
+                return isValid;
+            }
+            if(rem == 2 || rem == 5 || rem == 6 || rem == 9 ){
+                isValid = true;
+            }
+            num/=10;
+        }
+        return isValid;
+    }
+}
