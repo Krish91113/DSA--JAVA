@@ -1862,3 +1862,32 @@
 //         return -1;
 //     }
 // }
+class Solution {
+    public int[] scoreValidator(String[] events) {
+        int score = 0;
+        int wickets = 0;
+
+        for (String e : events) {
+
+            if (wickets == 10) break;
+
+            switch (e) {
+
+                case "W":
+                    wickets++;
+                    break;
+
+                case "WD":
+                case "NB":
+                    score++;
+                    break;
+
+                default:
+                    // numeric runs
+                    score += Integer.parseInt(e);
+            }
+        }
+
+        return new int[]{score, wickets};
+    }
+}
