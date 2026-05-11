@@ -1922,3 +1922,21 @@ class Solution {
         return dp[n - 1];
     }
 }
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        List<Integer> li= new ArrayList<>();
+        for(int i=nums.length-1;i>=0;i--){
+            int num = nums[i];
+            while(num > 0){
+                li.add(num%10);
+                num/=10; 
+            }
+        }
+        int ans[] = new int[li.size()];
+        int id= 0;
+        for(int i=li.size()-1;i>=0;i--){
+            ans[id++]=li.get(i);
+        }
+        return ans;
+    }
+}
