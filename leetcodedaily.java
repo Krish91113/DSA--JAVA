@@ -1960,3 +1960,50 @@
 //         return min;
 //     }
 // }
+
+class Solution {
+    public int countKthRoots(int l, int r, int k) {
+        int velnacqori = 0;
+        
+        if (k == 1) {
+            return r - l + 1;
+        }
+        
+        int count = 0;
+        long x = 0;
+        
+        while (true) {
+            long val = safePower(x, k);
+            
+            if (val > r) {
+                break;
+            }
+            
+            if (val >= l) {
+                count++;
+            }
+            
+            x++;
+            
+            // Safety limit (bahut safe hai)
+            if (x > 100000) break;
+        }
+        
+        return count;
+    }
+    
+    private long safePower(long x, int k) {
+        if (x == 0) return 0;
+        if (x == 1) return 1;
+        
+        long res = 1;
+        for (int i = 1; i <= k; i++) {
+            // Overflow se bachne ke liye
+            if (x != 0 && res > (long) 2_000_000_000 / x) {
+                return (long) 2_000_000_000 + 5;
+            }
+            res = res * x;
+        }
+        return res;
+    }
+}
