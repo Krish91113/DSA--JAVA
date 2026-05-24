@@ -2090,3 +2090,37 @@ class Solution {
         return c<=1;
     }
 }
+class Solution {
+    public int passwordStrength(String password) {
+        if (password == null || password.isEmpty()) {
+            return 0;
+        }
+        
+        int strength = 0;
+        HashSet<Character> seen = new HashSet<>();
+        
+        for (char ch : password.toCharArray()) {
+            
+            if (seen.contains(ch)) {
+                continue;  // Skip duplicate characters
+            }
+            
+            seen.add(ch);  // Mark as seen
+            
+            if (ch >= 'a' && ch <= 'z') {
+                strength += 1;   // Lowercase
+            } 
+            else if (ch >= 'A' && ch <= 'Z') {
+                strength += 2;   // Uppercase
+            } 
+            else if (ch >= '0' && ch <= '9') {
+                strength += 3;   // Digit
+            } 
+            else {
+                strength += 5;   // Symbol / Special character
+            }
+        }
+        
+        return strength;
+    }
+}
