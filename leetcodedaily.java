@@ -2150,3 +2150,34 @@ class Solution {
         return reach > 0;
     }
 }
+class Solution {
+    public int numberOfSpecialChars(String word) {
+        if (word == null || word.isEmpty()) {
+            return 0;
+        }
+        
+        HashSet<Integer> lower = new HashSet<>();
+        HashSet<Integer> upper = new HashSet<>();
+        
+        for (char ch : word.toCharArray()) {
+            if (ch >= 'a' && ch <= 'z') {
+                lower.add((int) ch);           // store lowercase ascii
+            } 
+            else if (ch >= 'A' && ch <= 'Z') {
+                upper.add((int) ch);           // store uppercase ascii
+            }
+        }
+        
+        int count = 0;
+        
+        // Check for each lowercase if its uppercase version exists
+        for (int low : lower) {
+            int up = low - 32;                 // 'a'(97) - 32 = 'A'(65)
+            if (upper.contains(up)) {
+                count++;
+            }
+        }
+        
+        return count;
+    }
+}
