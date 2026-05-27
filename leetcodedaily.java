@@ -2181,3 +2181,26 @@
 //         return count;
 //     }
 // }
+class Solution {
+    public int numberOfSpecialChars(String word) {
+        int [] low = new int[26];
+        int [] upp= new int[26];
+        Arrays.fill(low,-1);
+        Arrays.fill(upp,Integer.MAX_VALUE);
+        for(int i=0;i<word.length();i++){
+            char ch = word.charAt(i);
+            if(Character.isUpperCase(ch)){
+                upp[ch-'A']= Math.min(upp[ch-'A'],i);
+            }else{
+                low[ch-'a']=i;
+            }
+        }
+        int count =0;
+        for(int i=0;i<26;i++){
+            if(low[i]!=-1 && upp[i]!=Integer.MAX_VALUE && low[i]<upp[i]){
+                count++;
+            }
+        }
+        return count;
+    }
+}
