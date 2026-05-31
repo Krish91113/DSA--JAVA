@@ -2297,3 +2297,22 @@ class Solution {
         return ans;
     }
 }
+class Solution {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+        if (asteroids.length == 0) return true;
+        Arrays.sort(asteroids);
+        if (mass < asteroids[0]) {
+            return false;
+        }
+        long currentMass = mass;         
+        for (int asteroid : asteroids) {
+            if (currentMass >= asteroid) {
+                currentMass += asteroid;
+            } else {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
