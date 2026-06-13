@@ -2389,3 +2389,22 @@
 //                 return c;
 //     }
 // }
+class Solution {
+    public String mapWordWeights(String[] words, int[] weights) {
+        StringBuilder sb = new StringBuilder();
+        int i=0,n=words.length;
+        while(i<n){
+            String c=words[i];
+            int sum = 0;
+            for(int j=0;j<c.length();j++){
+                int k= c.charAt(j) - 'a';
+                sum+=weights[k];
+            }
+            int x = sum % 26;
+            char ch= (char)('z' - x );
+            sb.append(ch);
+            i++;
+        }
+        return sb.toString();
+    }
+}
