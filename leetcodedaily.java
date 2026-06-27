@@ -2428,3 +2428,33 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public int maximumLength(int[] nums) {
+        HashMap<Long,Integer> map = new HashMap<>();
+        for(int num:nums){
+            map.put((long)num, map.getOrDefault((long)num,0)+1);
+        }
+        //ones trial
+        int ans = 0;
+        if(map.containsKey(1)){
+            int ones = map.get(1);
+            ans = (ones % 2 == 0 )?ones= 1:ones;
+            map.remove(1L);
+        }
+        for(long num:map.keySet()){
+            int c = 0;
+            long curr= num;
+            while(map.containsKey(curr)){
+                if(map.get(curr)>= 2) c+= 2;
+                else {
+                    c++;
+                    break;
+                }
+                curr = curr * curr;
+            }
+            if(c%2 == 0) c--;
+            ans = Math.max(ans,c);
+        }
+        return ans;
+    }
+}
