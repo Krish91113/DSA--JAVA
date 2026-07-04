@@ -23,3 +23,16 @@ public class distance {
         System.out.println(findTheDistanceValue(arr1, arr2, d));
     }
 }
+
+class Solution {
+    public int maxValidPairSum(int[] nums, int k) {
+        //[1,3,4,2,8]
+        //     j
+        int maxI=0,maxSum=0;
+        for(int j=k;j<nums.length;j++){
+            maxI=Math.max(maxI,nums[j-k]);
+            maxSum= Math.max(maxSum,maxI+nums[j]);
+        }
+        return maxSum;
+    }
+}
