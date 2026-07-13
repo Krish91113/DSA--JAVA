@@ -2675,3 +2675,21 @@
 //         return arr;
 //     }
 // }
+class Solution {
+    public List<Integer> sequentialDigits(int low, int high) {
+        ArrayList<Integer> li =new ArrayList<>();
+for(int i=1;i<10;i++){
+	int ld =0;
+	for(int j=i;j<10;j++){
+		ld =ld*10+j;
+		if(ld>= low && ld<= high){
+			li.add(ld);
+		}else if(ld>high){
+			break;
+		}
+	}
+}
+Collections.sort(li);
+return li;
+    }
+}
