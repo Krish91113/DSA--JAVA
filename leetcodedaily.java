@@ -2744,3 +2744,27 @@ class Solution {
         return a;
     }
 }
+class Solution {
+    public static long gcd (long a, long b){
+        if(b == 0) return a;
+        return gcd(b,a%b);
+    }
+    public long gcdSum(int[] nums) {
+        long max = Integer.MIN_VALUE;
+        int n = nums.length;
+        long pre[] = new long[n];
+        for(int i=0;i<n;i++){
+            max = Math.max(max,nums[i]);
+            pre[i]=gcd(max,nums[i]);
+        }
+        Arrays.sort(pre);
+        int i=0,j=n-1;
+        long sum = 0;
+        while(i<j){
+            sum+=gcd(pre[i],pre[j]);
+            i++;
+            j--;
+        }
+        return sum;
+    }
+}
