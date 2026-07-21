@@ -63,3 +63,31 @@ class Solution {
         return ans;
     }
 }
+
+import java.util.Arrays;
+
+class Solution {
+    // 1. Keep it non-static so it resets every test case
+    private long[][] dp;
+
+    public long solve(int i, int[] nums, int flag) {
+        if (i >= nums.length) return 0;
+        if (dp[i][flag] != -1) return dp[i][flag];
+        long skip = solve(i + 1, nums, flag);
+        long val = nums[i];
+        if (flag == 0) { 
+            val = -val;
+        }
+        long take = solve(i + 1, nums, 1 - flag) + val;
+        return dp[i][flag] = Math.max(take, skip);
+    }
+
+    public long maxAlternatingSum(int[] nums) {
+        int n = nums.length;
+        dp = new long[n][2];         
+        for (long[] row : dp) {
+            Arrays.fill(row, -1);
+        }        
+        return solve(0, nums, 1); 
+    }
+}
