@@ -120,3 +120,13 @@ class Solution {
         return s2.size();
     }
 }
+class Solution {
+    public int maxProduct(int n) {
+        char arr[] = Integer.toString(n).toCharArray();
+        Arrays.sort(arr);
+        int num1 = arr[arr.length - 1] - '0';
+        int num2 = arr[arr.length - 2] - '0';
+        
+        return num1 * num2;
+    }
+}
