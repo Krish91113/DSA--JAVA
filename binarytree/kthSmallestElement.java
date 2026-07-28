@@ -130,3 +130,31 @@
 //         return num1 * num2;
 //     }
 // }
+
+class Solution {
+    public String smallestPalindrome(String s) {
+        int freq[]=new int[26];
+        for(int i=0;i<s.length();i++){
+            char ch = s.charAt(i);
+            freq[ch- 'a']++;
+        }
+        StringBuilder leftHalf = new StringBuilder();
+        char middleChar=0;
+        for(int i=0;i<26;i++){
+            char ch = (char) (i + 'a');
+            int c=freq[i];
+            if(c%2!=0){
+                middleChar=ch;
+            }
+            for(int j=0;j<c/2;j++){
+                leftHalf.append(ch);
+            }
+        }
+        String rightHalf = new StringBuilder(leftHalf).reverse().toString();
+        if(middleChar!=0){
+            return leftHalf.toString() + middleChar+rightHalf;
+        }else{
+            return leftHalf.toString()+rightHalf;
+        }
+    }
+}
