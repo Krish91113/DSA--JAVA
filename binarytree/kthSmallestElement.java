@@ -221,3 +221,23 @@ class Solution {
         return count;
     }
 }
+class Solution {
+    
+    public static int solve(int i, int nums[], int n,int dp[]){
+        if(i>=n) return 0;
+        if(dp[i]!=-1) return dp[i];
+        int result=nums[i]-solve(i+1,nums,n,dp);
+        if(i+1 < n) result=Math.max(result, nums[i]+nums[i+1] - solve(i+2,nums,n,dp));
+        if(i+2 < n) result=Math.max(result, nums[i]+nums[i+1]+nums[i+2] - solve(i+3,nums,n,dp));
+        return dp[i]=result;
+    }
+    public String stoneGameIII(int[] stoneValue) {
+        int n=stoneValue.length;
+        int dp[]=new int[n];
+        Arrays.fill(dp, -1);
+        int result =solve(0,stoneValue,n,dp);
+        if(result > 0) return "Alice";
+        else if(result < 0) return "Bob";
+        return "Tie";
+    }
+}
