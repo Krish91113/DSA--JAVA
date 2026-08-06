@@ -294,3 +294,21 @@ class Solution {
         return c;
     }
 }
+class Solution {
+    public static int product(int temp){
+        int prod=1;
+        while(temp>0){
+            prod=prod * (temp % 10);
+            temp=temp/10;
+        }
+        return prod;
+    }
+    public int smallestNumber(int n, int t) {
+        int ans=0;
+        for(int i=n;i<=100;i++){
+            int a=product(i);
+            if((a % t) == 0) return i;
+        }
+        return ans;
+    }
+}
