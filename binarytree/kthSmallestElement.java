@@ -312,3 +312,21 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public double minPrice(int[] prices, int[] discounts) {
+        Arrays.sort(prices);
+        Arrays.sort(discounts);
+        int i=prices.length-1,j=discounts.length-1;
+        double ans=0;
+        while(i>=0 && j>=0){
+            ans = ans + ((double)prices[i] * (100 - discounts[j])/100);
+            j--;
+            i--;
+        }
+        while(i>=0){
+            ans+=(double) prices[i];
+            i--;
+        }
+        return ans;
+    }
+}
