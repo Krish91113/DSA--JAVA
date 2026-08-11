@@ -77,3 +77,42 @@ class Solution {
         return solve(n,dp);
     }
 }
+
+class Solution {
+    public static boolean isExist(HashSet<Integer> set, int n){
+        if(set.contains(n)){
+            return true;
+        }
+        return false;
+    }
+    public int missingInteger(int[] nums) {
+        HashSet<Integer> set=new HashSet<>();
+        set.add(nums[0]);
+        int j=1;
+        int prev=nums[0];
+        int sum=nums[0];
+        int n=nums.length;
+        while(j<n){
+            set.add(nums[j]);
+            if((prev+1) == nums[j]){
+                prev=nums[j];
+                sum+=prev;
+            }else{
+                break;
+            }
+            j++;
+        }
+        while(j<n){
+        set.add(nums[j]);
+        j++;
+        } 
+        int ans=0;
+        for(int k=sum;k<=1275;k++){
+            if(!isExist(set,k)){
+                ans= k;
+                break;
+            }
+        }
+        return ans;
+    }
+}
