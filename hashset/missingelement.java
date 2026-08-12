@@ -116,3 +116,31 @@
 //         return ans;
 //     }
 // }
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int maxSubarrayLength(int[] nums, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int i = 0, j = 0;
+        int n = nums.length;
+        int maxLen = 0;
+        while (j < n) {
+            map.put(nums[j], map.getOrDefault(nums[j], 0) + 1);
+            while (map.get(nums[j]) > k) {
+                int leftVal = map.get(nums[i]);
+                if (leftVal == 1) {
+                    map.remove(nums[i]);
+                } else {
+                    map.put(nums[i], leftVal - 1);
+                }
+                i++; 
+            }
+            maxLen = Math.max(maxLen, j - i + 1);
+            j++;
+        }
+        
+        return maxLen;
+    }
+}
