@@ -145,3 +145,38 @@
 //     }
 // }
 
+import java.util.*;
+
+class Solution {
+
+    public static boolean isFollow(int i, int j, String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int k = i; k <= j; k++) {
+            char ch = s.charAt(k);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+
+            if (map.get(ch) > 2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public int maximumLengthSubstring(String s) {
+        int maxLen = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if (isFollow(i, j, s)) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return maxLen;
+    }
+}
