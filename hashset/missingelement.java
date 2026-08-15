@@ -180,3 +180,14 @@
 //         return maxLen;
 //     }
 // }
+
+class Solution {
+    public int elevatorRequests(int n, int[] requests) {
+         int ans=requests[0];
+        for(int i=1;i<requests.length;i++){
+            int diff=Math.abs(requests[i]-requests[i-1]);
+            ans+=diff;
+        }
+        return ans;
+    }
+}
