@@ -191,3 +191,22 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public int nearestDrone(int[][] drones, int[] target) {
+       int ans=Integer.MAX_VALUE;
+        int prev=Integer.MAX_VALUE;
+        int n=drones[0].length;
+        for(int i=0;i<drones.length;i++){
+            int manh=0;
+            for(int j=0;j<drones[0].length-1;j++){
+                manh+=Math.abs(drones[i][j]-target[j]);
+            }
+            int range=drones[i][n-1];
+            if(manh<=range && manh<prev){
+                prev=manh;
+                ans=i;
+            }
+        }
+        return ans==Integer.MAX_VALUE?-1:ans;
+    }
+}
