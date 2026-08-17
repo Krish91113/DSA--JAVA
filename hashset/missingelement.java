@@ -210,3 +210,45 @@
 //         return ans==Integer.MAX_VALUE?-1:ans;
 //     }
 // }
+import java.util.Arrays;
+
+class Solution {
+    public int solve(int l, int r, int cum[], int dp[][]) {
+        if (l >= r) return 0;
+        if (dp[l][r] != -1) return dp[l][r];
+        
+        int score = 0;
+        // mid goes from l to r - 1
+        for (int mid = l; mid < r; mid++) {
+            int leftSum = cum[mid] - (l - 1 >= 0 ? cum[l - 1] : 0);
+            int rightSum = cum[r] - cum[mid];
+            
+            if (leftSum < rightSum) {
+                score = Math.max(score, leftSum + solve(l, mid, cum, dp));
+            } else if (leftSum > rightSum) {
+                score = Math.max(score, rightSum + solve(mid + 1, r, cum, dp));
+            } else {
+                int leftChoice = leftSum + solve(l, mid, cum, dp);
+                int rightChoice = rightSum + solve(mid + 1, r, cum, dp);
+                score = Math.max(score, Math.max(leftChoice, rightChoice));
+            }
+        }
+        return dp[l][r] = score;
+    }
+
+    public int stoneGameV(int[] stoneValue) {
+        int n = stoneValue.length;
+        int cum[] = new int[n];
+        cum[0] = stoneValue[0];
+        for (int i = 1; i < n; i++) {
+            cum[i] = stoneValue[i] + cum[i - 1];
+        }
+        
+        int dp[][] = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(dp[i], -1);
+        }
+        
+        return solve(0, n - 1, cum, dp);
+    }
+}
