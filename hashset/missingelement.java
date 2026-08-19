@@ -278,3 +278,33 @@
 //         return Math.max(candidate1, candidate2);
 //     }
 // }
+class Solution {
+    public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
+        Map<Integer,Set<Integer>> map=new HashMap<>();
+        for(int seat[] : reservedSeats){
+            int row=seat[0];
+            int col=seat[1];
+            if(!map.containsKey(row)){
+                map.put(row,new HashSet<>());
+            }
+            map.get(row).add(col);
+        }
+        int ans=2*n;
+        for(int row : map.keySet()){
+            Set<Integer> reserve=map.get(row);
+            boolean left=!reserve.contains(2) && !reserve.contains(3) && !reserve.contains(4) && !reserve.contains(5);
+            boolean mid=!reserve.contains(4) && !reserve.contains(5) && !reserve.contains(6) && !reserve.contains(7);
+            boolean right=!reserve.contains(6) && !reserve.contains(7) && !reserve.contains(8) && !reserve.contains(9) ;
+
+            if(left && right){
+
+            }else if(left || right || mid){
+                ans--;
+            }else{
+                ans-=2;
+            }
+        }   
+        
+        return ans;
+    }
+}
