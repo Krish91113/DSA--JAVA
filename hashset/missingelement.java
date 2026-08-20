@@ -308,3 +308,30 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public int[] resultArray(int[] nums) {
+        int n=nums.length;
+        int arr1[]=new int[n];
+        int arr2[]=new int[n];
+        arr1[0]=nums[0];
+        arr2[0]=nums[1];
+        int r=0,c=0;
+        for(int i=2;i<n;i++){
+            if(arr1[r]>arr2[c]){
+                r++;
+                arr1[r]=nums[i];
+            }else{
+                c++;
+                arr2[c]=nums[i];
+            }
+        }
+        c=0;
+        r++;
+        while(c<n && r<n){
+            arr1[r]=arr2[c];
+            c++;
+            r++;
+        }
+        return arr1;
+    }
+}
