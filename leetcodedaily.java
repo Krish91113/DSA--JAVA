@@ -29,6 +29,21 @@ class Solution {
         return -1;
     }
 }
+  int n=nums.length;
+        int min[]=new int [n];
+        int mini=Integer.MAX_VALUE;
+        for(int i=n-1;i>=0;i--){
+            mini=Math.min(mini,nums[i]);
+            min[i]=mini;
+        }
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            max=Math.max(max,nums[i]);
+            if(max-min[i]<=k){
+                return i;
+            }
+        }
+        return -1;
 }// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // r21// // // // public class leetcodedaily {
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //     public static int findClosest(int x,int y, int z){
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //         int distance1=Math.abs(x-z);
