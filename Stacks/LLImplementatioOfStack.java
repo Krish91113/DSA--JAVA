@@ -85,3 +85,52 @@ public class LLImplementatioOfStack {
         return false;
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int[] nodesBetweenCriticalPoints(ListNode head) {
+        int ans[]=new int[2];
+        ans[0]=-1;
+        ans[1]=-1;
+        ArrayList<Integer> li=new ArrayList<>();
+        ListNode prev=head,curr=prev.next,next=curr.next;
+        int i=2;
+        while(next!=null){
+            if(curr.val>prev.val && curr.val>next.val){
+                li.add(i);
+            }
+            if(curr.val<prev.val && curr.val<next.val){
+                li.add(i);
+            }
+            prev=prev.next;
+            curr=curr.next;
+            next=next.next;
+            i++;
+        }
+
+        if(li.size()!=0){
+            Collections.sort(li);
+            if (li.size() < 2) {
+    return new int[]{-1, -1};
+}
+int minDist = Integer.MAX_VALUE;
+for (int j = 1; j < li.size(); j++) {
+    minDist = Math.min(minDist, li.get(j) - li.get(j - 1));
+}
+ans[0] = minDist;
+ans[1] = li.get(li.size() - 1) - li.get(0);
+return ans;
+        }
+        return ans;
+    }
+    
+}
