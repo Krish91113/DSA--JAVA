@@ -484,3 +484,73 @@
 //         return ans;
 //     }
 // }
+
+import java.util.*;
+
+class Solution {
+    private static final int[] rowOffsets = {-1, 1, 0, 0};
+    private static final int[] colOffsets = {0, 0, -1, 1};
+
+    public int minimumCostPath(int[][] grid, int maxTurns) {
+        int m = grid.length;
+        int n = grid[0].length;
+
+        if (m == 1 && n == 1) {
+            return grid[0][0];
+        }
+
+        int[][][] minCost = new int[m][n][maxTurns + 1];
+        for (int[][] cellCosts : minCost) {
+            for (int[] turnCosts : cellCosts) {
+                Arrays.fill(turnCosts, Integer.MAX_VALUE);
+            }
+        }
+
+        PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
+
+        if (m > 1) {
+            minCost[1][0][0] = grid[0][0] + grid[1][0];
+            queue.offer(new int[]{minCost[1][0][0], 1, 0, 0, 1});
+        }
+        if (n > 1) {
+            minCost[0][1][0] = grid[0][0] + grid[0][1];
+            queue.offer(new int[]{minCost[0][1][0], 0, 1, 0, 3});
+        }
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int currentCost = current[0];
+            int currentRow = current[1];
+            int currentCol = current[2];
+            int currentTurns = current[3];
+            int currentDirection = current[4];
+
+            if (currentRow == m - 1 && currentCol == n - 1) {
+                return currentCost;
+            }
+
+            if (currentCost > minCost[currentRow][currentCol][currentTurns]) {
+                continue;
+            }
+
+            for (int nextDirection = 0; nextDirection < 4; nextDirection++) {
+                int nextRow = currentRow + rowOffsets[nextDirection];
+                int nextCol = currentCol + colOffsets[nextDirection];
+
+                if (nextRow >= 0 && nextRow < m && nextCol >= 0 && nextCol < n) {
+                    int nextTurns = currentTurns + (nextDirection == currentDirection ? 0 : 1);
+
+                    if (nextTurns <= maxTurns) {
+                        int nextCost = currentCost + grid[nextRow][nextCol];
+                        if (nextCost < minCost[nextRow][nextCol][nextTurns]) {
+                            minCost[nextRow][nextCol][nextTurns] = nextCost;
+                            queue.offer(new int[]{nextCost, nextRow, nextCol, nextTurns, nextDirection});
+                        }
+                    }
+                }
+            }
+        }
+
+        return -1;
+    }
+}
