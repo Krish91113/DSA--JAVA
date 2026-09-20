@@ -643,3 +643,16 @@
 //         return x * x + y * y <= r * r;
 //     }
 // }
+class Solution {
+    public int reverseDegree(String s) {
+        int n=s.length();
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            char c = s.charAt(i);
+            int val=(c - 'a');
+            int rev = 26 - val;
+            ans+=rev*(i+1);
+        }
+        return ans;
+    }
+}
