@@ -656,3 +656,21 @@
 //         return ans;
 //     }
 // }
+class Solution {
+    public int smallestIndex(int[] nums) {
+        int ans=Integer.MAX_VALUE;
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            int num = nums[i];
+            int sum=0;
+            while(num > 0){
+                sum+=num%10;
+                num/=10;
+            }
+            if(sum == i){
+                ans=Math.min(ans,i);
+            }
+        }
+        return ans==Integer.MAX_VALUE?-1:ans;
+    }
+}
