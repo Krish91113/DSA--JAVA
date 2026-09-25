@@ -11,6 +11,6 @@ public class singleNumber {
         for (int i = 0; i < arr.length; i++) {
             ans ^= arr[i];
         }
-        return ans;
+        return ans:
     }
 }
