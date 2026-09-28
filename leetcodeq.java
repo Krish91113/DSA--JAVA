@@ -2171,3 +2171,8 @@
 //         return sb.toString();
 //     }
 // }
+if(root == null) return Integer.MAX_VALUE;
+        if(root.left ==null && root.right ==null) return 1;
+        int left=minDepth(root.left);
+        int right=minDepth(root.right);
+        return 1+Math.min(left,right);
