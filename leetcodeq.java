@@ -2192,3 +2192,120 @@
 //         return res;
 //     }
 // }
+import java.util.Arrays;
+import java.util.TreeMap;
+
+class Solution {
+    public long minOperations(int[] nums, int x, int k) {
+        int n = nums.length;
+        
+        long[] minOps = getMinOps(nums, x);
+        
+        long[][] dp = new long[n + 1][k + 1];
+        for (long[] row : dp) {
+            Arrays.fill(row, -1);
+        }
+        
+        long ans = solve(nums, x, k, 0, minOps, dp);
+        return ans >= Long.MAX_VALUE / 4 ? -1 : ans;
+    }
+
+    private long solve(int[] nums, int x, int k, int i, long[] minOps, long[][] dp) {
+        if (k == 0) return 0;
+        if (i > nums.length - k * x) return Long.MAX_VALUE / 2; 
+        if (dp[i][k] != -1) return dp[i][k];
+
+        long notTake = solve(nums, x, k, i + 1, minOps, dp);
+
+        long take = Long.MAX_VALUE / 2;
+        if (i + x <= nums.length && minOps[i] != -1) {
+            take = minOps[i] + solve(nums, x, k - 1, i + x, minOps, dp);
+        }
+
+        return dp[i][k] = Math.min(take, notTake);
+    }
+
+    private long[] getMinOps(int[] nums, int x) {
+        int n = nums.length;
+        long[] minOps = new long[n];
+        Arrays.fill(minOps, -1);
+
+        BalanceHeap leftHeap = new BalanceHeap();  
+        BalanceHeap rightHeap = new BalanceHeap(); 
+
+        for (int i = 0; i < n; i++) {
+            if (leftHeap.size == 0 || nums[i] <= leftHeap.max()) {
+                leftHeap.add(nums[i]);
+            } else {
+                rightHeap.add(nums[i]);
+            }
+
+            balance(leftHeap, rightHeap);
+
+            if (i >= x) {
+                int outVal = nums[i - x];
+                if (outVal <= leftHeap.max()) {
+                    leftHeap.remove(outVal);
+                } else {
+                    rightHeap.remove(outVal);
+                }
+                balance(leftHeap, rightHeap);
+            }
+
+            if (i >= x - 1) {
+                long median = leftHeap.max();
+                long cost = (median * leftHeap.size - leftHeap.sum) + (rightHeap.sum - median * rightHeap.size);
+                minOps[i - x + 1] = cost;
+            }
+        }
+        return minOps;
+    }
+
+    private void balance(BalanceHeap left, BalanceHeap right) {
+        int totalSize = left.size + right.size;
+        int targetLeftSize = (totalSize + 1) / 2; 
+
+        while (left.size < targetLeftSize) {
+            int val = right.min();
+            right.remove(val);
+            left.add(val);
+        }
+        while (left.size > targetLeftSize) {
+            int val = left.max();
+            left.remove(val);
+            right.add(val);
+        }
+    }
+
+    private static class BalanceHeap {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        int size = 0;
+        long sum = 0;
+
+        void add(int val) {
+            map.put(val, map.getOrDefault(val, 0) + 1);
+            size++;
+            sum += val;
+        }
+
+        void remove(int val) {
+            if (!map.containsKey(val)) return;
+            int count = map.get(val);
+            if (count == 1) {
+                map.remove(val);
+            } else {
+                map.put(val, count - 1);
+            }
+            size--;
+            sum -= val;
+        }
+
+        int min() {
+            return map.firstKey();
+        }
+
+        int max() {
+            return map.lastKey();
+        }
+    }
+}
