@@ -2309,3 +2309,63 @@
 //         }
 //     }
 // }
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int[] countServers(int n, int[][] logs, int x, int[] queries) {
+        int m = queries.length;
+        
+        // Store queries with their original indices so we can restore the original order later
+        int[][] q = new int[m][2];
+        for (int i = 0; i < m; i++) {
+            q[i][0] = queries[i];
+            q[i][1] = i;
+        }
+        
+        // Sort queries by time ascending
+        Arrays.sort(q, (a, b) -> Integer.compare(a[0], b[0]));
+        
+        // Sort logs by time ascending
+        Arrays.sort(logs, (a, b) -> Integer.compare(a[1], b[1]));
+        
+        int[] ans = new int[m];
+        Map<Integer, Integer> serverMap = new HashMap<>();
+        
+        int left = 0;
+        int right = 0;
+        int logsLen = logs.length;
+        
+        for (int i = 0; i < m; i++) {
+            int queryTime = q[i][0];
+            int originalIdx = q[i][1];
+            int startTime = queryTime - x;
+            int endTime = queryTime;
+            
+            // 1. Expand window from the right: include all logs with time <= endTime
+            while (right < logsLen && logs[right][1] <= endTime) {
+                int serverId = logs[right][0];
+                serverMap.put(serverId, serverMap.getOrDefault(serverId, 0) + 1);
+                right++;
+            }
+            
+            // 2. Shrink window from the left: remove logs with time < startTime
+            while (left < logsLen && logs[left][1] < startTime) {
+                int serverId = logs[left][0];
+                int count = serverMap.get(serverId);
+                if (count == 1) {
+                    serverMap.remove(serverId);
+                } else {
+                    serverMap.put(serverId, count - 1);
+                }
+                left++;
+            }
+            
+            // 3. Servers with zero requests = Total servers (n) - active servers in map
+            ans[originalIdx] = n - serverMap.size();
+        }
+        
+        return ans;
+    }
+}
